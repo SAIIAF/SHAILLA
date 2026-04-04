@@ -1,0 +1,80 @@
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router';
+import { useLanguage } from '../context/LanguageContext';
+import './Navbar.css';
+import logo from '../../img/لوجو مزارع شهيلا.jpg';
+
+export const Navbar: React.FC = () => {
+  const { language, toggleLanguage, t } = useLanguage();
+  const location = useLocation();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+
+  const isActive = (path: string) => location.pathname === path;
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
+  const handleLangChange = () => {
+    toggleLanguage();
+    setLangOpen(false);
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+
+        {/* 🔥 Logo Image */}
+        <Link to="/" className="navbar-logo">
+          <img src={logo} alt="Shaila Logo" className="logo-img" />
+        </Link>
+
+        {/* Hamburger */}
+        <div
+          className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        {/* Menu */}
+        <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          <li><Link to="/" onClick={handleLinkClick} className={isActive('/') ? 'active' : ''}>{t('الرئيسية', 'Home')}</Link></li>
+          <li><Link to="/about" onClick={handleLinkClick} className={isActive('/about') ? 'active' : ''}>{t('من نحن', 'About')}</Link></li>
+          <li><Link to="/products" onClick={handleLinkClick} className={isActive('/products') ? 'active' : ''}>{t('منتجاتنا', 'Products')}</Link></li>
+          <li><Link to="/farms" onClick={handleLinkClick} className={isActive('/farms') ? 'active' : ''}>{t('مزارعنا', 'Farms')}</Link></li>
+          <li><Link to="/locations" onClick={handleLinkClick} className={isActive('/locations') ? 'active' : ''}>{t('مواقعنا', 'Locations')}</Link></li>
+          <li><Link to="/contact" onClick={handleLinkClick} className={isActive('/contact') ? 'active' : ''}>{t('تواصل معنا', 'Contact')}</Link></li>
+        </ul>
+
+        {/* Language Dropdown */}
+        <div className="lang-dropdown">
+          <div
+            className="lang-btn"
+            onClick={() => setLangOpen(!langOpen)}
+          >
+            🌐 {language.toUpperCase()}
+            <span className={`arrow ${langOpen ? 'open' : ''}`}>▾</span>
+          </div>
+
+          <div className={`lang-menu ${langOpen ? 'show' : ''}`}>
+            <div onClick={handleLangChange}>
+              {language === 'en' ? '🇪🇬 العربية' : '🇺🇸 English'}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Overlay */}
+      <div
+        className={`menu-overlay ${menuOpen ? 'active' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      ></div>
+    </nav>
+  );
+};

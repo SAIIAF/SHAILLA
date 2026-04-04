@@ -1,0 +1,368 @@
+.about-page {
+  width: 100%;
+  margin-top: 90px;
+}
+
+.about-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://images.unsplash.com/photo-1538451825199-8605af521e85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3VsdHJ5JTIwZmFybWluZyUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzc1MjY2MTU1fDA&ixlib=rb-4.1.0&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 51, 102, 0.85), rgba(51, 153, 204, 0.75));
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.about-hero-content h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem;
+}
+
+.about-hero-content p {
+  font-size: 1.5rem;
+  opacity: 0.95;
+  margin: 0;
+}
+
+.about-story {
+  padding: 8rem 0;
+  background-color: #ffffff;
+}
+
+.about-story-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.about-story-container h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #003366;
+  margin: 0 0 3rem;
+  text-align: center;
+}
+
+.about-story-container p {
+  font-size: 1.3rem;
+  line-height: 2.2;
+  color: #666666;
+  margin: 0 0 2rem;
+  text-align: justify;
+}
+
+.vision-mission {
+  padding: 8rem 0;
+  background-color: #f8f9fa;
+}
+
+.vision-mission-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.vision-box,
+.mission-box {
+  background-color: #ffffff;
+  padding: 4rem 3rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.vision-box:hover,
+.mission-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 70px rgba(0, 51, 102, 0.15);
+}
+
+.box-icon {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+.vision-box h3,
+.mission-box h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #003366;
+  margin: 0 0 2rem;
+}
+
+.vision-box p,
+.mission-box p {
+  font-size: 1.3rem;
+  line-height: 2;
+  color: #666666;
+  margin: 0;
+}
+
+.company-timeline {
+  padding: 8rem 0;
+  background-color: #ffffff;
+}
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.timeline-container h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #003366;
+  text-align: center;
+  margin: 0 0 5rem;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #003366, #3399cc);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.timeline-year {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #003366;
+  min-width: 120px;
+  text-align: right;
+  position: relative;
+}
+
+.timeline-year::after {
+  content: '';
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background-color: #3399cc;
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #003366;
+}
+
+.timeline-content {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-content h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #003366;
+  margin: 0 0 1rem;
+}
+
+.timeline-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #666666;
+  margin: 0;
+}
+
+.values-section {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #003366, #3399cc);
+  color: #ffffff;
+}
+
+.values-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.values-container h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 5rem;
+  color: #ffffff;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+
+.value-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px);
+}
+
+.value-card h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+  color: #ffffff;
+}
+
+.value-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+  opacity: 0.9;
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 80px;
+}
+
+[dir="rtl"] .timeline-year {
+  text-align: left;
+}
+
+[dir="rtl"] .timeline-year::after {
+  right: auto;
+  left: -45px;
+}
+
+@media (max-width: 1024px) {
+  .about-hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .vision-mission-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    margin-top: 70px;
+  }
+
+  .about-hero {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .about-story {
+    padding: 5rem 0;
+  }
+
+  .about-story-container {
+    padding: 0 2rem;
+  }
+
+  .about-story-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .vision-mission {
+    padding: 5rem 0;
+  }
+
+  .vision-mission-container {
+    padding: 0 2rem;
+  }
+
+  .vision-box h3,
+  .mission-box h3 {
+    font-size: 2rem;
+  }
+
+  .timeline-container {
+    padding: 0 2rem;
+  }
+
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-year {
+    min-width: 80px;
+    font-size: 1.8rem;
+  }
+
+  .timeline-year::after {
+    right: -35px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [dir="rtl"] .timeline::before {
+    right: 30px;
+  }
+
+  [dir="rtl"] .timeline-year::after {
+    left: -35px;
+  }
+}
