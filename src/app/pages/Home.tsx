@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { MdVerified, MdEco, MdLocalShipping, MdThumbUp, MdLocationOn, } from 'react-icons/md';
 import gsap from 'gsap';

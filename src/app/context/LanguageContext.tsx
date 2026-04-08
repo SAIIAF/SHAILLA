@@ -1,43 +1,33 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type Language = 'ar' | 'en';
+type Language = 'ar' | 'en';
 
 interface LanguageContextType {
-  language: Language;
-  toggleLanguage: () => void;
-  t: (ar: string, en: string) => string;
+    lang: Language;
+    setLang: (lang: Language) => void;
+    t: (ar: string, en: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('ar');
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    const [lang, setLang] = useState<Language>('ar');
 
-  useEffect(() => {
-    // Set document direction based on language
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = language;
-  }, [language]);
+    const t = (ar: string, en: string): string => {
+        return lang === 'ar' ? ar : en;
+    };
 
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'ar' ? 'en' : 'ar');
-  };
-
-  const t = (ar: string, en: string) => {
-    return language === 'ar' ? ar : en;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+    return (
+        <LanguageContext.Provider value={{ lang, setLang, t }}>
+            {children}
+        </LanguageContext.Provider>
+    );
 };
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+export const useLanguage = (): LanguageContextType => {
+    const context = useContext(LanguageContext);
+    if (!context) {
+        throw new Error('useLanguage must be used within a LanguageProvider');
+    }
+    return context;
 };

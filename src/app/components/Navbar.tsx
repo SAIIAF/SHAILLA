@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import './Navbar.css';
 import logo from '../../img/لوجو مزارع شهيلا.jpg';
 
 export const Navbar: React.FC = () => {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
   const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,15 +18,14 @@ export const Navbar: React.FC = () => {
   };
 
   const handleLangChange = () => {
-    toggleLanguage();
+    setLang(lang === 'ar' ? 'en' : 'ar');
     setLangOpen(false);
   };
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-
-        {/* 🔥 Logo Image */}
+      <div className="navbar-container" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+        {/* Logo */}
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="Shaila Logo" className="logo-img" />
         </Link>
@@ -57,13 +56,13 @@ export const Navbar: React.FC = () => {
             className="lang-btn"
             onClick={() => setLangOpen(!langOpen)}
           >
-            🌐 {language.toUpperCase()}
+            🌐 {lang.toUpperCase()}
             <span className={`arrow ${langOpen ? 'open' : ''}`}>▾</span>
           </div>
 
           <div className={`lang-menu ${langOpen ? 'show' : ''}`}>
             <div onClick={handleLangChange}>
-              {language === 'en' ? '🇪🇬 العربية' : '🇺🇸 English'}
+              {lang === 'en' ? '🇪🇬 العربية' : '🇺🇸 English'}
             </div>
           </div>
         </div>
