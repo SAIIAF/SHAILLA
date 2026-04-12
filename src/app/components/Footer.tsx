@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3 className="footer-title">SHAILA</h3>
+            <h3 className="footer-title">SHEHAILA FARMS</h3>
             <p className="footer-description">
               {t(
                 'شركة رائدة في إنتاج البيض وتربية الدواجن والزراعة المستدامة',
@@ -41,17 +41,17 @@ export const Footer: React.FC = () => {
           <div className="footer-section">
             <h4 className="footer-heading">{t('معلومات الاتصال', 'Contact Information')}</h4>
             <p className="footer-info">
-              {t('البريد الإلكتروني', 'Email')}: info@shaila.com
+              {t('البريد الإلكتروني', 'Email')}: "social@afaqsaleh.com" 
             </p>
             <p className="footer-info">
-              {t('الهاتف', 'Phone')}: +966 XX XXX XXXX
+              {t('الهاتف', 'Phone')}: 0544131444
             </p>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © 2026 SHAILA. {t('جميع الحقوق محفوظة', 'All rights reserved')}.
+            © 2026 SHEHAILA. {t('جميع الحقوق محفوظة', 'All rights reserved')}.
           </p>
         </div>
       </div>

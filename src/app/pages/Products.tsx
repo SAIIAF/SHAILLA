@@ -9,7 +9,11 @@ import MainEggsImg from '../../img/egs1.jpeg';
 import RedEggsImg from '../../img/egs2.jpeg';
 import FeedImg from '../../img/3laf.jpeg';
 import FertilizerImg from '../../img/semad.jpg';
-import HeroImg from '../../img/Image_20260408_053724.png'; // عدّل المسار واسم الصورة
+import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png'; // عدّل المسار واسم الصورة
+
+import SmallEggImg from '../../img/small.jpeg';
+import MediumEggImg from '../../img/medium.jpeg';
+import LargeEggImg from '../../img/large.jpeg';
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000) {
@@ -22,12 +26,14 @@ const formatNumber = (num: number): string => {
 
 const Products: React.FC = () => {
   const { t, lang } = useLanguage();
-
+  const [selectedImage, setSelectedImage] = useState(SmallEggImg);
+  const [activeSize, setActiveSize] = useState(0);
+  const imageRef = React.useRef(null);
   const coreProduct = {
     title: t('بيض أبيض طازج', 'Fresh White Eggs'),
     description: t(
       'بيض طازج يوميًا من مزارع شهيلا، يتم إنتاجه تحت أعلى معايير الجودة والسلامة الغذائية. نضمن لك بيضًا طبيعيًا 100% غنيًا بالبروتين والفيتامينات الأساسية لصحة عائلتك.',
-      'Fresh daily eggs from Shaila Farms, produced under the highest quality and food safety standards. We guarantee 100% natural eggs rich in protein and essential vitamins for your family\'s health.'
+      'Fresh daily eggs from Shehaila Farms, produced under the highest quality and food safety standards. We guarantee 100% natural eggs rich in protein and essential vitamins for your family\'s health.'
     ),
     features: [
       t('طازج يوميًا من المزرعة', 'Farm fresh daily'),
@@ -36,9 +42,9 @@ const Products: React.FC = () => {
       t('معتمد من الجهات الصحية', 'Health certified')
     ],
     sizes: [
-      { size: t('صغير', 'Small'), weight: '45-50g', icon: '🥚' },
-      { size: t('متوسط', 'Medium'), weight: '53-58g', icon: '🥚' },
-      { size: t('كبير', 'Large'), weight: '63-68g', icon: '🥚' }
+      { size: t('صغير', 'Small'), weight: '45-50g', image: SmallEggImg },
+      { size: t('متوسط', 'Medium'), weight: '53-58g', image: MediumEggImg },
+      { size: t('كبير', 'Large'), weight: '63-68g', image: LargeEggImg }
     ],
     image: MainEggsImg
   };
@@ -113,7 +119,7 @@ const Products: React.FC = () => {
     <div className="products-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
       <section
-        className="shaila-hero"
+        className="shehaila-hero"
         style={{
           backgroundImage: `url(${HeroImg})`,
           backgroundSize: 'cover',
@@ -121,30 +127,30 @@ const Products: React.FC = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="shaila-hero-content">
-          <div className="shaila-hero-badge">
-            <img src={LogoImg} alt="Shaila Logo" className="shaila-hero-logo" />
+        <div className="shehaila-hero-content">
+          <div className="shehaila-hero-badge">
+            <img src={LogoImg} alt="shehaila Logo" className="shehaila-hero-logo" />
           </div>
-          <h1 className="shaila-hero-title">{t('شهيلا و لا أشهى', 'Shaila... Nothing Tastes Better')}</h1>
-          <p className="shaila-hero-subtitle">
+          <h1 className="shehaila-hero-title">{t('شهيلا و لا أشهى', 'Shehaila... Nothing Tastes Better')}</h1>
+          <p className="shehaila-hero-subtitle">
             {t(
               'نقدم أجود أنواع البيض الطازج من مزارعنا المحلية بأعلى معايير الجودة والسلامة الغذائية',
               'We deliver premium fresh eggs from our local farms with the highest quality and food safety standards'
             )}
           </p>
 
-          <div className="shaila-hero-stats-grid">
-            <div className="shaila-hero-stat-item">
-              <div className="shaila-stat-value">{formatNumber(1000000)}</div>
-              <div className="shaila-stat-label">{t('إنتاج يومي', 'Daily Production')}</div>
+          <div className="shehaila-hero-stats-grid">
+            <div className="shehaila-hero-stat-item">
+              <div className="shehaila-stat-value">{formatNumber(1000000)}</div>
+              <div className="shehaila-stat-label">{t('إنتاج يومي', 'Daily Production')}</div>
             </div>
-            <div className="shaila-hero-stat-item">
-              <div className="shaila-stat-value">100%</div>
-              <div className="shaila-stat-label">{t('طبيعي', 'Natural')}</div>
+            <div className="shehaila-hero-stat-item">
+              <div className="shehaila-stat-value">100%</div>
+              <div className="shehaila-stat-label">{t('طبيعي', 'Natural')}</div>
             </div>
-            <div className="shaila-hero-stat-item">
-              <div className="shaila-stat-value">24h</div>
-              <div className="shaila-stat-label">{t('توزيع سريع', 'Fast Delivery')}</div>
+            <div className="shehaila-hero-stat-item">
+              <div className="shehaila-stat-value">24h</div>
+              <div className="shehaila-stat-label">{t('توزيع سريع', 'Fast Delivery')}</div>
             </div>
           </div>
         </div>
@@ -160,8 +166,12 @@ const Products: React.FC = () => {
         </div>
         <div className={`core-product-container ${lang === 'ar' ? 'rtl-layout' : 'ltr-layout'}`}>
           <div className="product-image-wrapper">
-            <img src={coreProduct.image} alt={coreProduct.title} className="product-main-image" />
-            <div className="image-badge">{t('الأكثر مبيعًا', 'Best Seller')}</div>
+            <img
+              ref={imageRef}
+              src={selectedImage}
+              alt={coreProduct.title}
+              className="product-main-image"
+            />            <div className="image-badge">{t('الأكثر مبيعًا', 'Best Seller')}</div>
           </div>
           <div className="product-info-card">
             <span className="product-category">{t('المنتج الرئيسي', 'Main Product')}</span>
@@ -182,7 +192,21 @@ const Products: React.FC = () => {
               <h4 className="sizes-title">{t('الأحجام المتوفرة', 'Available Sizes')}</h4>
               <div className="sizes-grid">
                 {coreProduct.sizes.map((size, index) => (
-                  <div key={index} className="size-card">
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setSelectedImage(size.image);
+                      setActiveSize(index);
+
+                      if (window.innerWidth <= 768) {
+                        imageRef.current?.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'center'
+                        });
+                      }
+                    }}
+                    className={`size-card ${activeSize === index ? 'active' : ''}`}
+                  >
                     <div className="size-name">{size.size}</div>
                     <div className="size-weight">{size.weight}</div>
                   </div>
@@ -256,10 +280,15 @@ const Products: React.FC = () => {
       {/* Brand Promise Section */}
       <section className="brand-promise-section">
         <div className="brand-content">
-          <div className="shaila-hero-badge" style={{ marginBottom: '1.5rem'}}>
-            <img src={LogoImg} alt="Shaila Logo" className="shaila-hero-logo" />
+          <div className="shehaila-hero-badgee" style={{ marginBottom: '1.5rem' }}>
+            <img
+              src={LogoImg}
+              alt="shehaila Logo"
+              className="shehaila-hero-logo"
+              style={{ width: '300px', height: 'auto' }}
+            />
           </div>
-          <h2 className="brand-title">Shaila | شهيلا</h2>
+          <h2 className="brand-title">Shehaila | شهيلا</h2>
           <p className="brand-tagline">{t('الجودة التزامنا... والثقة أساسنا', 'Quality is our commitment, trust is our foundation')}</p>
         </div>
       </section>
