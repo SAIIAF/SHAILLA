@@ -45,36 +45,36 @@ const HeroSlider: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) 
   }, []);
 
   return (
-    <section className="hero-slider">
+    <section className="farm-hero-slider">
       {SLIDES.map((src, i) => (
         <div
           key={i}
-          className={`hero-slide ${i === current ? 'active' : ''}`}
+          className={`farm-hero-slide ${i === current ? 'active' : ''}`}
           style={{ backgroundImage: `url(${src})` }}
         />
       ))}
 
-      <div className="hero-overlay" />
+      <div className="farm-hero-overlay" />
 
-      <div className={`hero-content ${loaded ? 'hero-content--visible' : ''}`}>
-        <h1 className="hero-title">{t('مزارع شهيلا', 'Shehaila   Farms')}</h1>
-        <p className="hero-subtitle">
+      <div className={`farm-hero-content ${loaded ? 'farm-hero-content--visible' : ''}`}>
+        <h1 className="farm-hero-title">{t('مزارع شهيلا', 'Shehaila   Farms')}</h1>
+        <p className="farm-hero-subtitle">
           {t(
             'الأرض الخصبة التي تُغذّي الأجيال — نُعيد تعريف الزراعة المتقدمة من خلال أنظمة إنتاج راقية تجمع بين الجودة والاستدامة.',
             'Where the earth meets excellence — redefining modern agriculture through advanced production systems that unite quality, sustainability, and innovation.'
           )}
         </p>
-        <div className="hero-cta">
-          <button className="hero-btn hero-btn--primary">{t('اكتشف مزارعنا', 'Explore Our Farms')}</button>
-          <button className="hero-btn hero-btn--ghost">{t('تواصل معنا', 'Contact Us')}</button>
+        <div className="farm-hero-cta">
+          <button className="farm-hero-btn farm-hero-btn--primary">{t('اكتشف مزارعنا', 'Explore Our Farms')}</button>
+          <button className="farm-hero-btn farm-hero-btn--ghost">{t('تواصل معنا', 'Contact Us')}</button>
         </div>
       </div>
 
-      <div className="hero-dots">
+      <div className="farm-hero-dots">
         {SLIDES.map((_, i) => (
           <button
             key={i}
-            className={`hero-dot ${i === current ? 'active' : ''}`}
+            className={`farm-hero-dot ${i === current ? 'active' : ''}`}
             onClick={() => setCurrent(i)}
             aria-label={`Slide ${i + 1}`}
           />
@@ -106,31 +106,31 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   const { ref: imgRef, isVisible: imgVisible } = useReveal();
 
   return (
-    <section className={`content-section ${reversed ? 'content-section--reversed' : ''}`}>
-      <div className="content-section__inner">
+    <section className={`farm-content-section ${reversed ? 'farm-content-section--reversed' : ''}`}>
+      <div className="farm-content-section__inner">
         <div
           ref={imgRef}
-          className={`content-section__images reveal-left ${imgVisible ? 'visible' : ''}`}
+          className={`farm-content-section__images farm-reveal-left ${imgVisible ? 'visible' : ''}`}
         >
-          <div className="cs-img cs-img--primary">
+          <div className="farm-cs-img farm-cs-img--primary">
             <img src={images[0]} alt={title} />
           </div>
-          <div className="cs-img cs-img--secondary">
+          <div className="farm-cs-img farm-cs-img--secondary">
             <img src={images[1]} alt={title} />
           </div>
-          <div className="cs-img-decoration" style={{ background: accent }} />
+          <div className="farm-cs-img-decoration" style={{ background: accent }} />
         </div>
 
         <div
           ref={textRef}
-          className={`content-section__text reveal-right ${textVisible ? 'visible' : ''}`}
+          className={`farm-content-section__text farm-reveal-right ${textVisible ? 'visible' : ''}`}
         >
-          <span className="cs-tag" style={{ color: accent, borderColor: accent }}>
+          <span className="farm-cs-tag" style={{ color: accent, borderColor: accent }}>
             {tag}
           </span>
-          <h2 className="cs-title">{title}</h2>
-          <div className="cs-divider" style={{ background: accent }} />
-          <p className="cs-paragraph">{paragraph}</p>
+          <h2 className="farm-cs-title">{title}</h2>
+          <div className="farm-cs-divider" style={{ background: accent }} />
+          <p className="farm-cs-paragraph">{paragraph}</p>
         </div>
       </div>
     </section>
@@ -194,7 +194,7 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
   return (
     <div
       ref={ref}
-      className={`farm-card reveal-up ${isVisible ? 'visible' : ''}`}
+      className={`farm-card farm-reveal-up ${isVisible ? 'visible' : ''}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="farm-card__image-wrap">
@@ -241,7 +241,7 @@ const FarmCards: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) =
     <section className="farm-cards-section">
       <div
         ref={headRef}
-        className={`farm-cards__header reveal-up ${headVisible ? 'visible' : ''}`}
+        className={`farm-cards__header farm-reveal-up ${headVisible ? 'visible' : ''}`}
       >
         <h2 className="farm-cards__title">{t('مزارعنا', 'Our Farms')}</h2>
         <p className="farm-cards__subtitle">
@@ -274,22 +274,6 @@ export default function Farm() {
       className="farm-page"
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
     >
-      {/* Language Toggle */}
-      <div className="language-toggle">
-        <button
-          className={`lang-btn ${lang === 'ar' ? 'active' : ''}`}
-          onClick={() => setLang('ar')}
-        >
-          العربية
-        </button>
-        <button
-          className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-          onClick={() => setLang('en')}
-        >
-          English
-        </button>
-      </div>
-
       {/* Hero Section */}
       <HeroSlider t={t} />
 
