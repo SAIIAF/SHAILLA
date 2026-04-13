@@ -23,13 +23,14 @@ import pack2 from '../../img/bckfarms/77.jpeg';
 
 import farmImg1 from '../../img/bckfarms/farm1-home.jpeg';
 import farmImg2 from '../../img/bckfarms/farm2-home.jpeg';
+import { useNavigate } from 'react-router-dom';
 import './Farms.css';
 
 // ============ HeroSlider Component ============
 const HeroSlider: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) => {
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState(false);
-
+  const navigate = useNavigate();
   const SLIDES = [slide1, slide2, slide3, slide4, slide5, slide6, slide7];
 
   useEffect(() => {
@@ -65,8 +66,12 @@ const HeroSlider: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) 
           )}
         </p>
         <div className="farm-hero-cta">
-          <button className="farm-hero-btn farm-hero-btn--primary">{t('اكتشف مزارعنا', 'Explore Our Farms')}</button>
-          <button className="farm-hero-btn farm-hero-btn--ghost">{t('تواصل معنا', 'Contact Us')}</button>
+          <button
+            className="farm-hero-btn farm-hero-btn--ghost"
+            onClick={() => navigate('/contact')}
+          >
+            {t('تواصل معنا', 'Contact Us')}
+          </button>
         </div>
       </div>
 
