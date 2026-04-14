@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { Microscope, Thermometer, Award, Egg, Package, Leaf } from 'lucide-react';
 import './Products.css';
 
-import LogoImg from '../../img/لوجو مزارع شهيلا.png'; 
+import LogoImg from '../../img/bckfarms/clients/لوجو مزارع شهيلا.jpg'; 
 import MainEggsImg from '../../img/egs1.jpeg';
 import RedEggsImg from '../../img/egs2.jpeg';
 import FeedImg from '../../img/3laf.jpeg';
