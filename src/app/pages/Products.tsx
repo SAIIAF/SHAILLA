@@ -3,13 +3,12 @@ import { useLanguage } from '../context/LanguageContext';
 import { Microscope, Thermometer, Award, Egg, Package, Leaf } from 'lucide-react';
 import './Products.css';
 
-// استيراد الصور من الجهاز
-import LogoImg from '../../img/لوجو مزارع شهيلا.png'; // عدّل المسار واسم الصورة حسب الملف عندك
+import LogoImg from '../../img/لوجو مزارع شهيلا.png'; 
 import MainEggsImg from '../../img/egs1.jpeg';
 import RedEggsImg from '../../img/egs2.jpeg';
 import FeedImg from '../../img/3laf.jpeg';
 import FertilizerImg from '../../img/semad.jpg';
-import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png'; // عدّل المسار واسم الصورة
+import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png';
 
 import SmallEggImg from '../../img/small.jpeg';
 import MediumEggImg from '../../img/medium.jpeg';

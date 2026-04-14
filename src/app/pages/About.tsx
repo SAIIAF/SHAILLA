@@ -1,134 +1,327 @@
 import React from 'react';
-import { MdVisibility, MdOutlineLightbulb } from 'react-icons/md';
 import { useLanguage } from '../context/LanguageContext';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './About.css';
+import heroImg from '../../img/bckfarms/3.jpeg';
+import logoImg from '../../img/bckfarms/لوجو مزارع شهيلا.jpg';
 
-export const About: React.FC = () => {
-  const { t } = useLanguage();
+import production1 from '../../img/bckfarms/6.jpeg';
+import production2 from '../../img/bckfarms/55.jpeg';
 
+import fleet1 from '../../img/bckfarms/111.jpeg';
+import fleet2 from '../../img/bckfarms/222.jpeg';
+
+
+import almaraiLogo from '../../img/bckfarms/clients/Afaq-Saleh-Main-Logo-White-BG.jpg';
+import savolaLogo from '../../img/bckfarms/clients/alrayalogo.jpg';
+import nadecLogo from '../../img/bckfarms/clients/bandalogo-1536x1086.jpg';
+import pandaLogo from '../../img/bckfarms/clients/bindawood.jpg';
+import tamimiLogo from '../../img/bckfarms/clients/Danublogo.jpg';
+import carrefourLogo from '../../img/bckfarms/clients/farmlogo.jpg';
+import danubeLogo from '../../img/bckfarms/clients/manuellogo.jpg';
+import luluLogo from '../../img/bckfarms/clients/Othaimlogo-1152x1536.png';
+import othaimLogo from '../../img/bckfarms/clients/sanabellogo.png';
+import bindawoodLogo from '../../img/bckfarms/clients/شعار سعودي جاب-1.png';
+
+const HERO_IMAGE = heroImg;
+const LOGO_PLACEHOLDER = logoImg;
+const PRODUCTION_IMAGES = [
+  production1,
+  production2,
+];
+
+const FLEET_IMAGES = [
+  fleet1,
+  fleet2,
+];
+const PARTNER_LOGOS = [
+  { id: 1, name: 'Almarai', logo: almaraiLogo },
+  { id: 2, name: 'Savola', logo: savolaLogo },
+  { id: 3, name: 'NADEC', logo: nadecLogo },
+  { id: 4, name: 'Panda', logo: pandaLogo },
+  { id: 5, name: 'Tamimi', logo: tamimiLogo },
+  { id: 6, name: 'Carrefour', logo: carrefourLogo },
+  { id: 7, name: 'Danube', logo: danubeLogo },
+  { id: 8, name: 'Lulu', logo: luluLogo },
+  { id: 9, name: 'Othaim', logo: othaimLogo },
+  { id: 10, name: 'BinDawood', logo: bindawoodLogo },
+];
+
+const SectionReveal: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  animation?: string;
+  delay?: number;
+}> = ({ children, className = '', animation = 'fade-up', delay = 0 }) => {
+  const { ref, isVisible } = useScrollReveal();
   return (
-    <div className="about-page">
-      <section className="about-hero">
-        <div className="about-hero-overlay"></div>
-        <div className="about-hero-content">
-          <h1>{t('من نحن', 'About Us')}</h1>
-          <p>{t('تعرف على قصتنا ورؤيتنا ورسالتنا', 'Learn about our story, vision, and mission')}</p>
-        </div>
-      </section>
-
-      <section className="about-story">
-        <div className="about-story-container">
-          <h2>{t('قصتنا', 'Our Story')}</h2>
-          <p>
-            {t(
-              'تأسست شركة شهيلا في عام 2001 بهدف توفير أجود أنواع البيض والدواجن للسوق السعودي. بدأنا بمزرعة صغيرة وحلم كبير - أن نصبح الخيار الأول للعائلات السعودية عندما يتعلق الأمر بالبيض الطازج والدواجن عالية الجودة.',
-              'SHAILA was founded in 2001 with the goal of providing the finest eggs and poultry to the Saudi market. We started with a small farm and a big dream - to become the first choice for Saudi families when it comes to fresh eggs and high-quality poultry.'
-            )}
-          </p>
-          <p>
-            {t(
-              'على مدار أكثر من 25 عامًا، نمت شركتنا لتشمل 15 مزرعة حديثة عبر المملكة، ونوظف أكثر من 500 موظف متخصص. نحن نفخر بالتزامنا بالجودة والاستدامة وخدمة العملاء.',
-              'Over the past 25+ years, our company has grown to include 15 modern farms across the Kingdom, employing over 500 specialized staff. We pride ourselves on our commitment to quality, sustainability, and customer service.'
-            )}
-          </p>
-        </div>
-      </section>
-
-      <section className="vision-mission">
-        <div className="vision-mission-container">
-          <div className="vision-box">
-            <div className="box-icon modern-icon-large icon-primary">
-              <MdVisibility />
-            </div>            <h3>{t('رؤيتنا', 'Our Vision')}</h3>
-            <p>
-              {t(
-                'أن نكون الشركة الرائدة في إنتاج البيض والدواجن في منطقة الشرق الأوسط، ملتزمين بأعلى معايير الجودة والاستدامة.',
-                'To be the leading company in egg and poultry production in the Middle East, committed to the highest standards of quality and sustainability.'
-              )}
-            </p>
-          </div>
-          <div className="mission-box">
-            <div className="box-icon modern-icon-large icon-success">
-              <MdOutlineLightbulb />
-            </div>
-            <h3>{t('رسالتنا', 'Our Mission')}</h3>
-            <p>
-              {t(
-                'توفير منتجات غذائية عالية الجودة وآمنة وصحية لعملائنا، مع الحفاظ على البيئة وتطوير مجتمعاتنا.',
-                'To provide high-quality, safe, and healthy food products to our customers, while preserving the environment and developing our communities.'
-              )}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="company-timeline">
-        <div className="timeline-container">
-          <h2>{t('رحلتنا عبر الزمن', 'Our Journey Through Time')}</h2>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-year">2001</div>
-              <div className="timeline-content">
-                <h4>{t('التأسيس', 'Foundation')}</h4>
-                <p>{t('بداية رحلتنا بمزرعة صغيرة في الرياض', 'Started our journey with a small farm in Riyadh')}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-year">2008</div>
-              <div className="timeline-content">
-                <h4>{t('التوسع', 'Expansion')}</h4>
-                <p>{t('افتتاح 5 مزارع جديدة في مناطق مختلفة', 'Opened 5 new farms in different regions')}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-year">2015</div>
-              <div className="timeline-content">
-                <h4>{t('الابتكار', 'Innovation')}</h4>
-                <p>{t('تطبيق أحدث التقنيات في مزارعنا', 'Implemented the latest technologies in our farms')}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-year">2020</div>
-              <div className="timeline-content">
-                <h4>{t('الاستدامة', 'Sustainability')}</h4>
-                <p>{t('الحصول على شهادات الاستدامة البيئية', 'Received environmental sustainability certifications')}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-year">2026</div>
-              <div className="timeline-content">
-                <h4>{t('القيادة', 'Leadership')}</h4>
-                <p>{t('أصبحنا من أكبر منتجي البيض في المملكة', 'Became one of the largest egg producers in the Kingdom')}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="values-section">
-        <div className="values-container">
-          <h2>{t('قيمنا', 'Our Values')}</h2>
-          <div className="values-grid">
-            <div className="value-card">
-              <h4>{t('الجودة', 'Quality')}</h4>
-              <p>{t('الالتزام بأعلى معايير الجودة في كل ما نفعله', 'Commitment to the highest quality standards in everything we do')}</p>
-            </div>
-            <div className="value-card">
-              <h4>{t('النزاهة', 'Integrity')}</h4>
-              <p>{t('الشفافية والصدق في تعاملاتنا مع الجميع', 'Transparency and honesty in our dealings with everyone')}</p>
-            </div>
-            <div className="value-card">
-              <h4>{t('الابتكار', 'Innovation')}</h4>
-              <p>{t('السعي المستمر للتطوير والتحسين', 'Continuous pursuit of development and improvement')}</p>
-            </div>
-            <div className="value-card">
-              <h4>{t('المسؤولية', 'Responsibility')}</h4>
-              <p>{t('المسؤولية تجاه عملائنا والبيئة والمجتمع', 'Responsibility towards our customers, environment, and society')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div
+      ref={ref}
+      className={`reveal reveal--${animation} ${isVisible ? 'reveal--visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
     </div>
   );
 };
 
+export const About: React.FC = () => {
+  const { t, lang } = useLanguage();
+
+  const aboutTextAr = `
+    شهيلا شركة سعودية رائدة في صناعة إنتاج البيض والدواجن، تأسست عام 2001 على أيدي مجموعة من المهندسين
+    والخبراء الزراعيين الطموحين الذين آمنوا بأن المستهلك السعودي يستحق أجود المنتجات الغذائية وأكثرها
+    أمانًا وطازجيةً.
+
+    على مدار أكثر من ربع قرن من العطاء والإبداع، تمكّنت شهيلا من تحويل مزرعة صغيرة متواضعة إلى منظومة
+    إنتاجية متكاملة تضم خمس عشرة مزرعة حديثة موزّعة استراتيجيًا في أرجاء المملكة العربية السعودية، تعمل
+    وفق أعلى معايير الجودة والسلامة الغذائية الدولية المعتمدة.
+
+    تستثمر شهيلا في أحدث التقنيات الزراعية والبيطرية، حيث تعتمد على أنظمة تربية مُحكمة البيئة تضمن
+    رفاهية الطيور وصحتها على أكمل وجه، مما ينعكس مباشرةً على جودة المنتجات وقيمتها الغذائية العالية التي
+    يثق بها ملايين العملاء يوميًا. يضم فريقنا أكثر من خمسمائة متخصص في مجالات الزراعة والبيطرة وضبط
+    الجودة والخدمات اللوجستية، يعملون بتناسق تام وشغف حقيقي لضمان وصول المنتج الطازج إلى المستهلك في
+    أسرع وقت ممكن وبأعلى مستوى من النقاء.
+
+  `;
+
+  const aboutTextEn = `
+    Shehaila is a leading Saudi company in the egg and poultry production industry, established in 2001 by a
+    group of ambitious agricultural engineers and experts who firmly believed that Saudi consumers deserve the
+    finest, safest, and freshest food products available on the market.
+
+    Over more than a quarter century of excellence and innovation, Shehaila has transformed a modest small farm
+    into a fully integrated production ecosystem comprising fifteen modern farms strategically distributed
+    across the Kingdom of Saudi Arabia, all operating to the highest international standards of quality and
+    food safety.
+
+    Shehaila continuously invests in the most advanced agricultural and veterinary technologies, relying on
+    climate-controlled breeding systems that ensure the highest levels of bird welfare and health, which
+    directly reflects on the quality and nutritional value of its products — trusted by millions of customers
+    every single day. Our team includes over five hundred specialists in agriculture, veterinary science,
+    quality control, and logistics, working in seamless coordination and with genuine passion to ensure fresh
+    products reach consumers as quickly as possible at the highest standard of purity.
+
+
+  `;
+
+  const productionTextAr = `
+    تمتلك شهيلا خط إنتاج متكامل ومتطور يمثل الركيزة الأساسية لتميزنا في السوق. يبدأ الخط من مراحل
+    التفريخ الآلي الدقيق، مرورًا بمحطات التربية المُتحكم بيئتها حراريًا وهوائيًا، وصولًا إلى خطوط
+    الفرز والتعبئة الأوتوماتيكية التي تضمن سلامة المنتج وجودته حتى لحظة تسليمه للمستهلك. تعتمد كل
+    مرحلة على برامج رقابة صارمة تخضع للتدقيق الدوري من جهات معتمدة محليًا ودوليًا، مما يجعل شهيلا
+    معيارًا للثقة والجودة في القطاع الغذائي السعودي.
+  `;
+
+  const productionTextEn = `
+    Shehaila operates a fully integrated and sophisticated production line that represents the cornerstone of
+    our market distinction. The process begins with precision automated hatchery stages, moves through
+    thermally and ventilation-controlled rearing stations, and culminates in fully automated sorting and
+    packaging lines that guarantee product safety and quality until the moment of consumer delivery. Every
+    stage is governed by strict monitoring programs subject to periodic audits by locally and internationally
+    accredited bodies, making Shehaila the benchmark for trust and quality in the Saudi food sector.
+  `;
+
+  const fleetTextAr = `
+    لضمان وصول منتجاتنا الطازجة في أعلى حالة من الجودة، يمتلك شهيلا أسطول توزيع متطور يضم مئات
+    المركبات المبردة المجهزة بأنظمة تتبع لحظية ومراقبة درجات الحرارة عبر الوقت الفعلي. يغطي الأسطول
+    جميع مناطق المملكة العربية السعودية الكبرى والمتوسطة والصغيرة، محققًا معدلات تسليم تتجاوز 99%
+    في المواعيد المحددة. يخضع الأسطول لبرنامج صيانة استباقي دوري لضمان الكفاءة القصوى، كما تلتزم
+    مركباتنا بأعلى معايير البيئة والسلامة المرورية تجسيدًا لمسؤوليتنا تجاه المجتمع والكوكب.
+  `;
+
+  const fleetTextEn = `
+    To ensure our fresh products arrive in the highest possible quality condition, Shehaila operates an
+    advanced distribution fleet comprising hundreds of refrigerated vehicles equipped with real-time tracking
+    systems and live temperature monitoring. The fleet covers all major, mid-size, and small regions across
+    the Kingdom of Saudi Arabia, achieving on-time delivery rates exceeding 99%. Our fleet undergoes a
+    proactive periodic maintenance program to ensure peak efficiency, and all vehicles comply with the highest
+    environmental and road safety standards — a testament to our responsibility toward society and the planet.
+  `;
+
+  return (
+    <main className="shehaila-about__page">
+      {/* ── HERO ── */}
+      <section
+        className="shehaila-about__hero"
+        style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+        aria-label={t('قسم التعريف', 'Hero Section')}
+      >
+        <div className="shehaila-about__hero-overlay" />
+        <div className="shehaila-about__hero-content">
+          <h1 className="shehaila-about__hero-title">{t('من نحن', 'About Us')}</h1>
+          <p className="shehaila-about__hero-sub">
+            {t(
+              'نحن شهيلا — علامة سعودية أصيلة تجمع بين عراقة الماضي وطموح المستقبل، لنقدم لكم أجود منتجات البيض والدواجن بمعايير عالمية وبلمسة محلية لا تُضاهى.',
+              'We are Shehaila — an authentic Saudi brand that bridges the heritage of the past with the ambitions of the future, delivering the finest egg and poultry products to world-class standards with an unmatched local touch.'
+            )}
+          </p>
+        </div>
+        <div className="shehaila-about__hero-scroll-hint" aria-hidden="true">
+          <span className="shehaila-about__hero-scroll-line" />
+        </div>
+      </section>
+
+      {/* ── ABOUT SHEHAILA ── */}
+      <section className="shehaila-about__section shehaila-about__identity" aria-labelledby="identity-title">
+        <div className="shehaila-about__container">
+          <SectionReveal animation="fade-up">
+            <div className="shehaila-about__section-tag">{t('تعرف علينا', 'Get to Know Us')}</div>
+            <h2 id="identity-title" className="shehaila-about__section-title">
+              {t('عن شهيلا', 'About Shehaila')}
+            </h2>
+          </SectionReveal>
+
+          <div className={`shehaila-about__identity-grid ${lang === 'en' ? 'shehaila-about__identity-grid--ltr' : ''}`}>
+            <SectionReveal
+              animation={lang === 'ar' ? 'slide-right' : 'slide-left'}
+              className="shehaila-about__identity-text-col"
+            >
+              {(lang === 'ar' ? aboutTextAr : aboutTextEn)
+                .trim()
+                .split('\n\n')
+                .map((para, i) => (
+                  <p key={i} className="shehaila-about__body-text">
+                    {para.trim()}
+                  </p>
+                ))}
+            </SectionReveal>
+
+            <SectionReveal
+              animation={lang === 'ar' ? 'slide-left' : 'slide-right'}
+              delay={150}
+              className="shehaila-about__identity-logo-col"
+            >
+              <div className="shehaila-about__logo-frame">
+                <img
+                  src={LOGO_PLACEHOLDER}
+                  alt={t('شهيلا — صورة الشركة', 'Shehaila Company Image')}
+                  className="shehaila-about__logo-img"
+                  loading="lazy"
+                />
+                <div className="shehaila-about__logo-badge">
+                  <span className="shehaila-about__logo-badge-year">2001</span>
+                  <span className="shehaila-about__logo-badge-label">{t('تأسيس', 'Est.')}</span>
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRODUCTION LINE ── */}
+      <section className="shehaila-about__section shehaila-about__production" aria-labelledby="production-title">
+        <div className="shehaila-about__container">
+          <SectionReveal animation="fade-up">
+            <div className="shehaila-about__section-tag">{t('بنيتنا التحتية', 'Our Infrastructure')}</div>
+            <h2 id="production-title" className="shehaila-about__section-title shehaila-about__section-title--light">
+              {t('خط إنتاج متكامل', 'Integrated Production Line')}
+            </h2>
+          </SectionReveal>
+
+          <SectionReveal animation="fade-up" delay={100}>
+            <p className="shehaila-about__body-text shehaila-about__body-text--centered shehaila-about__body-text--light">
+              {lang === 'ar' ? productionTextAr.trim() : productionTextEn.trim()}
+            </p>
+          </SectionReveal>
+
+          <div className="shehaila-about__image-grid">
+            {PRODUCTION_IMAGES.map((src, i) => (
+              <SectionReveal key={i} animation="fade-up" delay={i * 180} className="shehaila-about__image-card-wrap">
+                <div className="shehaila-about__image-card">
+                  <img
+                    src={src}
+                    alt={t(`خط الإنتاج ${i + 1}`, `Production Line ${i + 1}`)}
+                    className="shehaila-about__image-card-img"
+                    loading="lazy"
+                  />
+                  <div className="shehaila-about__image-card-overlay">
+                    <span className="shehaila-about__image-card-label">
+                      {i === 0
+                        ? t('مرحلة التفريخ والتربية', 'Hatching & Rearing Stage')
+                        : t('خطوط الفرز والتعبئة', 'Sorting & Packaging Lines')}
+                    </span>
+                  </div>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── DISTRIBUTION FLEET ── */}
+      <section className="shehaila-about__section shehaila-about__fleet" aria-labelledby="fleet-title">
+        <div className="shehaila-about__container">
+          <SectionReveal animation="fade-up">
+            <div className="shehaila-about__section-tag">{t('شبكة التوزيع', 'Distribution Network')}</div>
+            <h2 id="fleet-title" className="shehaila-about__section-title">
+              {t('أسطول توزيع متطور', 'Advanced Distribution Fleet')}
+            </h2>
+          </SectionReveal>
+
+          <SectionReveal animation="fade-up" delay={100}>
+            <p className="shehaila-about__body-text shehaila-about__body-text--centered">
+              {lang === 'ar' ? fleetTextAr.trim() : fleetTextEn.trim()}
+            </p>
+          </SectionReveal>
+
+          <div className="shehaila-about__image-grid">
+            {FLEET_IMAGES.map((src, i) => (
+              <SectionReveal key={i} animation="fade-up" delay={i * 180} className="shehaila-about__image-card-wrap">
+                <div className="shehaila-about__image-card">
+                  <img
+                    src={src}
+                    alt={t(`أسطول التوزيع ${i + 1}`, `Distribution Fleet ${i + 1}`)}
+                    className="shehaila-about__image-card-img"
+                    loading="lazy"
+                  />
+                  <div className="shehaila-about__image-card-overlay">
+                    <span className="shehaila-about__image-card-label">
+                      {i === 0
+                        ? t('مركبات التبريد المتطورة', 'Advanced Refrigerated Vehicles')
+                        : t('التغطية الشاملة للمملكة', 'Nationwide Coverage')}
+                    </span>
+                  </div>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTNERS ── */}
+      <section className="shehaila-about__section shehaila-about__partners" aria-labelledby="partners-title">
+        <div className="shehaila-about__container">
+          <SectionReveal animation="fade-up">
+            <div className="shehaila-about__section-tag">{t('الشبكة التجارية', 'Commercial Network')}</div>
+            <h2 id="partners-title" className="shehaila-about__section-title shehaila-about__section-title--light">
+              {t('شركاؤنا', 'Our Partners')}
+            </h2>
+            <p className="shehaila-about__body-text shehaila-about__body-text--centered shehaila-about__body-text--light shehaila-about__partners-intro">
+              {t(
+                'نفخر بشراكاتنا الاستراتيجية مع كبرى سلاسل التجزئة والموزعين في المملكة، مما يضمن وصول منتجاتنا إلى كل بيت وكل طاولة.',
+                'We take pride in our strategic partnerships with the Kingdom\'s leading retail chains and distributors, ensuring our products reach every home and every table.'
+              )}
+            </p>
+          </SectionReveal>
+
+          <div className="shehaila-about__partners-grid">
+            {PARTNER_LOGOS.map((p, i) => (
+              <SectionReveal key={p.id} animation="fade-up" delay={i * 60} className="shehaila-about__partner-wrap">
+                <div className="shehaila-about__partner-card">
+                  <div className="shehaila-about__partner-inner">
+                    <img
+                      src={p.logo}
+                      alt={p.name}
+                      className="shehaila-about__partner-logo"
+                    />
+                  </div>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};

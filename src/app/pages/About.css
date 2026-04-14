@@ -1,368 +1,662 @@
-.about-page {
-  width: 100%;
-  margin-top: 90px;
+/* ── Font Assignment ── */
+[dir='rtl'] * {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.about-hero {
+[dir='ltr'] * {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollPulse {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scaleY(1.6);
+    opacity: 1;
+  }
+}
+
+/* ── Reveal System ── */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal--fade-up {
+  transform: translateY(50px);
+}
+
+.reveal--slide-right {
+  transform: translateX(-70px);
+}
+
+.reveal--slide-left {
+  transform: translateX(70px);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── Page Shell ── */
+.shehaila-about__page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.shehaila-about__hero {
   position: relative;
-  height: 60vh;
-  min-height: 500px;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://images.unsplash.com/photo-1538451825199-8605af521e85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3VsdHJ5JTIwZmFybWluZyUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzc1MjY2MTU1fDA&ixlib=rb-4.1.0&q=80&w=1080');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   color: #ffffff;
 }
 
-.about-hero-overlay {
+.shehaila-about__hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 51, 102, 0.85), rgba(51, 153, 204, 0.75));
+  inset: 0;
+  background: linear-gradient(150deg,
+      rgba(0, 30, 60, 0.92) 0%,
+      rgba(0, 51, 102, 0.82) 50%,
+      rgba(51, 153, 204, 0.65) 100%);
 }
 
-.about-hero-content {
+.shehaila-about__hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 800px;
-  padding: 0 2rem;
+  max-width: 880px;
+  padding: 0 2.5rem;
+  animation: fadeInDown 1s ease both;
 }
 
-.about-hero-content h1 {
-  font-size: 4.5rem;
-  font-weight: 800;
-  margin: 0 0 1.5rem;
-}
-
-.about-hero-content p {
-  font-size: 1.5rem;
-  opacity: 0.95;
-  margin: 0;
-}
-
-.about-story {
-  padding: 8rem 0;
-  background-color: #ffffff;
-}
-
-.about-story-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 4rem;
-}
-
-.about-story-container h2 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #003366;
-  margin: 0 0 3rem;
-  text-align: center;
-}
-
-.about-story-container p {
-  font-size: 1.3rem;
-  line-height: 2.2;
-  color: #666666;
+.shehaila-about__hero-title {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
   margin: 0 0 2rem;
-  text-align: justify;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
 }
 
-.vision-mission {
-  padding: 8rem 0;
-  background-color: #f8f9fa;
-}
-
-.vision-mission-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 4rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
-}
-
-.vision-box,
-.mission-box {
-  background-color: #ffffff;
-  padding: 4rem 3rem;
-  border-radius: 25px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.vision-box:hover,
-.mission-box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 70px rgba(0, 51, 102, 0.15);
-}
-
-.box-icon {
-  font-size: 5rem;
-  margin-bottom: 2rem;
-}
-
-.vision-box h3,
-.mission-box h3 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #003366;
-  margin: 0 0 2rem;
-}
-
-.vision-box p,
-.mission-box p {
-  font-size: 1.3rem;
-  line-height: 2;
-  color: #666666;
+.shehaila-about__hero-sub {
+  font-size: clamp(1.1rem, 2vw, 1.55rem);
+  line-height: 1.85;
+  opacity: 0.93;
   margin: 0;
+  max-width: 700px;
+  margin-inline: auto;
+  animation: fadeInUp 1s 0.3s ease both;
 }
 
-.company-timeline {
-  padding: 8rem 0;
-  background-color: #ffffff;
-}
-
-.timeline-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 4rem;
-}
-
-.timeline-container h2 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #003366;
-  text-align: center;
-  margin: 0 0 5rem;
-}
-
-.timeline {
-  position: relative;
+.shehaila-about__hero-scroll-hint {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 80px;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, #003366, #3399cc);
-}
-
-.timeline-item {
-  display: flex;
-  gap: 3rem;
   align-items: center;
 }
 
-.timeline-year {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #003366;
-  min-width: 120px;
-  text-align: right;
-  position: relative;
+.shehaila-about__hero-scroll-line {
+  display: block;
+  width: 2px;
+  height: 70px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
 }
 
-.timeline-year::after {
-  content: '';
-  position: absolute;
-  right: -45px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
-  background-color: #3399cc;
-  border: 5px solid #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #003366;
+/* =========================================================
+   SHARED SECTION SCAFFOLD
+   ========================================================= */
+.shehaila-about__section {
+  padding: 9rem 0;
 }
 
-.timeline-content {
-  flex: 1;
-  background-color: #f8f9fa;
-  padding: 2rem 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
-
-.timeline-content h4 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #003366;
-  margin: 0 0 1rem;
-}
-
-.timeline-content p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #666666;
-  margin: 0;
-}
-
-.values-section {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, #003366, #3399cc);
-  color: #ffffff;
-}
-
-.values-container {
-  max-width: 1400px;
+.shehaila-about__container {
+  max-width: 1380px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 5rem;
 }
 
-.values-container h2 {
-  font-size: 3.5rem;
+.shehaila-about__section-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3399cc;
+  background: rgba(51, 153, 204, 0.1);
+  border: 1px solid rgba(51, 153, 204, 0.3);
+  padding: 0.45rem 1.2rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.shehaila-about__section-title {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
   font-weight: 800;
+  color: #003366;
+  margin: 0 0 2rem;
+  line-height: 1.2;
   text-align: center;
-  margin: 0 0 5rem;
+}
+
+.shehaila-about__section-title--light {
   color: #ffffff;
 }
 
-.values-grid {
+.shehaila-about__body-text {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 2.1;
+  color: #555;
+  margin: 0 0 1.7rem;
+}
+
+.shehaila-about__body-text:last-child {
+  margin-bottom: 1.7rem;
+}
+
+.shehaila-about__body-text--light {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.shehaila-about__body-text--centered {
+  text-align: center;
+  max-width: 900px;
+  margin-inline: auto;
+  margin-bottom: 4rem;
+}
+
+/* =========================================================
+   ABOUT IDENTITY — 2-COLUMN
+   ========================================================= */
+.shehaila-about__identity {
+  background-color: #ffffff;
+}
+
+.shehaila-about__identity-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 7rem;
+  align-items: center;
+}
+
+/* RTL: text on right, logo on left — grid order natural */
+/* LTR: text on left, logo on right */
+.shehaila-about__identity-grid--ltr .shehaila-about__identity-text-col {
+  order: 1;
+}
+
+.shehaila-about__identity-grid--ltr .shehaila-about__identity-logo-col {
+  order: 2;
+}
+
+.shehaila-about__identity-text-col .shehaila-about__body-text {
+  text-align: start;
+}
+
+/* Logo column */
+.shehaila-about__identity-logo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.shehaila-about__logo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  border-radius: 28px;
+  overflow: visible;
+}
+
+.shehaila-about__logo-img {
+  width: 100%;
+  height: 620px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+  box-shadow:
+    0 25px 60px rgba(0, 51, 102, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.shehaila-about__logo-frame:hover .shehaila-about__logo-img {
+  transform: translateY(-8px);
+  box-shadow:
+    0 40px 80px rgba(0, 51, 102, 0.22),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shehaila-about__logo-badge {
+  position: absolute;
+  bottom: -1.5rem;
+  inset-inline-end: -1.5rem;
+  background: linear-gradient(135deg, #003366, #3399cc);
+  color: #fff;
+  border-radius: 18px;
+  padding: 1.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12px 35px rgba(0, 51, 102, 0.3);
+}
+
+.shehaila-about__logo-badge-year {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.shehaila-about__logo-badge-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+  margin-top: 0.2rem;
+}
+
+/* =========================================================
+   IMAGE GRID (Production + Fleet)
+   ========================================================= */
+.shehaila-about__image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
 }
 
-.value-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+.shehaila-about__image-card-wrap {
+  width: 100%;
 }
 
-.value-card:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-10px);
+.shehaila-about__image-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
 }
 
-.value-card h4 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0 0 1.5rem;
+.shehaila-about__image-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shehaila-about__image-card:hover .shehaila-about__image-card-img {
+  transform: scale(1.08);
+}
+
+.shehaila-about__image-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 30, 60, 0.75) 0%,
+      rgba(0, 30, 60, 0.1) 55%,
+      transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2.2rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.shehaila-about__image-card:hover .shehaila-about__image-card-overlay {
+  opacity: 1;
+}
+
+.shehaila-about__image-card-label {
   color: #ffffff;
-}
-
-.value-card p {
   font-size: 1.1rem;
-  line-height: 1.8;
-  margin: 0;
-  opacity: 0.9;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateY(12px);
+  transition: transform 0.4s ease;
 }
 
-[dir="rtl"] .timeline::before {
-  left: auto;
-  right: 80px;
+.shehaila-about__image-card:hover .shehaila-about__image-card-label {
+  transform: translateY(0);
 }
 
-[dir="rtl"] .timeline-year {
-  text-align: left;
+/* =========================================================
+   PRODUCTION LINE — Dark bg
+   ========================================================= */
+.shehaila-about__production {
+  background: linear-gradient(150deg, #002244 0%, #003366 50%, #004080 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-[dir="rtl"] .timeline-year::after {
-  right: auto;
-  left: -45px;
+.shehaila-about__production::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  inset-inline-end: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(51, 153, 204, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-@media (max-width: 1024px) {
-  .about-hero-content h1 {
-    font-size: 3.5rem;
+/* =========================================================
+   FLEET — White bg
+   ========================================================= */
+.shehaila-about__fleet {
+  background-color: #f7f9fc;
+}
+
+.shehaila-about__fleet .shehaila-about__section-title {
+  color: #003366;
+}
+
+.shehaila-about__fleet .shehaila-about__section-tag {
+  color: #3399cc;
+}
+
+.shehaila-about__fleet .shehaila-about__body-text {
+  color: #555;
+}
+
+/* =========================================================
+   PARTNERS
+   ========================================================= */
+.shehaila-about__partners {
+  background: linear-gradient(150deg, #003366 0%, #0055a0 60%, #3399cc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.shehaila-about__partners::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  inset-inline-start: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.shehaila-about__partners-intro {
+  margin-bottom: 5rem;
+}
+
+.shehaila-about__partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .shehaila-about__partners-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
 
-  .vision-mission-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .values-grid {
+/* Mobile */
+@media (max-width: 576px) {
+  .shehaila-about__partners-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .about-page {
-    margin-top: 70px;
+.shehaila-about__partner-card:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+
+.shehaila-about__partner-wrap {
+  width: 100%;
+}
+
+.shehaila-about__partner-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  filter: saturate(0) brightness(1.4);
+  min-height: 120px;
+}
+
+.shehaila-about__partner-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  filter: saturate(1) brightness(1);
+}
+
+.shehaila-about__partner-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shehaila-about__partner-abbr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  transition: background 0.35s ease;
+}
+
+.shehaila-about__partner-card:hover .shehaila-about__partner-abbr {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.shehaila-about__partner-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: color 0.35s ease;
+}
+
+.shehaila-about__partner-card:hover .shehaila-about__partner-name {
+  color: #ffffff;
+}
+
+/* يخلي الكارت ثابت */
+.shehaila-about__partner-card {
+  min-height: 140px;
+}
+
+/* wrapper ثابت للحجم */
+.shehaila-about__partner-logo-wrapper {
+  width: 130px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* الصورة نفسها */
+.shehaila-about__partner-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+/* hover effect */
+.shehaila-about__partner-card:hover .shehaila-about__partner-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET (≤ 1100px)
+   ========================================================= */
+@media (max-width: 1100px) {
+  .shehaila-about__container {
+    padding: 0 3rem;
   }
 
-  .about-hero {
-    height: 50vh;
-    min-height: 400px;
+  .shehaila-about__identity-grid {
+    gap: 5rem;
   }
 
-  .about-hero-content h1 {
-    font-size: 2.5rem;
+  .shehaila-about__partners-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET (≤ 900px)
+   ========================================================= */
+@media (max-width: 900px) {
+  .shehaila-about__section {
+    padding: 7rem 0;
   }
 
-  .about-hero-content p {
-    font-size: 1.2rem;
-  }
-
-  .about-story {
-    padding: 5rem 0;
-  }
-
-  .about-story-container {
-    padding: 0 2rem;
-  }
-
-  .about-story-container h2 {
-    font-size: 2.5rem;
-  }
-
-  .vision-mission {
-    padding: 5rem 0;
-  }
-
-  .vision-mission-container {
-    padding: 0 2rem;
-  }
-
-  .vision-box h3,
-  .mission-box h3 {
-    font-size: 2rem;
-  }
-
-  .timeline-container {
-    padding: 0 2rem;
-  }
-
-  .timeline::before {
-    left: 30px;
-  }
-
-  .timeline-year {
-    min-width: 80px;
-    font-size: 1.8rem;
-  }
-
-  .timeline-year::after {
-    right: -35px;
-  }
-
-  .values-grid {
+  .shehaila-about__identity-grid {
     grid-template-columns: 1fr;
+    gap: 4rem;
   }
 
-  [dir="rtl"] .timeline::before {
-    right: 30px;
+  .shehaila-about__identity-grid--ltr .shehaila-about__identity-text-col,
+  .shehaila-about__identity-grid--ltr .shehaila-about__identity-logo-col {
+    order: unset;
   }
 
-  [dir="rtl"] .timeline-year::after {
-    left: -35px;
+  .shehaila-about__logo-frame {
+    max-width: 460px;
+    margin-inline: auto;
+  }
+
+  .shehaila-about__identity-text-col .shehaila-about__body-text {
+    text-align: center;
+  }
+
+  .shehaila-about__partners-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE (≤ 640px)
+   ========================================================= */
+@media (max-width: 640px) {
+  .shehaila-about__hero {
+    height: 100vh;
+    min-height: 500px;
+    background-attachment: scroll;
+  }
+
+  .shehaila-about__section {
+    padding: 5rem 0;
+  }
+
+  .shehaila-about__container {
+    padding: 0 1.5rem;
+  }
+
+  .shehaila-about__section-title {
+    margin-bottom: 2.5rem;
+  }
+
+  .shehaila-about__image-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .shehaila-about__partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .shehaila-about__partner-card {
+    padding: 1.5rem 1rem;
+    min-height: 100px;
+  }
+
+  .shehaila-about__logo-badge {
+    bottom: -1rem;
+    inset-inline-end: -0.75rem;
+    padding: 0.9rem 1.3rem;
+    border-radius: 14px;
+  }
+
+  .shehaila-about__logo-badge-year {
+    font-size: 1.5rem;
+  }
+
+  .shehaila-about__hero-scroll-hint {
+    display: none;
+  }
+
+  .reveal--slide-right,
+  .reveal--slide-left {
+    transform: translateY(40px);
   }
 }
