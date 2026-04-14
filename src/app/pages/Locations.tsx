@@ -19,8 +19,6 @@ interface FormErrors {
   message?: string;
 }
 
-
-
 export const Locations: React.FC = () => {
   const { t, dir, isRTL } = useLanguage();
   const cardsRef = useScrollAnimation(0.1);

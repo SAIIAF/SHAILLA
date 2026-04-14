@@ -23,6 +23,7 @@ const formatNumber = (num: number): string => {
   return num.toString();
 };
 
+
 const Products: React.FC = () => {
   const { t, lang } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(SmallEggImg);
