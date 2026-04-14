@@ -110,6 +110,7 @@
   color: var(--white);
   overflow: hidden;
 }
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -1044,6 +1045,8 @@
   margin: 0 auto;
 }
 
+
+
 .location-card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -1253,9 +1256,10 @@
     height: 100px;
     padding: 0.1rem;
   }
-    .hero-scroll-dot {
-      visibility: hidden;
-    }
+
+  .hero-scroll-dot {
+    visibility: hidden;
+  }
 
   .hero-title {
     font-size: 2.8rem;
