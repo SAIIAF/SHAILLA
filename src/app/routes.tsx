@@ -5,7 +5,7 @@ import { About }  from './pages/About';
 import  Products  from './pages/Products';
 import  Farms  from './pages/Farms';
 import { Locations } from './pages/Locations';
-import { Contact } from './pages/Contact';
+import  Contact  from './pages/Contact';
 
 export const router = createBrowserRouter([
   {

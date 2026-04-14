@@ -1,149 +1,364 @@
-import React from 'react';
-import { MdLocationPin, MdApartment, MdPhone, MdEmail } from 'react-icons/md';
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail, User, MessageSquare, ChevronRight, ChevronLeft, Building2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import './locations.css';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import heroBg from '../../img/3d.png';
+import riyadhImg from '../../img/bckfarms/4.jpeg';
+import jeddahImg from '../../img/bckfarms/55.jpeg';
+import './Locations.css';
+
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+
 
 export const Locations: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, dir, isRTL } = useLanguage();
+  const cardsRef = useScrollAnimation(0.1);
+  const contactRef = useScrollAnimation(0.08);
+
+  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const locations = [
     {
-      city: t('الرياض', 'Riyadh'),
-      type: t('المقر الرئيسي', 'Main Headquarters'),
-      address: t('طريق الملك فهد، حي الملقا', 'King Fahd Road, Al Malqa District'),
-      phone: '+966 11 XXX XXXX',
-      email: 'riyadh@shaila.com'
+      id: 1,
+      image: riyadhImg,
+      city: t('بيشة', 'Bisha'),
+      type: t('المقر الرئيسي في بيشة', 'Bisha Main Branch'),
+      address: t(
+        'بيشة، منطقة عسير، المملكة العربية السعودية',
+        'Bisha, Aseer Region, Saudi Arabia'
+      ),
+      phone: '0544131444',
+      email: 'bisha@shehaila.com',
     },
     {
-      city: t('جدة', 'Jeddah'),
-      type: t('فرع رئيسي', 'Main Branch'),
-      address: t('طريق الملك عبدالله، حي الزهراء', 'King Abdullah Road, Al Zahra District'),
-      phone: '+966 12 XXX XXXX',
-      email: 'jeddah@shaila.com'
+      id: 2,
+      image: jeddahImg,
+      city: t('تبالة', 'Tabalah'),
+      type: t('فرع تبالة التشغيلي', 'Tabalah Operational Branch'),
+      address: t(
+        'تبالة، منطقة عسير، المملكة العربية السعودية',
+        'Tabalah, Aseer Region, Saudi Arabia'
+      ),
+      phone: '0544131444',
+      email: 'tabalah@shehaila.com',
     },
-    {
-      city: t('الدمام', 'Dammam'),
-      type: t('فرع رئيسي', 'Main Branch'),
-      address: t('شارع الخليج، حي الشاطئ', 'Al Khaleej Street, Al Shati District'),
-      phone: '+966 13 XXX XXXX',
-      email: 'dammam@shaila.com'
-    },
-    {
-      city: t('مكة المكرمة', 'Makkah'),
-      type: t('فرع', 'Branch'),
-      address: t('طريق جدة السريع', 'Jeddah Expressway'),
-      phone: '+966 12 XXX XXXX',
-      email: 'makkah@shaila.com'
-    },
-    {
-      city: t('المدينة المنورة', 'Madinah'),
-      type: t('فرع', 'Branch'),
-      address: t('طريق الملك عبدالعزيز', 'King Abdulaziz Road'),
-      phone: '+966 14 XXX XXXX',
-      email: 'madinah@shaila.com'
-    },
-    {
-      city: t('الخبر', 'Khobar'),
-      type: t('فرع', 'Branch'),
-      address: t('شارع الأمير تركي', 'Prince Turki Street'),
-      phone: '+966 13 XXX XXXX',
-      email: 'khobar@shaila.com'
-    },
-    {
-      city: t('الطائف', 'Taif'),
-      type: t('فرع', 'Branch'),
-      address: t('طريق الرياض', 'Riyadh Road'),
-      phone: '+966 12 XXX XXXX',
-      email: 'taif@shaila.com'
-    },
-    {
-      city: t('بريدة', 'Buraidah'),
-      type: t('فرع', 'Branch'),
-      address: t('طريق الملك عبدالله', 'King Abdullah Road'),
-      phone: '+966 16 XXX XXXX',
-      email: 'buraidah@shaila.com'
-    },
-    {
-      city: t('تبوك', 'Tabuk'),
-      type: t('فرع', 'Branch'),
-      address: t('شارع الأمير فهد بن سلطان', 'Prince Fahd bin Sultan Street'),
-      phone: '+966 14 XXX XXXX',
-      email: 'tabuk@shaila.com'
-    }
   ];
 
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!form.name.trim())
+      newErrors.name = t('الاسم مطلوب', 'Name is required');
+    if (!form.email.trim())
+      newErrors.email = t('البريد الإلكتروني مطلوب', 'Email is required');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      newErrors.email = t('البريد الإلكتروني غير صالح', 'Invalid email address');
+    if (!form.message.trim())
+      newErrors.message = t('الرسالة مطلوبة', 'Message is required');
+    else if (form.message.trim().length < 20)
+      newErrors.message = t('يجب أن تكون الرسالة 20 حرفاً على الأقل', 'Message must be at least 20 characters');
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setSubmitting(true);
+    setTimeout(() => {
+      setSubmitting(false);
+      setSubmitted(true);
+      setForm({ name: '', email: '', message: '' });
+    }, 1200);
+  };
+
+  const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
+
   return (
-    <div className="locations-page">
-      {/* Hero Section */}
-      <section className="locations-hero">
-        <div className="locations-hero-overlay"></div>
-        <div className="locations-hero-content">
-          <h1>{t('مواقعنا', 'Our Locations')}</h1>
-          <p>{t('نحن في خدمتكم في جميع أنحاء المملكة', 'We serve you across the Kingdom')}</p>
+    <div className="loc-page" dir={dir}>
+
+      {/* ── Hero ─────────────────────────────────────── */}
+      <section
+        className="loc-hero"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="loc-hero-overlay" />
+        <div className="loc-hero-content">
+          <span className="loc-hero-eyebrow loc-hero-anim loc-hero-anim--d1">
+            {t('شهيلا', 'Shehaila')}
+          </span>
+          <h1 className="loc-hero-title loc-hero-anim loc-hero-anim--d2">
+            {t('فروع شهيلا', 'Shehaila Locations')}
+          </h1>
+          <p className="loc-hero-subtitle loc-hero-anim loc-hero-anim--d3">
+            {t(
+              'تشكل مواقعنا حلقة الوصل بين مزارعنا وشركائنا، حيث نعمل عبر شبكة توزيع تغطي نطاقًا واسعًا لضمان وصول منتجاتنا بسرعة وكفاءة.',
+              'Our locations form the vital link between our farms and our partners, operating through an expansive distribution network that ensures our products reach every destination swiftly and efficiently.'
+            )}
+          </p>
+          <div className="loc-hero-divider loc-hero-anim loc-hero-anim--d4" />
+        </div>
+        <div className="loc-hero-scroll-hint">
+          <span />
         </div>
       </section>
 
-      {/* Branches Section */}
-      <section className="branches-section">
-        <div className="branches-container">
-          <h2>{t('فروعنا ومواقعنا', 'Our Branches & Locations')}</h2>
-          <div className="branches-grid">
-            {locations.map((location, index) => (
-              <div key={index} className="location-branch-card">
-                <div className="location-icon-large modern-icon-large icon-primary">
-                  <MdLocationPin size={40} color="#1E90FF" />
+      {/* ── Location Cards ───────────────────────────── */}
+      <section className="loc-cards-section" ref={cardsRef}>
+        <div className="loc-cards-container">
+          <div className="loc-section-label animate-on-scroll fade-up">
+            {t('المواقع والفروع', 'Branches & Locations')}
+          </div>
+          <h2 className="loc-section-title animate-on-scroll fade-up delay-1">
+            {t('تواجدنا الجغرافي', 'Our Geographic Presence')}
+          </h2>
+          <p className="loc-section-desc animate-on-scroll fade-up delay-2">
+            {t(
+              'نفخر بامتلاك شبكة مواقع استراتيجية تمتد عبر أبرز المدن في المملكة العربية السعودية، مما يُمكّننا من تقديم خدمات متميزة وتوصيل منتجاتنا الطازجة في أسرع وقت ممكن.',
+              'We are proud of our strategic network of locations spanning the Kingdom\'s most prominent cities, enabling us to deliver exceptional service and fresh products with unmatched speed and reliability.'
+            )}
+          </p>
+
+          <div className="loc-cards-grid">
+            {locations.map((loc, idx) => (
+              <article
+                key={loc.id}
+                className={`loc-card animate-on-scroll fade-up delay-${idx + 1}`}
+              >
+                <div className="loc-card-image-wrap">
+                  <img
+                    src={loc.image}
+                    alt={loc.city}
+                    className="loc-card-image"
+                    loading="lazy"
+                  />
+                  <div className="loc-card-image-overlay" />
+                  <span className="loc-card-badge">{loc.type}</span>
                 </div>
-                <h3>{location.city}</h3>
-                <span className="location-type">{location.type}</span>
-                <div className="location-details">
-                  <p className="location-detail">
-                    <span className="detail-icon modern-icon size-5 mr-2">
-                      <MdApartment size={20} color="#FF6B6B" />
-                    </span>
-                    {location.address}
-                  </p>
-                  <p className="location-detail">
-                    <span className="detail-icon modern-icon size-5 mr-2">
-                      <MdPhone size={20} color="#28a745" />
-                    </span>
-                    {location.phone}
-                  </p>
-                  <p className="location-detail">
-                    <span className="detail-icon modern-icon size-5 mr-2">
-                      <MdEmail size={20} color="#FF6B6B" />
-                    </span>
-                    {location.email}
-                  </p>
+                <div className="loc-card-body">
+                  <div className="loc-card-city-row">
+                    <MapPin className="loc-card-map-pin" size={22} />
+                    <h3 className="loc-card-city">{loc.city}</h3>
+                  </div>
+                  <ul className="loc-card-details">
+                    <li className="loc-card-detail-item">
+                      <span className="loc-card-detail-icon">
+                        <Building2 size={17} />
+                      </span>
+                      <span className="loc-card-detail-text">{loc.address}</span>
+                    </li>
+                    <li className="loc-card-detail-item">
+                      <span className="loc-card-detail-icon">
+                        <Phone size={17} />
+                      </span>
+                      <a href={`tel:${loc.phone.replace(/\s/g, '')}`} className="loc-card-link">
+                        {loc.phone}
+                      </a>
+                    </li>
+                    <li className="loc-card-detail-item">
+                      <span className="loc-card-detail-icon">
+                        <Mail size={17} />
+                      </span>
+                      <a href={`mailto:${loc.email}`} className="loc-card-link">
+                        {loc.email}
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Coverage Section */}
-      <section className="coverage-section">
-        <div className="coverage-container">
-          <h2>{t('تغطية شاملة', 'Complete Coverage')}</h2>
-          <p className="coverage-description">
-            {t(
-              'نفخر بتواجدنا في جميع المناطق الرئيسية في المملكة العربية السعودية. شبكة التوزيع الواسعة لدينا تضمن وصول منتجاتنا الطازجة إلى كل مكان بسرعة وكفاءة.',
-              'We are proud of our presence in all major regions of Saudi Arabia. Our wide distribution network ensures that our fresh products reach everywhere quickly and efficiently.'
+      {/* ── Contact Section ──────────────────────────── */}
+      <section className="loc-contact-section" ref={contactRef}>
+        <div className="loc-contact-container">
+
+          {/* Left / Info */}
+          <div className="loc-contact-info animate-on-scroll fade-right">
+            <span className="loc-section-label light">
+              {t('نتطلع للتواصل معك', 'We Look Forward to Hearing from You')}
+            </span>
+            <h2 className="loc-contact-title">
+              {t('تواصل معنا بالتفصيل', 'Contact Us in Detail')}
+            </h2>
+            <p className="loc-contact-desc">
+              {t(
+                'في شهيلا، نؤمن بأن التواصل الحقيقي مع عملائنا وشركائنا هو أساس بناء علاقات تجارية راسخة ومستدامة. سواء كنت تبحث عن معلومات تفصيلية حول منتجاتنا، أو تسعى للتفاوض على شراكات استراتيجية، أو تحتاج إلى دعم لوجستي متخصص، فإن فريقنا المؤهل يعمل على مدار الساعة للإجابة على استفساراتك وتقديم الحلول الأمثل التي تلائم متطلبات عملك.',
+                'At Shehaila, we believe that authentic communication with our clients and partners forms the foundation of enduring and sustainable business relationships. Whether you seek detailed information about our products, wish to negotiate strategic partnerships, or require specialized logistical support, our highly qualified team operates around the clock to address your inquiries and deliver optimal solutions tailored to your business requirements.'
+              )}
+            </p>
+
+            <div className="loc-contact-details-list">
+              <div className="loc-contact-detail-row">
+                <span className="loc-contact-icon-wrap">
+                  <Mail size={20} />
+                </span>
+                <div>
+                  <span className="loc-contact-detail-label">
+                    {t('البريد الإلكتروني', 'Email')}
+                  </span>
+                  <a href="mailto:social@afaqsaleh.com" className="loc-contact-detail-value">
+                    social@afaqsaleh.com
+                  </a>
+                </div>
+              </div>
+              <div className="loc-contact-detail-row">
+                <span className="loc-contact-icon-wrap">
+                  <Phone size={20} />
+                </span>
+                <div>
+                  <span className="loc-contact-detail-label">
+                    {t('الهاتف', 'Phone')}
+                  </span>
+                  <a href="tel:920014995" className="loc-contact-detail-value">
+                    920014995
+                  </a>
+                </div>
+              </div>
+              <div className="loc-contact-detail-row">
+                <span className="loc-contact-icon-wrap">
+                  <MapPin size={20} />
+                </span>
+                <div>
+                  <span className="loc-contact-detail-label">
+                    {t('المقر الرئيسي', 'Headquarters')}
+                  </span>
+                  <span className="loc-contact-detail-value">
+                    {t('الرياض، المملكة العربية السعودية', 'Riyadh, Saudi Arabia')}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <a href="/contact" className="loc-cta-btn">
+              <span>{t('تواصل معنا', 'Contact Us')}</span>
+              <ArrowIcon size={18} className="loc-cta-icon" />
+            </a>
+          </div>
+
+          {/* Right / Form */}
+          <div className="loc-contact-form-wrap animate-on-scroll fade-left delay-2">
+            {submitted ? (
+              <div className="loc-form-success">
+                <div className="loc-form-success-icon">
+                  <Mail size={32} />
+                </div>
+                <h3>
+                  {t('تم إرسال رسالتك بنجاح', 'Your Message Has Been Sent')}
+                </h3>
+                <p>
+                  {t(
+                    'شكراً لتواصلك معنا. سيقوم فريقنا بالرد عليك في أقرب وقت ممكن.',
+                    'Thank you for reaching out. Our team will respond to you as soon as possible.'
+                  )}
+                </p>
+                <button
+                  className="loc-form-success-btn"
+                  onClick={() => setSubmitted(false)}
+                >
+                  {t('إرسال رسالة أخرى', 'Send Another Message')}
+                </button>
+              </div>
+            ) : (
+              <form className="loc-contact-form" onSubmit={handleSubmit} noValidate>
+                <h3 className="loc-form-title">
+                  {t('أرسل لنا رسالة', 'Send Us a Message')}
+                </h3>
+
+                <div className="loc-form-group">
+                  <label className="loc-form-label" htmlFor="loc-name">
+                    {t('الاسم الكامل', 'Full Name')}
+                  </label>
+                  <div className="loc-form-input-wrap">
+                    <User size={16} className="loc-form-icon" />
+                    <input
+                      id="loc-name"
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder={t('أدخل اسمك الكامل', 'Enter your full name')}
+                      className={`loc-form-input${errors.name ? ' is-error' : ''}`}
+                    />
+                  </div>
+                  {errors.name && <span className="loc-form-error">{errors.name}</span>}
+                </div>
+
+                <div className="loc-form-group">
+                  <label className="loc-form-label" htmlFor="loc-email">
+                    {t('البريد الإلكتروني', 'Email Address')}
+                  </label>
+                  <div className="loc-form-input-wrap">
+                    <Mail size={16} className="loc-form-icon" />
+                    <input
+                      id="loc-email"
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder={t('أدخل بريدك الإلكتروني', 'Enter your email address')}
+                      className={`loc-form-input${errors.email ? ' is-error' : ''}`}
+                    />
+                  </div>
+                  {errors.email && <span className="loc-form-error">{errors.email}</span>}
+                </div>
+
+                <div className="loc-form-group">
+                  <label className="loc-form-label" htmlFor="loc-message">
+                    {t('الرسالة', 'Message')}
+                  </label>
+                  <div className="loc-form-input-wrap loc-form-textarea-wrap">
+                    <MessageSquare size={16} className="loc-form-icon loc-form-icon--top" />
+                    <textarea
+                      id="loc-message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      rows={5}
+                      placeholder={t(
+                        'اكتب رسالتك هنا بالتفصيل...',
+                        'Write your message here in detail...'
+                      )}
+                      className={`loc-form-input loc-form-textarea${errors.message ? ' is-error' : ''}`}
+                    />
+                  </div>
+                  {errors.message && <span className="loc-form-error">{errors.message}</span>}
+                </div>
+
+                <button
+                  type="submit"
+                  className={`loc-form-submit${submitting ? ' is-loading' : ''}`}
+                  disabled={submitting}
+                >
+                  {submitting
+                    ? t('جارٍ الإرسال...', 'Sending...')
+                    : t('إرسال الرسالة', 'Send Message')}
+                </button>
+              </form>
             )}
-          </p>
-          <div className="coverage-stats">
-            <div className="coverage-stat">
-              <div className="stat-num">15+</div>
-              <div className="stat-text">{t('مدينة', 'Cities')}</div>
-            </div>
-            <div className="coverage-stat">
-              <div className="stat-num">50+</div>
-              <div className="stat-text">{t('نقطة توزيع', 'Distribution Points')}</div>
-            </div>
-            <div className="coverage-stat">
-              <div className="stat-num">24/7</div>
-              <div className="stat-text">{t('خدمة العملاء', 'Customer Service')}</div>
-            </div>
           </div>
         </div>
       </section>
