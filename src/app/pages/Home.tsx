@@ -419,8 +419,8 @@ const certs = [
     },
     {
         id: 2,
-        title_ar: 'شهادة السلامة الزراعية',
-        title_en: 'Agricultural Safety Certificate',
+        title_ar: 'شهادة العلامة التجارية',
+        title_en: 'Trade Mark Certificate',
         image: cert2,
     },
 ];
