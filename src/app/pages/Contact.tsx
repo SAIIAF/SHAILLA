@@ -67,11 +67,6 @@ const Contact: React.FC = () => {
 
   return (
     <div className="contact-page">
-      {/* Language Toggle */}
-      <button className="lang-toggle" onClick={toggleLanguage}>
-        {language === 'ar' ? 'English' : 'العربية'}
-      </button>
-
       {/* Hero Section */}
       <section className="contact-hero">
         <img src={contactHero} alt="" className="contact-hero-bg" width={1920} height={1080} />

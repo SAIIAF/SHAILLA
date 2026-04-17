@@ -1,36 +1,7 @@
 /* ===== Contact Page ===== */
 .contact-page {
   width: 100%;
-}
-
-/* ===== Language Toggle ===== */
-.lang-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 100;
-  padding: 0.75rem 1.5rem;
-  background-color: #003366;
-  color: #ffffff;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
-  font-family: inherit;
-}
-
-[dir="rtl"] .lang-toggle {
-  right: auto;
-  left: 20px;
-}
-
-.lang-toggle:hover {
-  background-color: #3399cc;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(51, 153, 204, 0.4);
+  margin-top: 4rem;
 }
 
 /* ===== Hero Section ===== */
@@ -486,7 +457,7 @@
 
 @media (max-width: 768px) {
   .contact-hero {
-    height: 55vh;
+    height: 100vh;
     min-height: 420px;
   }
 
