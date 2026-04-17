@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import './Navbar.css';
@@ -11,11 +11,36 @@ export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 
+  /* 🔥 NEW */
+  const [scrolled, setScrolled] = useState(false);
+  const [hideNavbar, setHideNavbar] = useState(false);
+
+  let lastScrollY = 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      // shadow
+      setScrolled(currentScroll > 20);
+
+      // hide / show
+      if (currentScroll > lastScrollY && currentScroll > 80) {
+        setHideNavbar(true); // نازل
+      } else {
+        setHideNavbar(false); // طالع
+      }
+
+      lastScrollY = currentScroll;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const isActive = (path: string) => location.pathname === path;
 
-  const handleLinkClick = () => {
-    setMenuOpen(false);
-  };
+  const handleLinkClick = () => setMenuOpen(false);
 
   const handleLangChange = () => {
     setLang(lang === 'ar' ? 'en' : 'ar');
@@ -23,14 +48,13 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hideNavbar ? 'hide' : ''}`}>
       <div className="navbar-container" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-        {/* Logo */}
+
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="Shaila Logo" className="logo-img" />
         </Link>
 
-        {/* Hamburger */}
         <div
           className={`menu-toggle ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -40,7 +64,6 @@ export const Navbar: React.FC = () => {
           <span></span>
         </div>
 
-        {/* Menu */}
         <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
           <li><Link to="/" onClick={handleLinkClick} className={isActive('/') ? 'active' : ''}>{t('الرئيسية', 'Home')}</Link></li>
           <li><Link to="/about" onClick={handleLinkClick} className={isActive('/about') ? 'active' : ''}>{t('من نحن', 'About')}</Link></li>
@@ -50,12 +73,8 @@ export const Navbar: React.FC = () => {
           <li><Link to="/contact" onClick={handleLinkClick} className={isActive('/contact') ? 'active' : ''}>{t('تواصل معنا', 'Contact')}</Link></li>
         </ul>
 
-        {/* Language Dropdown */}
         <div className="lang-dropdown">
-          <div
-            className="lang-btn"
-            onClick={() => setLangOpen(!langOpen)}
-          >
+          <div className="lang-btn" onClick={() => setLangOpen(!langOpen)}>
             🌐 {lang.toUpperCase()}
             <span className={`arrow ${langOpen ? 'open' : ''}`}>▾</span>
           </div>
@@ -69,7 +88,6 @@ export const Navbar: React.FC = () => {
 
       </div>
 
-      {/* Overlay */}
       <div
         className={`menu-overlay ${menuOpen ? 'active' : ''}`}
         onClick={() => setMenuOpen(false)}

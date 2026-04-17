@@ -6,7 +6,18 @@
   z-index: 1000;
 
   backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.75);
+  background: linear-gradient(135deg,
+      rgba(0, 51, 102, 0.95),
+      rgba(0, 95, 163, 0.9));
+        transition: transform 0.4s ease, background 0.3s ease;
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
+}
+
+.navbar.scrolled {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* Container */
@@ -44,24 +55,40 @@
 
 .navbar-menu a {
   text-decoration: none;
-  color: #666;
+  color: #e6f0ff;
   font-size: larger;
   font-weight: 500;
   position: relative;
+  transition: 0.3s;
+}
+
+.navbar-menu a:hover {
+  color: #ffffff;
+}
+
+/* underline animation */
+.navbar-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #66ccff, #ffffff);
+  transition: 0.3s;
+}
+
+.navbar-menu a:hover::after {
+  width: 100%;
 }
 
 .navbar-menu a.active {
-  color: #003366;
+  color: #ffffff;
 }
 
 .navbar-menu a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #3399cc, #003366);
 }
 
 /* Language Dropdown */
@@ -177,7 +204,9 @@
     width: 100%;
 
     flex-direction: column;
-    background: white;
+    background: linear-gradient(180deg,
+          #003366,
+          #005fa3);
     padding: 2rem;
     gap: 1.5rem;
 

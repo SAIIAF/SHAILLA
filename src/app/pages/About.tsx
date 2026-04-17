@@ -11,7 +11,6 @@ import production2 from '../../img/bckfarms/55.jpeg';
 import fleet1 from '../../img/bckfarms/111.jpeg';
 import fleet2 from '../../img/bckfarms/222.jpeg';
 
-
 import almaraiLogo from '../../img/bckfarms/clients/Afaq-Saleh-Main-Logo-White-BG.jpg';
 import savolaLogo from '../../img/bckfarms/clients/alrayalogo.jpg';
 import nadecLogo from '../../img/bckfarms/clients/bandalogo-1536x1086.jpg';
@@ -321,6 +320,7 @@ export const About: React.FC = () => {
             ))}
           </div>
         </div>
+        
       </section>
     </main>
   );
