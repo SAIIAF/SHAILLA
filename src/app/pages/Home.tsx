@@ -425,6 +425,7 @@ const certs = [
     },
 ];
 
+
 const CertificationsSection: React.FC = () => {
     const { t } = useLanguage();
     const [selected, setSelected] = React.useState<null | typeof certs[0]>(null);
