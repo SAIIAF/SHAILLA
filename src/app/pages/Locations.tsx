@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, User, MessageSquare, ChevronRight, ChevronLeft, Building2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { Link } from 'react-router-dom';
+
 import heroBg from '../../img/3d.png';
 import riyadhImg from '../../img/bckfarms/4.jpeg';
 import jeddahImg from '../../img/bckfarms/55.jpeg';
@@ -251,10 +253,10 @@ export const Locations: React.FC = () => {
               </div>
             </div>
 
-            <a href="/contact" className="loc-cta-btn">
+            <Link to="/contact" className="loc-cta-btn">
               <span>{t('تواصل معنا', 'Contact Us')}</span>
               <ArrowIcon size={18} className="loc-cta-icon" />
-            </a>
+            </Link>
           </div>
 
           {/* Right / Form */}

@@ -1,13 +1,12 @@
 /* ===== Contact Page ===== */
 .contact-page {
   width: 100%;
-  margin-top: 4rem;
 }
 
 /* ===== Hero Section ===== */
 .contact-hero {
   position: relative;
-  height: 70vh;
+  height: 100vh;
   min-height: 550px;
   display: flex;
   align-items: center;

@@ -1,55 +1,76 @@
-/* Navbar */
+/* ================= ROOT (Fluid System) ================= */
+:root {
+  --nav-font: clamp(0.85rem, 1vw, 1rem);
+  --nav-gap: clamp(0.8rem, 2vw, 2rem);
+}
+
+/* ================= Navbar ================= */
 .navbar {
   position: fixed;
-  width: 100%;
   top: 0;
+
+  width: 80%;
+  max-width: 1300px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
   z-index: 1000;
 
   backdrop-filter: blur(15px);
   background: linear-gradient(135deg,
       rgba(0, 51, 102, 0.95),
-      rgba(0, 95, 163, 0.9));
-        transition: transform 0.4s ease, background 0.3s ease;
+      rgba(1, 90, 153, 0.9));
+
+  border-radius: 1.2rem;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  transition: transform 0.4s ease, background 0.3s ease;
 }
 
 .navbar.hide {
-  transform: translateY(-100%);
+  transform: translate(-50%, -120%);
 }
 
 .navbar.scrolled {
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* Container */
+/* ================= Container ================= */
 .navbar-container {
   max-width: 1400px;
   margin: auto;
-  padding: .3rem 2rem;
+  padding: .4rem 2rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* 🔥 Logo Image */
+/* ================= Logo ================= */
 .navbar-logo {
   display: flex;
   align-items: center;
 }
 
 .logo-img {
+  width: clamp(45px, 6vw, 65px);
+  height: auto;
   border-radius: 1rem;
-  height: 90px;
-  width: 90px;
   object-fit: contain;
   transition: 0.3s;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
 }
 
-/* Menu Desktop */
+/* ================= Menu Desktop ================= */
 .navbar-menu {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: var(--nav-gap);
+  list-style: none;
+}
+
+.navbar-menu li {
   list-style: none;
 }
 
@@ -60,13 +81,14 @@
   font-weight: 500;
   position: relative;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 .navbar-menu a:hover {
   color: #ffffff;
 }
 
-/* underline animation */
+/* underline */
 .navbar-menu a::after {
   content: '';
   position: absolute;
@@ -74,12 +96,12 @@
   left: 0;
   width: 0%;
   height: 2px;
-
   background: linear-gradient(90deg, #66ccff, #ffffff);
   transition: 0.3s;
 }
 
-.navbar-menu a:hover::after {
+.navbar-menu a:hover::after,
+.navbar-menu a.active::after {
   width: 100%;
 }
 
@@ -87,11 +109,7 @@
   color: #ffffff;
 }
 
-.navbar-menu a.active::after {
-  width: 100%;
-}
-
-/* Language Dropdown */
+/* ================= Language ================= */
 .lang-dropdown {
   position: relative;
 }
@@ -100,16 +118,17 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+
+  padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 14px);
   border-radius: 50px;
 
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
   font-weight: 600;
 
   cursor: pointer;
 
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.76);
   border: 1px solid rgba(255, 255, 255, 0.3);
 
   transition: 0.3s;
@@ -134,9 +153,9 @@
 
   background: white;
   border-radius: 12px;
-  padding: 8px;
+  padding: 5px;
 
-  min-width: 140px;
+  min-width: 120px;
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
@@ -163,7 +182,7 @@
   background: #f5f5f5;
 }
 
-/* Hamburger */
+/* ================= Hamburger ================= */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -190,8 +209,53 @@
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* 📱 Mobile */
+/* ================= Responsive ================= */
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .navbar {
+    width: 88%;
+  }
+
+  .navbar-menu {
+    gap: 1.2rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .navbar {
+    width: 92%;
+  }
+
+  .navbar-menu {
+    gap: 0.9rem;
+  }
+
+  .navbar-menu a {
+    font-size: 0.9rem;
+  }
+}
+
+/* قبل الموبايل */
+@media (max-width: 850px) {
+  .navbar-menu {
+    gap: 0.7rem;
+  }
+
+  .navbar-menu a {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+
+  .navbar {
+    width: 94%;
+    top: 10px;
+    border-radius: 1.5rem;
+  }
 
   .menu-toggle {
     display: flex;
@@ -199,32 +263,47 @@
 
   .navbar-menu {
     position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+
+    width: 92%;
+    border-radius: 1.5rem;
 
     flex-direction: column;
-    background: linear-gradient(180deg,
-          #003366,
-          #005fa3);
-    padding: 2rem;
-    gap: 1.5rem;
+    align-items: center;
 
-    transform: translateY(-20px);
+    background: linear-gradient(180deg,
+        rgba(0, 51, 102, 0.95),
+        rgba(0, 95, 163, 0.95));
+
+    backdrop-filter: blur(20px);
+
+    padding: 1.8rem 1.2rem;
+    gap: 1.2rem;
+
     opacity: 0;
     pointer-events: none;
 
-    transition: 0.3s;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+
+    transition: all 0.3s ease;
   }
 
   .navbar-menu.active {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
+
+  .navbar-menu a {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
 }
 
-/* Overlay */
+/* ================= Overlay ================= */
 .menu-overlay {
   position: fixed;
   inset: 0;

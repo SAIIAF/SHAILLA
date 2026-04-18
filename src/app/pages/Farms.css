@@ -5,7 +5,6 @@
 
 .farm-page {
   width: 100%;
-  margin-top: 90px;
 }
 
 /* ========== LANGUAGE TOGGLE ========== */
@@ -702,9 +701,6 @@
 }
 
 @media (max-width: 768px) {
-  .farm-page {
-    margin-top: 70px;
-  }
 
   .farm-hero-slider {
     height: 100vh;
