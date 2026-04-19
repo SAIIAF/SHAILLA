@@ -11,7 +11,6 @@ export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 
-  /* 🔥 NEW */
   const [scrolled, setScrolled] = useState(false);
   const [hideNavbar, setHideNavbar] = useState(false);
 
@@ -21,7 +20,6 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      // shadow بس
       setScrolled(currentScroll > 20);
     };
 
