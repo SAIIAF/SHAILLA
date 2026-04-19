@@ -21,17 +21,8 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      // shadow
+      // shadow بس
       setScrolled(currentScroll > 20);
-
-      // hide / show
-      if (currentScroll > lastScrollY && currentScroll > 80) {
-        setHideNavbar(true); // نازل
-      } else {
-        setHideNavbar(false); // طالع
-      }
-
-      lastScrollY = currentScroll;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -48,7 +39,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hideNavbar ? 'hide' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
 
         <Link to="/" className="navbar-logo">
