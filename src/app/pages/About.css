@@ -437,7 +437,6 @@
   content: '';
   position: absolute;
   bottom: -20%;
-  inset-inline-start: -10%;
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
@@ -448,51 +447,54 @@
   margin-bottom: 5rem;
 }
 
+/* ── Grid ── */
 .shehaila-about__partners-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2rem;
-}
+  justify-content: center;
+  justify-items: center;
+  /* يخلي كل كارت في نص العمود */
+  align-items: center;
 
-/* Tablet */
+  max-width: 1200px;
+  /* مهم */
+  margin: 0 auto;
+  /* يخلي الجريد نفسه في النص */
+}
 @media (max-width: 992px) {
   .shehaila-about__partners-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Mobile */
 @media (max-width: 576px) {
   .shehaila-about__partners-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.shehaila-about__partner-card:hover {
-  transform: translateY(-8px) scale(1.05);
-}
-
-
+/* ── Card ── */
 .shehaila-about__partner-wrap {
   width: 100%;
 }
 
 .shehaila-about__partner-card {
   background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
   padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+  transition: 0.35s ease;
+  min-height: 140px;
+
   filter: saturate(0) brightness(1.4);
-  min-height: 120px;
+}
+.shehaila-about__partner-card {
+  max-width: 190px;
+  /* يخلي كل الكروت نفس العرض */
 }
 
 .shehaila-about__partner-card:hover {
@@ -503,77 +505,39 @@
   filter: saturate(1) brightness(1);
 }
 
+/* ── Inner ── */
 .shehaila-about__partner-inner {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.shehaila-about__partner-abbr {
-  display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.15);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.04em;
-  transition: background 0.35s ease;
 }
 
-.shehaila-about__partner-card:hover .shehaila-about__partner-abbr {
-  background: rgba(255, 255, 255, 0.28);
-}
-
-.shehaila-about__partner-name {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.05em;
-  text-align: center;
-  transition: color 0.35s ease;
-}
-
-.shehaila-about__partner-card:hover .shehaila-about__partner-name {
-  color: #ffffff;
-}
-
-/* يخلي الكارت ثابت */
-.shehaila-about__partner-card {
-  min-height: 140px;
-}
-
-/* wrapper ثابت للحجم */
+/* ── Wrapper (أهم حاجة) ── */
 .shehaila-about__partner-logo-wrapper {
-  width: 130px;
-  height: 70px;
+  width: 120px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* الصورة نفسها */
+/* ── Logo (الحل الأساسي) ── */
 .shehaila-about__partner-logo {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 
   filter: grayscale(100%);
   opacity: 0.7;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-/* hover effect */
+/* Hover */
 .shehaila-about__partner-card:hover .shehaila-about__partner-logo {
   filter: grayscale(0%);
   opacity: 1;
   transform: scale(1.05);
 }
-
 /* =========================================================
    RESPONSIVE — TABLET (≤ 1100px)
    ========================================================= */

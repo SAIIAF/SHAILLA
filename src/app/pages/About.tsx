@@ -283,38 +283,57 @@ export const About: React.FC = () => {
       </section>
 
       {/* ── PARTNERS ── */}
-      <section className="shehaila-about__section shehaila-about__partners" aria-labelledby="partners-title">
+      <section
+        className="shehaila-about__section shehaila-about__partners"
+        aria-labelledby="partners-title"
+      >
         <div className="shehaila-about__container">
           <SectionReveal animation="fade-up">
-            <div className="shehaila-about__section-tag">{t('الشبكة التجارية', 'Commercial Network')}</div>
-            <h2 id="partners-title" className="shehaila-about__section-title shehaila-about__section-title--light">
+            <div className="shehaila-about__section-tag">
+              {t('الشبكة التجارية', 'Commercial Network')}
+            </div>
+
+            <h2
+              id="partners-title"
+              className="shehaila-about__section-title shehaila-about__section-title--light"
+            >
               {t('شركاؤنا', 'Our Partners')}
             </h2>
+
             <p className="shehaila-about__body-text shehaila-about__body-text--centered shehaila-about__body-text--light shehaila-about__partners-intro">
               {t(
                 'نفخر بشراكاتنا الاستراتيجية مع كبرى سلاسل التجزئة والموزعين في المملكة، مما يضمن وصول منتجاتنا إلى كل بيت وكل طاولة.',
-                'We take pride in our strategic partnerships with the Kingdom\'s leading retail chains and distributors, ensuring our products reach every home and every table.'
+                "We take pride in our strategic partnerships with the Kingdom's leading retail chains and distributors, ensuring our products reach every home and every table."
               )}
             </p>
           </SectionReveal>
 
           <div className="shehaila-about__partners-grid">
             {PARTNER_LOGOS.map((p, i) => (
-              <SectionReveal key={p.id} animation="fade-up" delay={i * 60} className="shehaila-about__partner-wrap">
+              <SectionReveal
+                key={p.id}
+                animation="fade-up"
+                delay={i * 60}
+                className="shehaila-about__partner-wrap"
+              >
                 <div className="shehaila-about__partner-card">
                   <div className="shehaila-about__partner-inner">
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      className="shehaila-about__partner-logo"
-                    />
+
+                    {/* 👇 أهم تعديل هنا */}
+                    <div className="shehaila-about__partner-logo-wrapper">
+                      <img
+                        src={p.logo}
+                        alt={p.name}
+                        className="shehaila-about__partner-logo"
+                      />
+                    </div>
+
                   </div>
                 </div>
               </SectionReveal>
             ))}
           </div>
         </div>
-
       </section>
     </main>
   );
