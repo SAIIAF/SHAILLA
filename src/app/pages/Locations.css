@@ -183,14 +183,6 @@
   transition-delay: 0.46s;
 }
 
-/* RTL flips for directional fades */
-[dir='rtl'] .animate-on-scroll.fade-right {
-  transform: translateX(48px);
-}
-
-[dir='rtl'] .animate-on-scroll.fade-left {
-  transform: translateX(-48px);
-}
 
 /* ═══════════════════════════════════════════════
    HERO SECTION
@@ -545,11 +537,11 @@
 .loc-contact-container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
+  gap: 3rem;
+  align-items: stretch;
   position: relative;
   z-index: 1;
 }
@@ -717,35 +709,52 @@ a.loc-contact-detail-value:hover {
 
 .loc-form-icon {
   position: absolute;
-  inset-inline-start: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--text-light);
   pointer-events: none;
   z-index: 1;
 }
 
-.loc-form-icon--top {
+/* LTR */
+[dir='ltr'] .loc-form-icon {
+  left: 1rem;
+  right: auto;
+}
+
+/* RTL */
+[dir='rtl'] .loc-form-icon {
+  right: 1rem;
+  left: auto;
+}
+
+/* textarea icon */
+.loc-form-textarea-wrap .loc-form-icon {
   top: 1rem;
-  align-self: flex-start;
+  transform: none;
 }
 
 .loc-form-input {
   width: 100%;
-  padding: 0.88rem 1rem 0.88rem 2.9rem;
+  padding: 0.88rem 1rem;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 0.97rem;
-  color: var(--text-dark);
   background: var(--bg-soft);
-  transition: border-color var(--transition), box-shadow var(--transition),
-    background var(--transition);
+  transition: all var(--transition);
   outline: none;
   font-family: inherit;
   box-sizing: border-box;
 }
 
+/* LTR */
+[dir='ltr'] .loc-form-input {
+  padding-left: 2.9rem;
+}
+
+/* RTL */
 [dir='rtl'] .loc-form-input {
-  padding-inline-start: 2.9rem;
-  padding-inline-end: 1rem;
+  padding-right: 2.9rem;
 }
 
 .loc-form-input:focus {
@@ -948,5 +957,41 @@ a.loc-contact-detail-value:hover {
   .loc-cta-btn {
     align-self: stretch;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .loc-contact-form-wrap {
+    padding: 1.6rem;
+  }
+
+  .loc-contact-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .loc-contact-info {
+    text-align: center;
+    align-items: center;
+  }
+
+  .loc-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .loc-contact-container {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .enquiry-hub__wrapper {
+    flex-direction: column;
+  }
+
+  .enquiry-hub__form-card {
+    width: 100%;
   }
 }

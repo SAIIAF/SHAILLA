@@ -212,45 +212,83 @@ export const Locations: React.FC = () => {
             </p>
 
             <div className="loc-contact-details-list">
+
+              {/* EMAIL */}
               <div className="loc-contact-detail-row">
-                <span className="loc-contact-icon-wrap">
+                <a
+                  href="mailto:social@afaqsaleh.com"
+                  className="loc-contact-icon-wrap"
+                  style={{ cursor: 'pointer' }}
+                  title="Send Email"
+                >
                   <Mail size={20} />
-                </span>
+                </a>
+
                 <div>
                   <span className="loc-contact-detail-label">
                     {t('البريد الإلكتروني', 'Email')}
                   </span>
-                  <a href="mailto:social@afaqsaleh.com" className="loc-contact-detail-value">
+
+                  <a
+                    href="mailto:social@afaqsaleh.com"
+                    className="loc-contact-detail-value"
+                  >
                     social@afaqsaleh.com
                   </a>
                 </div>
               </div>
+
+              {/* PHONE */}
               <div className="loc-contact-detail-row">
-                <span className="loc-contact-icon-wrap">
+                <a
+                  href="tel:920014995"
+                  className="loc-contact-icon-wrap"
+                  style={{ cursor: 'pointer' }}
+                  title="Call Now"
+                >
                   <Phone size={20} />
-                </span>
+                </a>
+
                 <div>
                   <span className="loc-contact-detail-label">
                     {t('الهاتف', 'Phone')}
                   </span>
+
                   <a href="tel:920014995" className="loc-contact-detail-value">
                     920014995
                   </a>
                 </div>
               </div>
+
+              {/* LOCATION */}
               <div className="loc-contact-detail-row">
-                <span className="loc-contact-icon-wrap">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Riyadh,Saudi%20Arabia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="loc-contact-icon-wrap"
+                  style={{ cursor: 'pointer' }}
+                  title="Open in Maps"
+                >
                   <MapPin size={20} />
-                </span>
+                </a>
+
                 <div>
                   <span className="loc-contact-detail-label">
                     {t('المقر الرئيسي', 'Headquarters')}
                   </span>
-                  <span className="loc-contact-detail-value">
+
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Riyadh, Saudi Arabia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="loc-contact-detail-value"
+                  >
                     {t('الرياض، المملكة العربية السعودية', 'Riyadh, Saudi Arabia')}
-                  </span>
+                  </a>
                 </div>
               </div>
+
             </div>
 
             <Link to="/contact" className="loc-cta-btn">

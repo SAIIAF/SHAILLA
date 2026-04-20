@@ -612,6 +612,9 @@
     background-attachment: scroll;
   }
 
+    .shehaila-about__logo-img {
+      height: 410px;
+    }
   .shehaila-about__section {
     padding: 5rem 0;
   }
