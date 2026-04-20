@@ -53,7 +53,7 @@
 .logo-img {
   width: clamp(45px, 6vw, 65px);
   height: auto;
-  border-radius: 1rem;
+  border-radius: 2rem;
   object-fit: contain;
   transition: 0.3s;
 }

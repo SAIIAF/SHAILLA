@@ -7,40 +7,6 @@
   width: 100%;
 }
 
-/* ========== LANGUAGE TOGGLE ========== */
-.farm-lang-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 100;
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 8px;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.farm-lang-btn {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  color: #666;
-}
-
-.farm-lang-btn.active {
-  background: #3399cc;
-  color: #fff;
-}
-
-.farm-lang-btn:hover {
-  color: #3399cc;
-}
 
 /* ========== HERO SLIDER STYLES ========== */
 .farm-hero-slider {
@@ -112,7 +78,7 @@
 }
 
 .farm-hero-title {
-  font-size: clamp(4rem, 9vw, 8rem);
+  font-size: clamp(4rem, 6.5vw, 6rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 1.1;
@@ -125,7 +91,7 @@
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
-  margin: 0 auto 40px;
+  margin: 0 auto 50px;
   max-width: 680px;
   font-weight: 300;
 }
@@ -244,7 +210,7 @@
 
 /* ========== CONTENT SECTION STYLES ========== */
 .farm-content-section {
-  padding: 120px 0;
+  padding: 4.5rem 0;
   overflow: hidden;
   background: #fff;
 }
@@ -442,7 +408,7 @@
 
 /* ========== FARM CARDS SECTION ========== */
 .farm-cards-section {
-  padding: 120px 0;
+  padding: 4.5rem 0;
   background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
   position: relative;
   overflow: hidden;
@@ -491,7 +457,7 @@
 
 .farm-cards__subtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(255, 254, 254);
   max-width: 580px;
   margin: 0 auto;
   line-height: 1.7;

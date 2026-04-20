@@ -152,7 +152,7 @@
    SHARED SECTION SCAFFOLD
    ========================================================= */
 .shehaila-about__section {
-  padding: 9rem 0;
+  padding: 2.5rem 0;
 }
 
 .shehaila-about__container {
@@ -176,10 +176,10 @@
 }
 
 .shehaila-about__section-title {
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-size: clamp(2.2rem, 4.5vw, 5.8rem);
   font-weight: 800;
   color: #003366;
-  margin: 0 0 2rem;
+  margin: 0 0 3.5rem;
   line-height: 1.2;
   text-align: center;
 }
@@ -254,7 +254,7 @@
 
 .shehaila-about__logo-img {
   width: 100%;
-  height: 510px;
+  height: 610px;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 28px;
@@ -274,7 +274,7 @@
 
 .shehaila-about__logo-badge {
   position: absolute;
-  bottom: -1.5rem;
+  bottom: 0rem;
   inset-inline-end: -1.5rem;
   background: linear-gradient(135deg, #003366, #3399cc);
   color: #fff;
@@ -297,7 +297,6 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   opacity: 0.85;
-  margin-top: 0.2rem;
 }
 
 /* =========================================================
@@ -430,7 +429,7 @@
 
 .shehaila-about__partners-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 2rem;
 }
 
@@ -641,7 +640,7 @@
   }
 
   .shehaila-about__logo-badge {
-    bottom: -1rem;
+    bottom: 0rem;
     inset-inline-end: -0.75rem;
     padding: 0.9rem 1.3rem;
     border-radius: 14px;

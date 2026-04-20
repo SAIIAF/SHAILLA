@@ -11,16 +11,13 @@ import production2 from '../../img/bckfarms/55.jpeg';
 import fleet1 from '../../img/bckfarms/111.jpeg';
 import fleet2 from '../../img/bckfarms/222.jpeg';
 
-import almaraiLogo from '../../img/bckfarms/clients/Afaq-Saleh-Main-Logo-White-BG.jpg';
 import savolaLogo from '../../img/bckfarms/clients/alrayalogo.jpg';
 import nadecLogo from '../../img/bckfarms/clients/bandalogo-1536x1086.jpg';
 import pandaLogo from '../../img/bckfarms/clients/bindawood.jpg';
 import tamimiLogo from '../../img/bckfarms/clients/Danublogo.jpg';
 import carrefourLogo from '../../img/bckfarms/clients/farmlogo.jpg';
-import danubeLogo from '../../img/bckfarms/clients/manuellogo.jpg';
 import luluLogo from '../../img/bckfarms/clients/Othaimlogo-1152x1536.png';
 import othaimLogo from '../../img/bckfarms/clients/sanabellogo.png';
-import bindawoodLogo from '../../img/bckfarms/clients/شعار سعودي جاب-1.png';
 
 const HERO_IMAGE = heroImg;
 const LOGO_PLACEHOLDER = logoImg;
@@ -34,16 +31,13 @@ const FLEET_IMAGES = [
   fleet2,
 ];
 const PARTNER_LOGOS = [
-  { id: 1, name: 'Almarai', logo: almaraiLogo },
-  { id: 2, name: 'Savola', logo: savolaLogo },
-  { id: 3, name: 'NADEC', logo: nadecLogo },
-  { id: 4, name: 'Panda', logo: pandaLogo },
-  { id: 5, name: 'Tamimi', logo: tamimiLogo },
-  { id: 6, name: 'Carrefour', logo: carrefourLogo },
-  { id: 7, name: 'Danube', logo: danubeLogo },
-  { id: 8, name: 'Lulu', logo: luluLogo },
-  { id: 9, name: 'Othaim', logo: othaimLogo },
-  { id: 10, name: 'BinDawood', logo: bindawoodLogo },
+  { id: 1, name: 'Savola', logo: savolaLogo },
+  { id: 2, name: 'NADEC', logo: nadecLogo },
+  { id: 3, name: 'Panda', logo: pandaLogo },
+  { id: 4, name: 'Tamimi', logo: tamimiLogo },
+  { id: 5, name: 'Carrefour', logo: carrefourLogo },
+  { id: 6, name: 'Lulu', logo: luluLogo },
+  { id: 7, name: 'Othaim', logo: othaimLogo },
 ];
 
 const SectionReveal: React.FC<{

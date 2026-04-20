@@ -119,8 +119,8 @@ const AboutSection: React.FC = () => {
                     </p>
                     <p className="about-body">
                         {t(
-                            'تمتد مزارعنا في منطقتي تبالة وبيشة، مجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر السعودية التي تختار منتجاتنا يومياً.',
-                            'Our farms span the regions of Tabalah and Bisha, equipped with the latest technologies and staffed by specialized teams ensuring the health and safety of our flocks and products. We are proud of the trust of thousands of Saudi families who choose our products daily.'
+                            'تمتد مزارعنا في منطقتي بيشة وتبالة، مجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر السعودية التي تختار منتجاتنا يومياً.',
+                            'Our farms span the regions of Bisha and Tabalah, equipped with the latest technologies and staffed by specialized teams ensuring the health and safety of our flocks and products. We are proud of the trust of thousands of Saudi families who choose our products daily.'
                         )}
                     </p>
                     <div className="about-features">
@@ -161,10 +161,10 @@ const products = [
     },
     {
         id: 2,
-        title_ar: 'البيض الأحمر',
-        title_en: 'Red Eggs',
-        desc_ar: 'بيض أحمر طازج من دجاج مربى بطريقة طبيعية — قريباً في أسواقنا',
-        desc_en: 'Fresh red eggs from naturally raised chickens — coming soon to our markets',
+        title_ar: 'البيض البني',
+        title_en: 'Brown Eggs',
+        desc_ar: 'بيض بني طازج من دجاج مربى بطريقة طبيعية — قريباً في أسواقنا',
+        desc_en: 'Fresh brown eggs from naturally raised chickens — coming soon to our markets',
         image: eggRed,
         active: false,
         badge_ar: 'قريباً',
@@ -236,18 +236,6 @@ const ProductsSection: React.FC = () => {
 const farms = [
     {
         id: 1,
-        name_ar: 'مزرعة تبالة',
-        name_en: 'Tabalah Farm',
-        location_ar: 'منطقة جازان — تبالة',
-        location_en: 'Jizan Region — Tabalah',
-        capacity_ar: '25 مليون بيضة سنوياً',
-        capacity_en: '25 Million Eggs Annually',
-        desc_ar: 'مزرعتنا الرئيسية في تبالة تُعدّ من أحدث مزارع إنتاج البيض في المنطقة، مجهزة بأنظمة تحكم مناخي ورعاية تلقائية تضمن أعلى مستويات الإنتاج والجودة.',
-        desc_en: 'Our main farm in Tabalah is one of the most modern egg production farms in the region, equipped with climate control systems and automated care ensuring the highest levels of production and quality.',
-        image: farm1,
-    },
-    {
-        id: 2,
         name_ar: 'مزرعة بيشة',
         name_en: 'Bisha Farm',
         location_ar: 'منطقة عسير — بيشة',
@@ -257,6 +245,18 @@ const farms = [
         desc_ar: 'مزرعة بيشة تتميز بموقعها الاستراتيجي وبيئتها المثالية لتربية الدواجن، وتعتمد على أحدث تقنيات الرعاية والتغذية لضمان إنتاج بيض طازج عالي الجودة على مدار العام.',
         desc_en: 'Bisha farm stands out for its strategic location and ideal environment for poultry raising, relying on the latest care and nutrition technologies to ensure fresh, high-quality egg production throughout the year.',
         image: farm2,
+    },
+    {
+        id: 2,
+        name_ar: 'مزرعة تبالة',
+        name_en: 'Tabalah Farm',
+        location_ar: 'منطقة عسير — تبالة',
+        location_en: 'Asir Region — Tabalah',
+        capacity_ar: '25 مليون بيضة سنوياً',
+        capacity_en: '25 Million Eggs Annually',
+        desc_ar: 'مزرعتنا الرئيسية في تبالة تُعدّ من أحدث مزارع إنتاج البيض في المنطقة، مجهزة بأنظمة تحكم مناخي ورعاية تلقائية تضمن أعلى مستويات الإنتاج والجودة.',
+        desc_en: 'Our main farm in Tabalah is one of the most modern egg production farms in the region, equipped with climate control systems and automated care ensuring the highest levels of production and quality.',
+        image: farm1,
     },
 ];
 
@@ -335,16 +335,7 @@ const StatsSection: React.FC = () => {
 const locations = [
     {
         id: 1,
-        city_ar: 'تبالة',
-        city_en: 'Tabalah',
-        region_ar: 'منطقة جازان',
-        region_en: 'Jizan Region',
-        phone: '0544131444',
-        email: 'social@afaqsaleh.com',
-        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=تبالة+جازان+المملكة+العربية+السعودية',
-    },
-    {
-        id: 2,
+        
         city_ar: 'بيشة',
         city_en: 'Bisha',
         region_ar: 'منطقة عسير',
@@ -352,6 +343,16 @@ const locations = [
         phone: '0544131444',
         email: 'social@afaqsaleh.com',
         mapsUrl: 'https://www.google.com/maps/search/?api=1&query=بيشة+عسير+المملكة+العربية+السعودية',
+    },
+    {
+        id: 2,
+        city_ar: 'تبالة',
+        city_en: 'Tabalah',
+        region_ar: 'منطقة عسير',
+        region_en: 'Asir Region',
+        phone: '0544131444',
+        email: 'social@afaqsaleh.com',
+        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=تبالة+جازان+المملكة+العربية+السعودية',
     },
 ];
 

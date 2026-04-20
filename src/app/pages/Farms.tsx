@@ -61,8 +61,8 @@ const HeroSlider: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) 
         <h1 className="farm-hero-title">{t('مزارع شهيلا', 'Shehaila   Farms')}</h1>
         <p className="farm-hero-subtitle">
           {t(
-            'الأرض الخصبة التي تُغذّي الأجيال — نُعيد تعريف الزراعة المتقدمة من خلال أنظمة إنتاج راقية تجمع بين الجودة والاستدامة.',
-            'Where the earth meets excellence — redefining modern agriculture through advanced production systems that unite quality, sustainability, and innovation.'
+            'إنتاج البيض المميز الذي يغذي الأجيال — نعيد تعريف تربية الدواجن الحديثة عبر أنظمة إنتاج متطورة تجمع بين الجودة والاستدامة',
+            'Premium egg production that nourishes generations, redefining modern poultry farming through advanced systems that combine quality and sustainability'
           )}
         </p>
         <div className="farm-hero-cta">
@@ -160,22 +160,7 @@ interface FarmCardData {
 
 const FARM_CARDS: FarmCardData[] = [
   {
-    nameAr: 'مزرعة تبالة',
-    nameEn: 'Tabalah Farm',
-    locationAr: 'تبالة، منطقة جازان',
-    locationEn: 'Tabalah, Jazan Region',
-    descAr:
-      'مزرعة تبالة هي إحدى ركائزنا الإنتاجية الرئيسية، مجهزة بأحدث تقنيات التربية الحديثة وأنظمة التحكم البيئي الدقيقة لضمان إنتاج بيض بجودة استثنائية طوال العام.',
-    descEn:
-      'Tabalah Farm stands as one of our flagship production hubs, equipped with cutting-edge poultry technology and precision climate control systems that ensure consistently exceptional egg quality year-round.',
-    capacityAr: '25 مليون بيضة سنوياً',
-    capacityEn: '25 Million Eggs Annually',
-    statsAr: 'إنتاجية عالية',
-    statsEn: 'High Yield',
-    image: farmImg1,
-    accentColor: '#005599',
-  },
-  {
+    
     nameAr: 'مزرعة بيشة',
     nameEn: 'Bisha Farm',
     locationAr: 'بيشة، منطقة عسير',
@@ -189,6 +174,22 @@ const FARM_CARDS: FarmCardData[] = [
     statsAr: 'مستدامة وصديقة للبيئة',
     statsEn: 'Sustainable & Eco-Friendly',
     image: farmImg2,
+    accentColor: '#005599',
+  },
+  {
+    nameAr: 'مزرعة تبالة',
+    nameEn: 'Tabalah Farm',
+    locationAr: 'تبالة، منطقة عسير',
+    locationEn: 'Tabalah, Asir Region',
+    descAr:
+      'مزرعة تبالة هي إحدى ركائزنا الإنتاجية الرئيسية، مجهزة بأحدث تقنيات التربية الحديثة وأنظمة التحكم البيئي الدقيقة لضمان إنتاج بيض بجودة استثنائية طوال العام.',
+    descEn:
+      'Tabalah Farm stands as one of our flagship production hubs, equipped with cutting-edge poultry technology and precision climate control systems that ensure consistently exceptional egg quality year-round.',
+    capacityAr: '25 مليون بيضة سنوياً',
+    capacityEn: '25 Million Eggs Annually',
+    statsAr: 'إنتاجية عالية',
+    statsEn: 'High Yield',
+    image: farmImg1,
     accentColor: '#005599',
   },
 ];
@@ -251,8 +252,8 @@ const FarmCards: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) =
         <h2 className="farm-cards__title">{t('مزارعنا', 'Our Farms')}</h2>
         <p className="farm-cards__subtitle">
           {t(
-            'مزرعتان رئيسيتان تمثلان قمة التطور الزراعي في المملكة العربية السعودية',
-            'Two flagship farms that represent the pinnacle of agricultural advancement in Saudi Arabia'
+            'مزرعتان رئيسيتان تمثلان قمة إنتاج البيض المتطور في المملكة العربية السعودية  ',
+            'Two main farms represent the peak of advanced egg production in Saudi Arabia'
           )}
         </p>
       </div>
