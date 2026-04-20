@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import heroBg from '../../img/3d.png';
 import riyadhImg from '../../img/bckfarms/4.jpeg';
 import jeddahImg from '../../img/bckfarms/55.jpeg';
+import saudiMapImg from '../../img/bckfarms/clients/Afaq-Saleh-Main-Logo-White-BG.jpg';
 import './Locations.css';
 
 interface FormState {
@@ -41,8 +42,9 @@ export const Locations: React.FC = () => {
         'بيشة، منطقة عسير، المملكة العربية السعودية',
         'Bisha, Aseer Region, Saudi Arabia'
       ),
-      phone: '0544131444',
-      email: 'bisha@shehaila.com',
+      phone: '+966 53 111 7922',
+      email: 'social@afaqsaleh.com',
+      mapUrl: "https://www.google.com/maps?q=19.997407913208008,42.59150695800781&z=17&hl=en",
     },
     {
       id: 2,
@@ -54,7 +56,47 @@ export const Locations: React.FC = () => {
         'Tabalah, Aseer Region, Saudi Arabia'
       ),
       phone: '0544131444',
-      email: 'tabalah@shehaila.com',
+      email: 'social@afaqsaleh.com',
+      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
+    },
+    {
+      id: 3,
+      image: jeddahImg,
+      city: t('مكة', 'Makkah'),
+      type: t('فرع مكة', 'Makkah Branch'),
+      address: t(
+        'مكة المكرمة، المملكة العربية السعودية',
+        'Makkah, Saudi Arabia'
+      ),
+      phone: '0544131444',
+      email: 'social@afaqsaleh.com',
+      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
+    },
+    {
+      id: 4,
+      image: jeddahImg,
+      city: t('الطائف', 'Taif'),
+      type: t('فرع الطائف', 'Taif Branch'),
+      address: t(
+        'الطائف، منطقة مكة المكرمة، المملكة العربية السعودية',
+        'Taif, Makkah Region, Saudi Arabia'
+      ),
+      phone: '+966 50 010 7110',
+      email: 'social@afaqsaleh.com',
+      mapUrl: "https://share.google/ulL35YOcbGKxQtpYB",
+    },
+    {
+      id: 5,
+      image: jeddahImg,
+      city: t('أبها', 'Abha'),
+      type: t('فرع أبها', 'Abha Branch'),
+      address: t(
+        'أبها، منطقة عسير، المملكة العربية السعودية',
+        'Abha, Aseer Region, Saudi Arabia'
+      ),
+      phone: '0544131444',
+      email: 'social@afaqsaleh.com',
+      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
     },
   ];
 
@@ -191,6 +233,7 @@ export const Locations: React.FC = () => {
           </div>
         </div>
       </section>
+
 
       {/* ── Contact Section ──────────────────────────── */}
       <section className="loc-contact-section" ref={contactRef}>

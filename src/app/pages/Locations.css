@@ -358,7 +358,7 @@
 .loc-cards-grid {
   margin-top: 4.5rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   width: 100%;
   max-width: 1080px;
@@ -385,7 +385,7 @@
 .loc-card-image-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 11;
   overflow: hidden;
 }
 
@@ -408,6 +408,8 @@
       transparent 40%,
       rgba(0, 30, 70, 0.55) 100%);
 }
+
+
 
 .loc-card-badge {
   position: absolute;
