@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MapPin, Egg, TrendingUp, ArrowRight, MdApartment, Thermometer, Heart, Leaf } from 'lucide-react';
+import { MapPin, Egg, TrendingUp, ArrowRight, MdApartment, Thermometer, Heart, Leaf, X, Phone, Mail, MapPin as MapPinIcon } from 'lucide-react';
 import { useReveal } from '../../hooks/useReveal';
 import { useLanguage } from '../context/LanguageContext';
 import slide1 from '../../img/bckfarms/1.jpeg';
@@ -155,12 +155,11 @@ interface FarmCardData {
   statsAr: string;
   statsEn: string;
   image: string;
-  accentColor: string;
 }
 
 const FARM_CARDS: FarmCardData[] = [
   {
-    
+
     nameAr: 'مزرعة بيشة',
     nameEn: 'Bisha Farm',
     locationAr: 'بيشة، منطقة عسير',
@@ -174,7 +173,6 @@ const FARM_CARDS: FarmCardData[] = [
     statsAr: 'مستدامة وصديقة للبيئة',
     statsEn: 'Sustainable & Eco-Friendly',
     image: farmImg2,
-    accentColor: '#005599',
   },
   {
     nameAr: 'مزرعة تبالة',
@@ -190,11 +188,114 @@ const FARM_CARDS: FarmCardData[] = [
     statsAr: 'إنتاجية عالية',
     statsEn: 'High Yield',
     image: farmImg1,
-    accentColor: '#005599',
   },
 ];
 
-const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, en: string) => string }> = ({ data, delay = 0, t }) => {
+// ============ Farm Modal Component ============
+interface FarmModalProps {
+  data: FarmCardData | null;
+  isOpen: boolean;
+  onClose: () => void;
+  t: (ar: string, en: string) => string;
+}
+
+const FarmModal: React.FC<FarmModalProps> = ({ data, isOpen, onClose, t }) => {
+  if (!isOpen || !data) return null;
+
+  return (
+    <div className="farm-modal__overlay" onClick={onClose}>
+      <div className="farm-modal__content" onClick={(e) => e.stopPropagation()}>
+        <button className="farm-modal__close" onClick={onClose} aria-label="Close">
+          <X size={24} />
+        </button>
+
+        <h2 className="farm-modal__title" >
+          {t(data.nameAr, data.nameEn)}
+        </h2>
+
+        <div className="farm-modal__divider" />
+
+        {/* Description Section */}
+        <div className="farm-modal__section">
+          <h3 className="farm-modal__section-title">{t('الوصف', 'Description')}</h3>
+          <p className="farm-modal__text">{t(data.descAr, data.descEn)}</p>
+        </div>
+
+        {/* Location Section */}
+        <div className="farm-modal__section">
+          <h3 className="farm-modal__section-title">{t('الموقع', 'Location')}</h3>
+          <div className="farm-modal__info-item">
+            <MapPinIcon size={18} />
+            <span>{t(data.locationAr, data.locationEn)}</span>
+          </div>
+        </div>
+
+        {/* Statistics Section */}
+        <div className="farm-modal__section">
+          <h3 className="farm-modal__section-title">{t('الإحصائيات', 'Statistics')}</h3>
+          <div className="farm-modal__stats-grid">
+            <div className="farm-modal__stat-card">
+              <h4>{t('الإنتاجية', 'Capacity')}</h4>
+              <p>{t(data.capacityAr, data.capacityEn)}</p>
+            </div>
+            <div className="farm-modal__stat-card">
+              <h4>{t('الحالة', 'Status')}</h4>
+              <p >{t(data.statsAr, data.statsEn)}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="farm-modal__section">
+          <h3 className="farm-modal__section-title">
+            {t('معلومات الاتصال', 'Contact Information')}
+          </h3>
+
+          <div className="farm-modal__contact-list">
+
+            {/* PHONE */}
+            <div className="farm-modal__contact-item">
+              <Phone size={16} />
+              <a href="tel:0544131444">
+                0544131444
+              </a>
+            </div>
+
+            {/* EMAIL */}
+            <div className="farm-modal__contact-item">
+              <Mail size={16} />
+              <a href="mailto:social@afaqsaleh.com">
+                social@afaqsaleh.com
+              </a>
+            </div>
+
+            {/* LOCATION */}
+            <div className="farm-modal__contact-item">
+              <MapPinIcon size={16} />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Menoufia+Governorate+Egypt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('بيشة، منطقة عسير', 'Bisha, Asir Region')}
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <button
+          className="farm-modal__close-btn"
+          onClick={onClose}
+        >
+          {t('إغلاق', 'Close')}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, en: string) => string; onDetailsClick: (data: FarmCardData) => void }> = ({ data, delay = 0, t, onDetailsClick }) => {
   const { ref, isVisible } = useReveal();
 
   return (
@@ -231,7 +332,7 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
           </div>
         </div>
 
-        <button className="farm-card__cta" style={{ borderColor: data.accentColor, color: data.accentColor }}>
+        <button className="farm-card__cta" style={{ borderColor: data.accentColor, color: data.accentColor }} onClick={() => onDetailsClick(data)}>
           {t('تفاصيل المزرعة', 'Farm Details')}
           <ArrowRight size={15} className="farm-card__arrow" />
         </button>
@@ -242,6 +343,18 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
 
 const FarmCards: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) => {
   const { ref: headRef, isVisible: headVisible } = useReveal();
+  const [selectedFarm, setSelectedFarm] = useState<FarmCardData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDetailsClick = (data: FarmCardData) => {
+    setSelectedFarm(data);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedFarm(null);
+  };
 
   return (
     <section className="farm-cards-section">
@@ -260,9 +373,11 @@ const FarmCards: React.FC<{ t: (ar: string, en: string) => string }> = ({ t }) =
 
       <div className="farm-cards__grid">
         {FARM_CARDS.map((card, i) => (
-          <FarmCard key={i} data={card} delay={i * 150} t={t} />
+          <FarmCard key={i} data={card} delay={i * 150} t={t} onDetailsClick={handleDetailsClick} />
         ))}
       </div>
+
+      <FarmModal data={selectedFarm} isOpen={isModalOpen} onClose={handleCloseModal} t={t} />
     </section>
   );
 };

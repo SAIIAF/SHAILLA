@@ -551,6 +551,7 @@
 }
 
 .farm-card__name {
+  color: #001f3f;
   font-size: 1.8rem;
   font-weight: 800;
   margin: 0 0 16px;
@@ -580,6 +581,7 @@
 }
 
 .farm-card__cta {
+  color: #003d7a;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -594,8 +596,14 @@
   align-self: flex-start;
 }
 
+.farm-card__cta:hover {
+  background: #003366;
+  color: #ffffff;
+  border-color: #003366;
+}
+
 [dir='rtl'] .farm-card__cta:hover {
-  transform: translateX(-4px);
+  transform: translateX(0);
 }
 
 .farm-card__arrow {
@@ -742,6 +750,214 @@
   .farm-lang-btn {
     padding: 6px 12px;
     font-size: 0.8rem;
+  }
+}
+
+/* ========== FARM MODAL STYLES ========== */
+.farm-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  opacity: 1;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.farm-modal__content {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 48px 40px;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.farm-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.farm-modal__close:hover {
+  background: rgba(0, 51, 102, 0.1);
+  color: #003366;
+}
+
+[dir='rtl'] .farm-modal__close {
+  right: auto;
+  left: 20px;
+}
+
+.farm-modal__title {
+  color: #001f3f;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.farm-modal__divider {
+  width: 56px;
+  height: 4px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+
+.farm-modal__section {
+  margin-bottom: 32px;
+}
+
+.farm-modal__section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.farm-modal__text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #666666;
+  margin: 0;
+  font-weight: 300;
+}
+
+.farm-modal__info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #666666;
+  padding: 8px 0;
+}
+
+.farm-modal__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.farm-modal__stat-card {
+  background: #f8fafb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.farm-modal__stat-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.farm-modal__stat-card p {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+  color: #003d7a;
+}
+
+.farm-modal__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.farm-modal__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #666666;
+  padding: 8px 0;
+}
+
+.farm-modal__close-btn {
+  width: 100%;
+  background: #003366;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.farm-modal__close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 51, 102, 0.25);
+}
+
+@media (max-width: 640px) {
+  .farm-modal__content {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+
+  .farm-modal__title {
+    font-size: 1.8rem;
+  }
+
+  .farm-modal__stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-modal__close {
+    top: 16px;
+    right: 16px;
+  }
+
+  [dir='rtl'] .farm-modal__close {
+    right: auto;
+    left: 16px;
   }
 }
 
