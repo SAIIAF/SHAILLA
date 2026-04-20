@@ -67,7 +67,7 @@ export const About: React.FC = () => {
     أمانًا وطازجيةً.
 
     على مدار أكثر من ربع قرن من العطاء والإبداع، تمكّنت شهيلا من تحويل مزرعة صغيرة متواضعة إلى منظومة
-    إنتاجية متكاملة تضم خمس عشرة مزرعة حديثة موزّعة استراتيجيًا في أرجاء المملكة العربية السعودية، تعمل
+    إنتاجية متكاملة تضم خمسة مزارع حديثة موزّعة استراتيجيًا في أرجاء المملكة العربية السعودية، تعمل
     وفق أعلى معايير الجودة والسلامة الغذائية الدولية المعتمدة.
 
     تستثمر شهيلا في أحدث التقنيات الزراعية والبيطرية، حيث تعتمد على أنظمة تربية مُحكمة البيئة تضمن
@@ -84,7 +84,7 @@ export const About: React.FC = () => {
     finest, safest, and freshest food products available on the market.
 
     Over more than a quarter century of excellence and innovation, Shehaila has transformed a modest small farm
-    into a fully integrated production ecosystem comprising fifteen modern farms strategically distributed
+    into a fully integrated production ecosystem comprising five modern farms strategically distributed
     across the Kingdom of Saudi Arabia, all operating to the highest international standards of quality and
     food safety.
 
@@ -314,7 +314,7 @@ export const About: React.FC = () => {
             ))}
           </div>
         </div>
-        
+
       </section>
     </main>
   );

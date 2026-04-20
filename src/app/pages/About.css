@@ -247,56 +247,77 @@
 .shehaila-about__logo-frame {
   position: relative;
   width: 100%;
-  max-width: 720px;
-  border-radius: 28px;
-  overflow: visible;
+  max-width: 620px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f5f7fa, #ffffff);
+  padding: 4rem;
+  box-shadow:
+    0 20px 60px rgba(0, 51, 102, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8ecf0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shehaila-about__logo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(24px + 2px);
+  background: linear-gradient(135deg, #3399cc, #003366);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shehaila-about__logo-frame:hover::before {
+  opacity: 1;
+}
+
+.shehaila-about__logo-frame:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 40px 80px rgba(0, 51, 102, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .shehaila-about__logo-img {
   width: 100%;
-  height: 610px;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 28px;
+  max-width: 720px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
   display: block;
-  box-shadow:
-    0 25px 60px rgba(0, 51, 102, 0.18),
-    0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition: transform 0.35s ease;
 }
-
-.shehaila-about__logo-frame:hover .shehaila-about__logo-img {
-  transform: translateY(-8px);
-  box-shadow:
-    0 40px 80px rgba(0, 51, 102, 0.22),
-    0 8px 20px rgba(0, 0, 0, 0.1);
-  }
 
 .shehaila-about__logo-badge {
   position: absolute;
-  bottom: 0rem;
-  inset-inline-end: -1.5rem;
+  bottom: -10px;
+  inset-inline-end: -24px;
   background: linear-gradient(135deg, #003366, #3399cc);
   color: #fff;
-  border-radius: 18px;
-  padding: 1.2rem 2rem;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 12px 35px rgba(0, 51, 102, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 51, 102, 0.35);
+  min-width: 120px;
+  text-align: center;
 }
 
 .shehaila-about__logo-badge-year {
-  font-size: 2rem;
+  display: block;
+  font-size: 1.4rem;
   font-weight: 900;
   line-height: 1;
 }
 
 .shehaila-about__logo-badge-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  opacity: 0.85;
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
 /* =========================================================
@@ -427,47 +448,51 @@
   margin-bottom: 5rem;
 }
 
-/* GRID */
 .shehaila-about__partners-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2rem;
 }
 
+/* Tablet */
 @media (max-width: 992px) {
   .shehaila-about__partners-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* Mobile */
 @media (max-width: 576px) {
   .shehaila-about__partners-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+.shehaila-about__partner-card:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+
 .shehaila-about__partner-wrap {
   width: 100%;
 }
 
-/* ================= CARD ================= */
 .shehaila-about__partner-card {
   background: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
-
-  height: 140px;
+  padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 20px;
-  overflow: hidden;
-
   cursor: pointer;
-  transition: all 0.35s ease;
-
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
   filter: saturate(0) brightness(1.4);
+  min-height: 120px;
 }
 
 .shehaila-about__partner-card:hover {
@@ -478,31 +503,75 @@
   filter: saturate(1) brightness(1);
 }
 
-/* ================= INNER ================= */
 .shehaila-about__partner-inner {
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shehaila-about__partner-abbr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  transition: background 0.35s ease;
+}
+
+.shehaila-about__partner-card:hover .shehaila-about__partner-abbr {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.shehaila-about__partner-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: color 0.35s ease;
+}
+
+.shehaila-about__partner-card:hover .shehaila-about__partner-name {
+  color: #ffffff;
+}
+
+/* يخلي الكارت ثابت */
+.shehaila-about__partner-card {
+  min-height: 140px;
+}
+
+/* wrapper ثابت للحجم */
+.shehaila-about__partner-logo-wrapper {
+  width: 130px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* ================= LOGO ================= */
+/* الصورة نفسها */
 .shehaila-about__partner-logo {
-  height: 60px;
-  width: auto;
-
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 
   filter: grayscale(100%);
   opacity: 0.7;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
+/* hover effect */
 .shehaila-about__partner-card:hover .shehaila-about__partner-logo {
   filter: grayscale(0%);
   opacity: 1;
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* =========================================================
@@ -564,9 +633,11 @@
     background-attachment: scroll;
   }
 
-    .shehaila-about__logo-img {
-      height: 410px;
-    }
+  .shehaila-about__logo-frame {
+    padding: 2.5rem;
+    max-width: 320px;
+  }
+
   .shehaila-about__section {
     padding: 5rem 0;
   }
@@ -602,7 +673,7 @@
   }
 
   .shehaila-about__logo-badge-year {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .shehaila-about__hero-scroll-hint {

@@ -74,8 +74,8 @@
 }
 
 .footer-link-item:hover {
-  color: #4da6ff;
-  transform: translateX(5px);
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
 /* Text */
@@ -92,16 +92,10 @@
   /* نفس حجم الخط القديم */
   font-size: 1.3rem;
 
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(212, 212, 212, 0.8);
   text-decoration: none;
 
   transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-link-item:hover {
-  color: #3399cc;
-  /* نفس اللون القديم */
-  transform: translateX(3px);
 }
 
 .footer-info {
@@ -115,7 +109,7 @@
   text-align: center;
 }
 
-.footer-copyright{
+.footer-copyright {
   color: rgba(255, 255, 255, 0.8);
 }
 
