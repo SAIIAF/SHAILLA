@@ -72,7 +72,7 @@ const HeroSection: React.FC = () => {
 
                 <p className="hero-subtitle">
                     {t(
-                        'رائدون في إنتاج البيض بأعلى معايير الجودة والنظافة — من مزارعنا إلى مائدتكم بكل أمان وثقة',
+                        'رائدون في إنتاج البيض بأعلى معايير الجودة والسلامة الغذائية _ من مزارعنا إلى مائدتكم بكل أمان وثقة',
                         'Leading egg production with the highest quality standards — from our farms to your table with safety and trust'
                     )}
                 </p>
