@@ -277,21 +277,7 @@ const Products: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand Promise Section */}
-      <section className="brand-promise-section">
-        <div className="brand-content">
-          <div className="shehaila-hero-badgee" style={{ marginBottom: '1.5rem' }}>
-            <img
-              src={LogoImg}
-              alt="shehaila Logo"
-              className="shehaila-hero-logo"
-              style={{ width: '300px', height: 'auto' }}
-            />
-          </div>
-          <h2 className="brand-title">Shehaila | شهيلا</h2>
-          <p className="brand-tagline">{t('الجودة التزامنا... والثقة أساسنا', 'Quality is our commitment, trust is our foundation')}</p>
-        </div>
-      </section>
+      
     </div>
   );
 };

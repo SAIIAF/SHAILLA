@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import LogoImg from '../../img/bckfarms/clients/لوجو مزارع شهيلا.jpg'; 
 import './Footer.css';
 
 export const Footer: React.FC = () => {
@@ -8,6 +9,21 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="footer">
+      {/* Brand Promise Section */}
+            <section className="brand-promise-section">
+              <div className="brand-content">
+                <div className="shehaila-hero-badgee" style={{ marginBottom: '1.5rem' }}>
+                  <img
+                    src={LogoImg}
+                    alt="shehaila Logo"
+                    className="shehaila-hero-logo"
+                    style={{ width: '300px', height: 'auto' }}
+                  />
+                </div>
+                <h2 className="brand-title">Shehaila | شهيلا</h2>
+                <p className="brand-tagline">{t('الجودة التزامنا... والثقة أساسنا', 'Quality is our commitment, trust is our foundation')}</p>
+              </div>
+            </section>
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">

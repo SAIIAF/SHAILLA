@@ -560,35 +560,6 @@
 }
 
 /* ===== BRAND PROMISE SECTION ===== */
-.brand-promise-section {
-  padding: clamp(3rem, 8vw, 5rem) 1.5rem;
-  background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
-  text-align: center;
-  color: white;
-  width: 100%;
-}
-
-
-.brand-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.brand-title {
-  font-size: clamp(1.75rem, 6vw, 4rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
-  letter-spacing: -1px;
-  line-height: 1.2;
-}
-
-.brand-tagline {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-weight: 300;
-  opacity: 0.9;
-  line-height: 1.6;
-}
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
