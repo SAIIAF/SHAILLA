@@ -155,11 +155,21 @@ interface FarmCardData {
   statsAr: string;
   statsEn: string;
   image: string;
+  // Contact info specific to each farm
+  phone: string;
+  email: string;
+  mapUrl: string;
+  // Additional modal details
+  areaAr?: string;
+  areaEn?: string;
+  employeesAr?: string;
+  employeesEn?: string;
+  establishedAr?: string;
+  establishedEn?: string;
 }
 
 const FARM_CARDS: FarmCardData[] = [
   {
-
     nameAr: 'مزرعة بيشة',
     nameEn: 'Bisha Farm',
     locationAr: 'بيشة، منطقة عسير',
@@ -173,6 +183,15 @@ const FARM_CARDS: FarmCardData[] = [
     statsAr: 'مستدامة وصديقة للبيئة',
     statsEn: 'Sustainable & Eco-Friendly',
     image: farmImg2,
+    phone: '0544131444',
+    email: 'social@afaqsaleh.com',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Bisha+Asir+Saudi+Arabia',
+    areaAr: '150,000 متر مربع',
+    areaEn: '150,000 sqm',
+    employeesAr: '85 موظف',
+    employeesEn: '85 Employees',
+    establishedAr: '2018',
+    establishedEn: '2018',
   },
   {
     nameAr: 'مزرعة تبالة',
@@ -188,6 +207,15 @@ const FARM_CARDS: FarmCardData[] = [
     statsAr: 'إنتاجية عالية',
     statsEn: 'High Yield',
     image: farmImg1,
+    phone: '0544131555',
+    email: 'social@afaqsaleh.com',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Tabalah+Asir+Saudi+Arabia',
+    areaAr: '200,000 متر مربع',
+    areaEn: '200,000 sqm',
+    employeesAr: '120 موظف',
+    employeesEn: '120 Employees',
+    establishedAr: '2015',
+    establishedEn: '2015',
   },
 ];
 
@@ -209,7 +237,7 @@ const FarmModal: React.FC<FarmModalProps> = ({ data, isOpen, onClose, t }) => {
           <X size={24} />
         </button>
 
-        <h2 className="farm-modal__title" >
+        <h2 className="farm-modal__title">
           {t(data.nameAr, data.nameEn)}
         </h2>
 
@@ -225,7 +253,7 @@ const FarmModal: React.FC<FarmModalProps> = ({ data, isOpen, onClose, t }) => {
         <div className="farm-modal__section">
           <h3 className="farm-modal__section-title">{t('الموقع', 'Location')}</h3>
           <div className="farm-modal__info-item">
-            <MapPinIcon size={18} />
+            <MapPinIcon size={18} className="farm-modal__icon" />
             <span>{t(data.locationAr, data.locationEn)}</span>
           </div>
         </div>
@@ -240,8 +268,26 @@ const FarmModal: React.FC<FarmModalProps> = ({ data, isOpen, onClose, t }) => {
             </div>
             <div className="farm-modal__stat-card">
               <h4>{t('الحالة', 'Status')}</h4>
-              <p >{t(data.statsAr, data.statsEn)}</p>
+              <p>{t(data.statsAr, data.statsEn)}</p>
             </div>
+            {data.areaAr && (
+              <div className="farm-modal__stat-card">
+                <h4>{t('المساحة', 'Area')}</h4>
+                <p>{t(data.areaAr, data.areaEn || '')}</p>
+              </div>
+            )}
+            {data.employeesAr && (
+              <div className="farm-modal__stat-card">
+                <h4>{t('العمالة', 'Employees')}</h4>
+                <p>{t(data.employeesAr, data.employeesEn || '')}</p>
+              </div>
+            )}
+            {data.establishedAr && (
+              <div className="farm-modal__stat-card">
+                <h4>{t('سنة التأسيس', 'Established')}</h4>
+                <p>{t(data.establishedAr, data.establishedEn || '')}</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -252,35 +298,33 @@ const FarmModal: React.FC<FarmModalProps> = ({ data, isOpen, onClose, t }) => {
           </h3>
 
           <div className="farm-modal__contact-list">
-
-            {/* PHONE */}
+            {/* PHONE - Dynamic */}
             <div className="farm-modal__contact-item">
-              <Phone size={16} />
-              <a href="tel:0544131444">
-                0544131444
+              <Phone size={16} className="farm-modal__icon" />
+              <a href={`tel:${data.phone}`}>
+                {data.phone}
               </a>
             </div>
 
-            {/* EMAIL */}
+            {/* EMAIL - Dynamic */}
             <div className="farm-modal__contact-item">
-              <Mail size={16} />
-              <a href="mailto:social@afaqsaleh.com">
-                social@afaqsaleh.com
+              <Mail size={16} className="farm-modal__icon" />
+              <a href={`mailto:${data.email}`}>
+                {data.email}
               </a>
             </div>
 
-            {/* LOCATION */}
+            {/* LOCATION - Dynamic */}
             <div className="farm-modal__contact-item">
-              <MapPinIcon size={16} />
+              <MapPinIcon size={16} className="farm-modal__icon" />
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Menoufia+Governorate+Egypt"
+                href={data.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t('بيشة، منطقة عسير', 'Bisha, Asir Region')}
+                {t(data.locationAr, data.locationEn)}
               </a>
             </div>
-
           </div>
         </div>
 
@@ -306,7 +350,7 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
     >
       <div className="farm-card__image-wrap">
         <img src={data.image} alt={t(data.nameAr, data.nameEn)} className="farm-card__image" />
-        <div className="farm-card__image-overlay" style={{ background: `linear-gradient(to top, ${data.accentColor}dd 0%, transparent 60%)` }} />
+        <div className="farm-card__image-overlay" />
         <div className="farm-card__badge">
           <Egg size={14} />
           <span>{t(data.capacityAr, data.capacityEn)}</span>
@@ -319,7 +363,7 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
           <span>{t(data.locationAr, data.locationEn)}</span>
         </div>
 
-        <h3 className="farm-card__name" style={{ color: data.accentColor }}>
+        <h3 className="farm-card__name">
           {t(data.nameAr, data.nameEn)}
         </h3>
 
@@ -327,12 +371,12 @@ const FarmCard: React.FC<{ data: FarmCardData; delay?: number; t: (ar: string, e
 
         <div className="farm-card__stats">
           <div className="farm-card__stat">
-            <TrendingUp size={16} color={data.accentColor} />
+            <TrendingUp size={16} className="farm-card__stat-icon" />
             <span>{t(data.statsAr, data.statsEn)}</span>
           </div>
         </div>
 
-        <button className="farm-card__cta" style={{ borderColor: data.accentColor, color: data.accentColor }} onClick={() => onDetailsClick(data)}>
+        <button className="farm-card__cta" onClick={() => onDetailsClick(data)}>
           {t('تفاصيل المزرعة', 'Farm Details')}
           <ArrowRight size={15} className="farm-card__arrow" />
         </button>
