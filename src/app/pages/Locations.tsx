@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import heroBg from '../../img/3d.png';
 import riyadhImg from '../../img/bckfarms/4.jpeg';
 import jeddahImg from '../../img/bckfarms/55.jpeg';
-import saudiMapImg from '../../img/bckfarms/clients/Afaq-Saleh-Main-Logo-White-BG.jpg';
 import './Locations.css';
 
 interface FormState {
@@ -44,7 +43,9 @@ export const Locations: React.FC = () => {
       ),
       phone: '+966 53 111 7922',
       email: 'social@afaqsaleh.com',
-      mapUrl: "https://www.google.com/maps?q=19.997407913208008,42.59150695800781&z=17&hl=en",
+      lat: 19.9974,
+      lng: 42.5915,
+      mapUrl: "https://www.google.com/maps?q=19.9974,42.5915",
     },
     {
       id: 2,
@@ -57,20 +58,24 @@ export const Locations: React.FC = () => {
       ),
       phone: '0544131444',
       email: 'social@afaqsaleh.com',
-      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
+      lat: 20.0000,
+      lng: 42.4000,
+      mapUrl: "https://www.google.com/maps?q=20.0000,42.4000",
     },
     {
       id: 3,
       image: jeddahImg,
-      city: t('مكة', 'Makkah'),
-      type: t('فرع مكة', 'Makkah Branch'),
+      city: t('جيزان', 'Jizan'),
+      type: t('فرع جيزان', 'Jizan Branch'),
       address: t(
-        'مكة المكرمة، المملكة العربية السعودية',
-        'Makkah, Saudi Arabia'
+        'جيزان، المملكة العربية السعودية',
+        'Jizan, Saudi Arabia'
       ),
-      phone: '0544131444',
+      phone: '+966 53 838 1614',
       email: 'social@afaqsaleh.com',
-      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
+      lat: 17.1576,
+      lng: 42.6741,
+      mapUrl: "https://www.google.com/maps?q=17.1576,42.6741",
     },
     {
       id: 4,
@@ -83,20 +88,24 @@ export const Locations: React.FC = () => {
       ),
       phone: '+966 50 010 7110',
       email: 'social@afaqsaleh.com',
-      mapUrl: "https://share.google/ulL35YOcbGKxQtpYB",
+      lat: 21.2703,
+      lng: 40.4158,
+      mapUrl: "https://www.google.com/maps?q=21.2703,40.4158",
     },
     {
       id: 5,
       image: jeddahImg,
-      city: t('أبها', 'Abha'),
-      type: t('فرع أبها', 'Abha Branch'),
+      city: t('جدة', 'Jeddah'),
+      type: t('فرع جدة', 'Jeddah Branch'),
       address: t(
-        'أبها، منطقة عسير، المملكة العربية السعودية',
-        'Abha, Aseer Region, Saudi Arabia'
+        'جدة، المملكة العربية السعودية',
+        'Jeddah, Saudi Arabia'
       ),
-      phone: '0544131444',
+      phone: '+966 53 511 1722',
       email: 'social@afaqsaleh.com',
-      mapUrl: "https://www.google.com/maps?q=Bisha,Saudi+Arabia",
+      lat: 21.6094,
+      lng: 39.2638,
+      mapUrl: "https://www.google.com/maps?q=21.6094,39.2638",
     },
   ];
 
@@ -136,6 +145,8 @@ export const Locations: React.FC = () => {
   };
 
   const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
+
+  const mapSrc = `https://www.google.com/maps?q=Saudi%20Arabia&z=6&output=embed`;
 
   return (
     <div className="loc-page" dir={dir}>
@@ -234,6 +245,43 @@ export const Locations: React.FC = () => {
         </div>
       </section>
 
+{/* ── Map Section ─────────────────────────── */}
+<section className="loc-map-section">
+  <div className="loc-map-container">
+
+    <h2 className="loc-map-title">
+      {t('مواقعنا على الخريطة', 'Our Locations on Map')}
+    </h2>
+
+    <div className="loc-map-frame">
+      <iframe
+        title="locations-map"
+        src={mapSrc}
+        width="100%"
+        height="450"
+        style={{ border: 0, borderRadius: '20px' }}
+        loading="lazy"
+      />
+    </div>
+
+    <div className="loc-map-list">
+      {locations.map((loc) => (
+        <a
+          key={loc.id}
+          href={loc.mapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="loc-map-item"
+        >
+          <MapPin size={16} />
+          <span>{loc.city}</span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* ── Contact Section ──────────────────────────── */}
       <section className="loc-contact-section" ref={contactRef}>
@@ -322,16 +370,15 @@ export const Locations: React.FC = () => {
                   </span>
 
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=Riyadh, Saudi Arabia"
+                    href="https://www.google.com/maps?q=19.997407913208008,42.59150695800781&z=17&hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="loc-contact-detail-value"
                   >
-                    {t('الرياض، المملكة العربية السعودية', 'Riyadh, Saudi Arabia')}
+                    {t('بيشة - المملكة العربية السعودية', 'Bisha, Saudi Arabia')}
                   </a>
                 </div>
               </div>
-
             </div>
 
             <Link to="/contact" className="loc-cta-btn">
