@@ -5,8 +5,12 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { Link } from 'react-router-dom';
 
 import heroBg from '../../img/3d.png';
-import riyadhImg from '../../img/bckfarms/4.jpeg';
-import jeddahImg from '../../img/bckfarms/55.jpeg';
+import BishaImg from '../../img/bckfarms/4.jpeg';
+import TabalahImg from '../../img/bckfarms/1.jpeg';
+import JizanImg from '../../img/bckfarms/44.jpeg';
+import TaifImg from '../../img/bckfarms/22.jpeg';
+import jeddahImg from '../../img/bckfarms/2.jpeg';
+
 import './Locations.css';
 
 interface FormState {
@@ -34,7 +38,7 @@ export const Locations: React.FC = () => {
   const locations = [
     {
       id: 1,
-      image: riyadhImg,
+      image: BishaImg,
       city: t('بيشة', 'Bisha'),
       type: t('المقر الرئيسي في بيشة', 'Bisha Main Branch'),
       address: t(
@@ -49,7 +53,7 @@ export const Locations: React.FC = () => {
     },
     {
       id: 2,
-      image: jeddahImg,
+      image: TabalahImg,
       city: t('تبالة', 'Tabalah'),
       type: t('فرع تبالة التشغيلي', 'Tabalah Operational Branch'),
       address: t(
@@ -64,7 +68,7 @@ export const Locations: React.FC = () => {
     },
     {
       id: 3,
-      image: jeddahImg,
+      image: JizanImg,
       city: t('جيزان', 'Jizan'),
       type: t('فرع جيزان', 'Jizan Branch'),
       address: t(
@@ -79,7 +83,7 @@ export const Locations: React.FC = () => {
     },
     {
       id: 4,
-      image: jeddahImg,
+      image: TaifImg,
       city: t('الطائف', 'Taif'),
       type: t('فرع الطائف', 'Taif Branch'),
       address: t(
