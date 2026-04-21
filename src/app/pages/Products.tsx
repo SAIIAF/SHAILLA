@@ -21,8 +21,8 @@ const getGalleryData = (lang: string) => ({
   medium: [
     {
       image: MediumEggImg,
-      descriptionAr: 'بيض متوسط الحجم 53-58g',
-      descriptionEn: 'Medium Size Eggs 53-58g',
+      descriptionAr: 'بيض شهيلا فاخر وسط (30 * 10 طبق) -M',
+      descriptionEn: 'Shehaila Premium Medium Eggs (30 * 10 Tray) - M',
       titleAr: 'متوسط',
       titleEn: 'Medium'
     },
@@ -30,21 +30,21 @@ const getGalleryData = (lang: string) => ({
   large: [
     {
       image: LargeEggImg,
-      descriptionAr: 'بيض كبير الحجم 63-68g',
-      descriptionEn: 'Large Size Eggs 63-68g',
+      descriptionAr: 'بيض شهيلا مغلف فاخر (30 * 10 طبق) -L',
+      descriptionEn: 'Shehaila Premium Large Eggs (30 * 10 Tray) - L',
       titleAr: 'كبير',
       titleEn: 'Large'
     },
     {
       image: largeEggImg1,
-      descriptionAr: 'بيض كبير طازج',
-      descriptionEn: 'Fresh Large Eggs',
+      descriptionAr: 'بيض شهيلا مغلف فاخر (15 * 20 طبق) -L',
+      descriptionEn: 'Shehaila Premium Eggs (15 * 20 Tray) - L',
       titleAr: 'كبير طازج',
       titleEn: 'Fresh Large'
     },
     {
       image: largeEggImg2,
-      descriptionAr: 'بيض كبير ممتاز',
+      descriptionAr: 'بيض شهيلا مغلف (50 علية *6) - L',
       descriptionEn: 'Excellent Large Quality',
       titleAr: 'جودة كبيرة',
       titleEn: 'Premium Large'
@@ -53,12 +53,11 @@ const getGalleryData = (lang: string) => ({
   extraLarge: [
     {
       image: gampoEggImg,
-      descriptionAr: 'بيض عملاق 69-75g',
+      descriptionAr: 'بيض شهيلا فاخر (30 علبة *10) - XL',
       descriptionEn: 'Extra Large Eggs 69-75g',
-      titleAr: 'عملاق',
+      titleAr: 'جامبو',
       titleEn: 'Extra Large'
     },
-
   ]
 });
 
@@ -93,10 +92,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images, lang, mainImage
     setMainImageIndex(index);
   };
 
-  const currentImage = images[mainImageIndex];
-  const title = lang === 'ar' ? currentImage.titleAr : currentImage.titleEn;
-  const description = lang === 'ar' ? currentImage.descriptionAr : currentImage.descriptionEn;
+  if (!images || images.length === 0) {
+    return <p>Loading...</p>;
+  }
 
+  const currentImage = images[mainImageIndex] ?? images[0];
+
+  const title = lang === 'ar' ? currentImage?.titleAr : currentImage?.titleEn;
+  const description = lang === 'ar' ? currentImage?.descriptionAr : currentImage?.descriptionEn;
   return (
     <div className="product-gallery">
       <div className="gallery-main-container">
