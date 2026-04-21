@@ -3,16 +3,64 @@ import { useLanguage } from '../context/LanguageContext';
 import { Microscope, Thermometer, Award, Egg, Package, Leaf } from 'lucide-react';
 import './Products.css';
 
-import LogoImg from '../../img/bckfarms/clients/لوجو مزارع شهيلا.jpg'; 
+import LogoImg from '../../img/bckfarms/clients/لوجو مزارع شهيلا.jpg';
 import MainEggsImg from '../../img/egs1.jpeg';
 import RedEggsImg from '../../img/egs2.jpeg';
 import FeedImg from '../../img/3laf.jpeg';
 import FertilizerImg from '../../img/semad.jpg';
 import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png';
 
-import SmallEggImg from '../../img/small.jpeg';
-import MediumEggImg from '../../img/medium.jpeg';
-import LargeEggImg from '../../img/large.jpeg';
+import SmallEggImg from '../../img/MM.jpg';
+import MediumEggImg from '../../img/MM.jpg';
+import LargeEggImg from '../../img/LL.jpg';
+import largeEggImg1 from '../../img/LLLL.jpg'
+import largeEggImg2 from '../../img/LLL.jpg'
+import gampoEggImg from '../../img/XL.jpg';
+// Gallery image data for product categories
+const getGalleryData = (lang: string) => ({
+  medium: [
+    {
+      image: MediumEggImg,
+      descriptionAr: 'بيض متوسط الحجم 53-58g',
+      descriptionEn: 'Medium Size Eggs 53-58g',
+      titleAr: 'متوسط',
+      titleEn: 'Medium'
+    },
+  ],
+  large: [
+    {
+      image: LargeEggImg,
+      descriptionAr: 'بيض كبير الحجم 63-68g',
+      descriptionEn: 'Large Size Eggs 63-68g',
+      titleAr: 'كبير',
+      titleEn: 'Large'
+    },
+    {
+      image: largeEggImg1,
+      descriptionAr: 'بيض كبير طازج',
+      descriptionEn: 'Fresh Large Eggs',
+      titleAr: 'كبير طازج',
+      titleEn: 'Fresh Large'
+    },
+    {
+      image: largeEggImg2,
+      descriptionAr: 'بيض كبير ممتاز',
+      descriptionEn: 'Excellent Large Quality',
+      titleAr: 'جودة كبيرة',
+      titleEn: 'Premium Large'
+    },
+  ],
+  extraLarge: [
+    {
+      image: gampoEggImg,
+      descriptionAr: 'بيض عملاق 69-75g',
+      descriptionEn: 'Extra Large Eggs 69-75g',
+      titleAr: 'عملاق',
+      titleEn: 'Extra Large'
+    },
+
+  ]
+});
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000) {
@@ -23,12 +71,73 @@ const formatNumber = (num: number): string => {
   return num.toString();
 };
 
+// Image Gallery Component
+interface GalleryImage {
+  image: string;
+  descriptionAr: string;
+  descriptionEn: string;
+  titleAr: string;
+  titleEn: string;
+}
+
+interface ProductGalleryProps {
+  images: GalleryImage[];
+  lang: string;
+  mainImageRef?: React.RefObject<HTMLDivElement>;
+}
+
+const ProductGallery: React.FC<ProductGalleryProps> = ({ images, lang, mainImageRef }) => {
+  const [mainImageIndex, setMainImageIndex] = useState(0);
+
+  const handleThumbnailClick = (index: number) => {
+    setMainImageIndex(index);
+  };
+
+  const currentImage = images[mainImageIndex];
+  const title = lang === 'ar' ? currentImage.titleAr : currentImage.titleEn;
+  const description = lang === 'ar' ? currentImage.descriptionAr : currentImage.descriptionEn;
+
+  return (
+    <div className="product-gallery">
+      <div className="gallery-main-container">
+        <div ref={mainImageRef} className="gallery-main-image-wrapper">
+          <img
+            src={currentImage.image}
+            alt={title}
+            className="gallery-main-image"
+          />
+        </div>
+        <div className="gallery-description">
+          <h4 className="gallery-image-title">{title}</h4>
+          <p className="gallery-image-text">{description}</p>
+        </div>
+      </div>
+
+      <div className="gallery-thumbnails">
+        {images.map((img, index) => (
+          <button
+            key={index}
+            onClick={() => handleThumbnailClick(index)}
+            className={`gallery-thumbnail ${mainImageIndex === index ? 'active' : ''}`}
+            aria-label={`Select image ${index + 1}`}
+          >
+            <img src={img.image} alt={lang === 'ar' ? img.titleAr : img.titleEn} />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
 const Products: React.FC = () => {
   const { t, lang } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(SmallEggImg);
   const [activeSize, setActiveSize] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<'medium' | 'large' | 'extraLarge'>('medium');
   const imageRef = React.useRef(null);
+  const galleryRef = React.useRef(null);
+  const mainImageRef = React.useRef<HTMLDivElement>(null);
   const coreProduct = {
     title: t('بيض أبيض طازج', 'Fresh White Eggs'),
     description: t(
@@ -156,23 +265,22 @@ const Products: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Products Section */}
+      {/* Core Products Section with Gallery */}
       <section className="core-products-section">
         <div className="section-header">
-          <h2 className="section-title">{t('منتجاتنا الأساسية', 'Our Core Products')}</h2>
+          <h2 className="section-title">{t('منتجاتنا الأساسية', 'Our Main Products')}</h2>
           <p className="section-subtitle">
             {t('منتجات طازجة يوميًا بأعلى معايير الجودة', 'Fresh daily products with the highest quality standards')}
           </p>
         </div>
-        <div className={`core-product-container ${lang === 'ar' ? 'rtl-layout' : 'ltr-layout'}`}>
-          <div className="product-image-wrapper">
-            <img
-              ref={imageRef}
-              src={selectedImage}
-              alt={coreProduct.title}
-              className="product-main-image"
-            />            <div className="image-badge">{t('الأكثر مبيعًا', 'Best Seller')}</div>
-          </div>
+
+        {/* Product Gallery */}
+        <div ref={galleryRef} className={`core-product-container ${lang === 'ar' ? 'rtl-layout' : 'ltr-layout'}`}>
+          <ProductGallery
+            images={getGalleryData(lang)[activeCategory]}
+            lang={lang}
+            mainImageRef={mainImageRef}
+          />
           <div className="product-info-card">
             <span className="product-category">{t('المنتج الرئيسي', 'Main Product')}</span>
             <h3 className="product-title">{coreProduct.title}</h3>
@@ -188,29 +296,60 @@ const Products: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="egg-sizes-section">
+            <div className="category-buttons-section">
               <h4 className="sizes-title">{t('الأحجام المتوفرة', 'Available Sizes')}</h4>
-              <div className="sizes-grid">
-                {coreProduct.sizes.map((size, index) => (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setSelectedImage(size.image);
-                      setActiveSize(index);
-
-                      if (window.innerWidth <= 768) {
-                        imageRef.current?.scrollIntoView({
+              <div className="category-buttons-grid">
+                <button
+                  className={`category-button ${activeCategory === 'medium' ? 'active' : ''}`}
+                  onClick={() => {
+                    setActiveCategory('medium');
+                    if (window.innerWidth <= 1023) {
+                      setTimeout(() => {
+                        mainImageRef.current?.scrollIntoView({
                           behavior: 'smooth',
                           block: 'center'
                         });
-                      }
-                    }}
-                    className={`size-card ${activeSize === index ? 'active' : ''}`}
-                  >
-                    <div className="size-name">{size.size}</div>
-                    <div className="size-weight">{size.weight}</div>
-                  </div>
-                ))}
+                      }, 100);
+                    }
+                  }}
+                >
+                  <div className="button-text">{t('M', 'M')}</div>
+                  <div className="button-weight">53-58g</div>
+                </button>
+                <button
+                  className={`category-button ${activeCategory === 'large' ? 'active' : ''}`}
+                  onClick={() => {
+                    setActiveCategory('large');
+                    if (window.innerWidth <= 1023) {
+                      setTimeout(() => {
+                        mainImageRef.current?.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'center'
+                        });
+                      }, 100);
+                    }
+                  }}
+                >
+                  <div className="button-text">{t('L', 'L')}</div>
+                  <div className="button-weight">63-68g</div>
+                </button>
+                <button
+                  className={`category-button ${activeCategory === 'extraLarge' ? 'active' : ''}`}
+                  onClick={() => {
+                    setActiveCategory('extraLarge');
+                    if (window.innerWidth <= 1023) {
+                      setTimeout(() => {
+                        mainImageRef.current?.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'center'
+                        });
+                      }, 100);
+                    }
+                  }}
+                >
+                  <div className="button-text">{t('XL', 'XL')}</div>
+                  <div className="button-weight">69-75g</div>
+                </button>
               </div>
             </div>
           </div>
@@ -277,7 +416,7 @@ const Products: React.FC = () => {
         </div>
       </section>
 
-      
+
     </div>
   );
 };
