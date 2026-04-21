@@ -44,8 +44,8 @@ const getGalleryData = (lang: string) => ({
     },
     {
       image: largeEggImg2,
-      descriptionAr: 'بيض شهيلا مغلف (50 علية *6) - L',
-      descriptionEn: 'Excellent Large Quality',
+      descriptionAr: 'بيض شهيلا مغلف (50 علبة *6) - L',
+      descriptionEn: 'Shahila Eggs (50 Packs * 6) - L',
       titleAr: 'جودة كبيرة',
       titleEn: 'Premium Large'
     },
@@ -54,7 +54,7 @@ const getGalleryData = (lang: string) => ({
     {
       image: gampoEggImg,
       descriptionAr: 'بيض شهيلا فاخر (30 علبة *10) - XL',
-      descriptionEn: 'Extra Large Eggs 69-75g',
+      descriptionEn: 'Sheela Premium Eggs (30 x 10 Packs) - XL',
       titleAr: 'جامبو',
       titleEn: 'Extra Large'
     },
