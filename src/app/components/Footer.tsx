@@ -109,8 +109,8 @@ export const Footer: React.FC = () => {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © 2026 SHEHAILA. {t('جميع الحقوق محفوظة', 'All rights reserved')}.
-          </p>
+  © {new Date().getFullYear()} afaqsaleh. {t('جميع الحقوق محفوظة', 'All rights reserved')}.
+</p>
         </div>
       </div>
     </footer>
