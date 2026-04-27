@@ -74,9 +74,7 @@ export const About: React.FC = () => {
     رفاهية الطيور وصحتها على أكمل وجه، مما ينعكس مباشرةً على جودة المنتجات وقيمتها الغذائية العالية التي
     يثق بها ملايين العملاء يوميًا. يضم فريقنا أكثر من خمسمائة متخصص في مجالات الزراعة والبيطرة وضبط
     الجودة والخدمات اللوجستية، يعملون بتناسق تام وشغف حقيقي لضمان وصول المنتج الطازج إلى المستهلك في
-    أسرع وقت ممكن وبأعلى مستوى من النقاء.
-
-  `;
+    أسرع وقت ممكن وبأعلى مستوى من النقاء.`;
 
   const aboutTextEn = `
     Shehaila is a leading Saudi company in the egg and poultry production industry, established in 2001 by a
@@ -93,10 +91,7 @@ export const About: React.FC = () => {
     directly reflects on the quality and nutritional value of its products — trusted by millions of customers
     every single day. Our team includes over five hundred specialists in agriculture, veterinary science,
     quality control, and logistics, working in seamless coordination and with genuine passion to ensure fresh
-    products reach consumers as quickly as possible at the highest standard of purity.
-
-
-  `;
+    products reach consumers as quickly as possible at the highest standard of purity.`;
 
   
   const productionTextAr = `

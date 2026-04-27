@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import React, { useEffect, useRef, useState } from 'react'; import { useLanguage } from '../context/LanguageContext';
 import { useCounter } from '../../hooks/useCounter';
 import logo from '../../img/لوجو مزارع شهيلا.jpg';
 import { ArrowLeft, ArrowRight, Clock, MapPin, Phone, Mail, ExternalLink, ZoomIn, X } from 'lucide-react';
@@ -23,16 +22,24 @@ interface StatItemProps {
     label_en: string;
 }
 
-const StatItem: React.FC<StatItemProps> = ({ value, suffix, label_ar, label_en }) => {
+const StatItem: React.FC<StatItemProps & { start: boolean }> = ({
+    value,
+    suffix,
+    label_ar,
+    label_en,
+    start
+}) => {
     const { t } = useLanguage();
-    const { count, elementRef } = useCounter(value, 2200);
+    const { count, elementRef } = useCounter(start ? value : 0, 2200);
 
     return (
         <div className="stat-item" ref={elementRef}>
             <div className="stat-number">
                 {count.toLocaleString('en-US')}{suffix}
             </div>
-            <div className="stat-label">{t(label_ar, label_en)}</div>
+            <div className="stat-label">
+                {t(label_ar, label_en)}
+            </div>
         </div>
     );
 };
@@ -305,10 +312,29 @@ const FarmsSection: React.FC = () => {
 
 // ============== STATS SECTION ==============
 const StatsSection: React.FC = () => {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [start, setStart] = useState(false);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setStart(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
     const { t } = useLanguage();
 
     return (
-        <section className="stats-section">
+        <section className="stats-section" ref={sectionRef}>
             <div className="stats-overlay"></div>
             <div className="section-container stats-inner">
                 <div className="stats-header">
@@ -321,10 +347,10 @@ const StatsSection: React.FC = () => {
                     </p>
                 </div>
                 <div className="stats-grid">
-                    <StatItem value={310} suffix="M+" label_ar="بيضة سنوياً" label_en="Eggs Annually" />
-                    <StatItem value={15} suffix="+" label_ar="مزرعة حديثة" label_en="Modern Farms" />
-                    <StatItem value={25} suffix="+" label_ar="عاماً من الخبرة" label_en="Years Experience" />
-                    <StatItem value={500} suffix="+" label_ar="موظف متخصص" label_en="Specialized Staff" />
+                    <StatItem value={310} suffix="M+" label_ar="بيضة سنوياً" label_en="Eggs Annually" start={start} />
+                    <StatItem value={15} suffix="+" label_ar="مزرعة حديثة" label_en="Modern Farms" start={start} />
+                    <StatItem value={25} suffix="+" label_ar="عاماً من الخبرة" label_en="Years Experience" start={start} />
+                    <StatItem value={500} suffix="+" label_ar="موظف متخصص" label_en="Specialized Staff" start={start} />
                 </div>
             </div>
         </section>
@@ -335,7 +361,7 @@ const StatsSection: React.FC = () => {
 const locations = [
     {
         id: 1,
-        
+
         city_ar: 'بيشة',
         city_en: 'Bisha',
         region_ar: 'منطقة عسير',
