@@ -45,7 +45,7 @@ export const Locations: React.FC = () => {
         'بيشة، منطقة عسير، المملكة العربية السعودية',
         'Bisha, Aseer Region, Saudi Arabia'
       ),
-      phone: '+966 53 111 7922',
+      phone: '966531117922+',
       email: 'social@afaqsaleh.com',
       lat: 19.9974,
       lng: 42.5915,
@@ -75,7 +75,7 @@ export const Locations: React.FC = () => {
         'جيزان، المملكة العربية السعودية',
         'Jizan, Saudi Arabia'
       ),
-      phone: '+966 53 838 1614',
+      phone: '966538381614+',
       email: 'social@afaqsaleh.com',
       lat: 17.1576,
       lng: 42.6741,
@@ -90,7 +90,7 @@ export const Locations: React.FC = () => {
         'الطائف، منطقة مكة المكرمة، المملكة العربية السعودية',
         'Taif, Makkah Region, Saudi Arabia'
       ),
-      phone: '+966 50 010 7110',
+      phone: '966500107110+',
       email: 'social@afaqsaleh.com',
       lat: 21.2703,
       lng: 40.4158,
@@ -105,7 +105,7 @@ export const Locations: React.FC = () => {
         'جدة، المملكة العربية السعودية',
         'Jeddah, Saudi Arabia'
       ),
-      phone: '+966 53 511 1722',
+      phone: '966535111722+',
       email: 'social@afaqsaleh.com',
       lat: 21.6094,
       lng: 39.2638,

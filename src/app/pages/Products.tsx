@@ -5,7 +5,7 @@ import './Products.css';
 
 import LogoImg from '../../img/bckfarms/clients/لوجو مزارع شهيلا.jpg';
 import MainEggsImg from '../../img/egs1.jpeg';
-import RedEggsImg from '../../img/egs2.jpeg';
+import RedEggsImg from '../../img/redegg.jpg';
 import FeedImg from '../../img/3laf.jpeg';
 import FertilizerImg from '../../img/semad.jpg';
 import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png';
@@ -163,10 +163,10 @@ const Products: React.FC = () => {
 
   const expandingProducts = [
     {
-      title: t('البيض الأحمر', 'Red Eggs'),
+      title: t('البيض البني', 'Brown Eggs'),
       description: t(
-        'قريبًا سنقدم البيض الأحمر الطبيعي الغني بالعناصر الغذائية، المنتج خصيصًا لتلبية احتياجات الأسر السعودية التي تبحث عن التنوع والجودة العالية.',
-        'Coming soon: Natural red eggs rich in nutrients, specially produced to meet the needs of Saudi families seeking variety and premium quality.'
+        'قريبًا سنقدم البيض البني الطبيعي الغني بالعناصر الغذائية، المنتج خصيصًا لتلبية احتياجات الأسر التي تبحث عن التنوع والجودة العالية.',
+        'Coming soon: Natural brown eggs rich in nutrients, specially produced to meet the needs of families seeking variety and premium quality.'
       ),
       status: t('قريبًا', 'Coming Soon'),
       icon: <Egg className="product-icon" />,
@@ -222,9 +222,9 @@ const Products: React.FC = () => {
   ];
 
   const productionStats = [
-    { value: 1000000, label: t('بيضة يوميًا', 'Eggs Daily'), suffix: '+' },
+    { value: 600000, label: t('بيضة يوميًا', 'Eggs Daily'), suffix: '' },
     { value: 5, label: t('مزارع متطورة', 'Modern Farms'), suffix: '' },
-    { value: 100, label: t('نقطة بيع محلية', 'Local Outlets'), suffix: '%' }
+    { value: 100, label: t('مراكز توزيع محلية', 'Local Outlets'), suffix: '%' }
   ];
 
   return (

@@ -113,14 +113,14 @@ const AboutSection: React.FC = () => {
                     </h2>
                     <p className="about-body">
                         {t(
-                            'مزارع شهيلا شركة سعودية متخصصة في إنتاج البيض الطازج عالي الجودة، تأسست على أسس راسخة من الجودة والالتزام. نعمل وفق أحدث المعايير الزراعية الدولية لضمان أفضل منتج يصل إلى المستهلك السعودي.',
-                            'Shehaila Farms is a Saudi company specialized in producing high-quality fresh eggs, built on firm foundations of quality and commitment. We operate according to the latest international agricultural standards to ensure the best product reaches the Saudi consumer.'
+                            'مزارع شهيلا شركة سعودية متخصصة في إنتاج البيض الطازج عالي الجودة، تأسست على أسس راسخة من الجودة والالتزام. نعمل وفق أحدث المعايير الزراعية الدولية لضمان أفضل منتج يصل إلى المستهلك .',
+                            'Shehaila Farms is a Saudi company specialized in producing high-quality fresh eggs, built on firm foundations of quality and commitment. We operate according to the latest international agricultural standards to ensure the best product reaches the consumer.'
                         )}
                     </p>
                     <p className="about-body">
                         {t(
-                            'تمتد مزارعنا في منطقتي بيشة وتبالة، مجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر السعودية التي تختار منتجاتنا يومياً.',
-                            'Our farms span the regions of Bisha and Tabalah, equipped with the latest technologies and staffed by specialized teams ensuring the health and safety of our flocks and products. We are proud of the trust of thousands of Saudi families who choose our products daily.'
+                            'تمتد مزارعنا في منطقتي بيشة وتبالة، مجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر التي تختار منتجاتنا يومياً.',
+                            'Our farms span the regions of Bisha and Tabalah, equipped with the latest technologies and staffed by specialized teams ensuring the health and safety of our flocks and products. We are proud of the trust of thousands of families who choose our products daily.'
                         )}
                     </p>
                     <div className="about-features">
@@ -321,7 +321,7 @@ const StatsSection: React.FC = () => {
                     </p>
                 </div>
                 <div className="stats-grid">
-                    <StatItem value={50} suffix="M+" label_ar="بيضة سنوياً" label_en="Eggs Annually" />
+                    <StatItem value={310} suffix="M+" label_ar="بيضة سنوياً" label_en="Eggs Annually" />
                     <StatItem value={15} suffix="+" label_ar="مزرعة حديثة" label_en="Modern Farms" />
                     <StatItem value={25} suffix="+" label_ar="عاماً من الخبرة" label_en="Years Experience" />
                     <StatItem value={500} suffix="+" label_ar="موظف متخصص" label_en="Specialized Staff" />
