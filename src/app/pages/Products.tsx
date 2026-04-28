@@ -12,9 +12,11 @@ import HeroImg from '../../img/Gemini_Generated_Image_104a6t104a6t104a.png';
 
 import SmallEggImg from '../../img/MM.jpg';
 import MediumEggImg from '../../img/MM.jpg';
+import MediumEggImg2 from '../../img/MMM.jpg';
 import LargeEggImg from '../../img/LL.jpg';
 import largeEggImg1 from '../../img/LLLL.jpg'
 import largeEggImg2 from '../../img/LLL.jpg'
+import largeEggImg3 from '../../img/LLLLL.jpg'
 import gampoEggImg from '../../img/XL.jpg';
 // Gallery image data for product categories
 const getGalleryData = (lang: string) => ({
@@ -23,6 +25,13 @@ const getGalleryData = (lang: string) => ({
       image: MediumEggImg,
       descriptionAr: 'بيض شهيلا فاخر وسط (30 * 10 طبق) -M',
       descriptionEn: 'Shehaila Premium Medium Eggs (30 * 10 Tray) - M',
+      titleAr: 'متوسط',
+      titleEn: 'Medium'
+    },
+    {
+      image: MediumEggImg2,
+      descriptionAr: 'بيض شهيلا فاخر مغلف وسط (30 * 10 طبق) -M كيس',
+      description: 'Luxury Sheela Eggs, Medium Packaged (30 * 10 Trays) -M',
       titleAr: 'متوسط',
       titleEn: 'Medium'
     },
@@ -46,6 +55,13 @@ const getGalleryData = (lang: string) => ({
       image: largeEggImg2,
       descriptionAr: 'بيض شهيلا مغلف (50 علبة *6) - L',
       descriptionEn: 'Shahila Eggs (50 Packs * 6) - L',
+      titleAr: 'جودة كبيرة',
+      titleEn: 'Premium Large'
+    },
+    {
+      image: largeEggImg3,
+      descriptionAr: 'بيض شهيلا مغلف فاخر (30 * 10 طبق) -L كيس',
+      descriptionEn: 'Shehaila Premium Large Eggs (30 * 10 Tray) - L',
       titleAr: 'جودة كبيرة',
       titleEn: 'Premium Large'
     },

@@ -291,6 +291,7 @@
   display: block;
   transition: transform 0.35s ease;
 }
+
 .shehaila-about__logo-badge {
   position: absolute;
   bottom: -10px;
@@ -450,12 +451,12 @@
 /* ── Grid (Responsive Fixed) ── */
 .shehaila-about__partners-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 2rem;
   justify-items: center;
   align-items: center;
 
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -565,6 +566,7 @@
     height: 55px;
   }
 }
+
 /* =========================================================
    RESPONSIVE — TABLET (≤ 1100px)
    ========================================================= */

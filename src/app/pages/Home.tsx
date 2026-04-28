@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'; import { useLanguage } from '../context/LanguageContext';
-import { useCounter } from '../../hooks/useCounter';
 import logo from '../../img/لوجو مزارع شهيلا.jpg';
 import { ArrowLeft, ArrowRight, Clock, MapPin, Phone, Mail, ExternalLink, ZoomIn, X } from 'lucide-react';
 import heroBg from '../../img/back1.jpeg';
@@ -11,31 +10,32 @@ import eggWhite from '../../img/whitegg.jpg';
 import eggRed from '../../img/redegg.jpg';
 import feedImg from '../../img/3laf.jpeg';
 import fertilizerImg from '../../img/semad.jpg';
+
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 // ============== STATS SECTION ==============
 interface StatItemProps {
-    value: number;
+    value: string | number;
     suffix: string;
     label_ar: string;
     label_en: string;
+    icon: React.ReactNode;
 }
-
-const StatItem: React.FC<StatItemProps & { start: boolean }> = ({
+const StatItem: React.FC<StatItemProps> = ({
     value,
     suffix,
     label_ar,
     label_en,
-    start
+    icon,
 }) => {
     const { t } = useLanguage();
-    const { count, elementRef } = useCounter(start ? value : 0, 2200);
-
     return (
-        <div className="stat-item" ref={elementRef}>
+        <div className="stat-item">
+            <div className="stat-icon">{icon}</div>
+
             <div className="stat-number">
-                {count.toLocaleString('en-US')}{suffix}
+                {typeof value === 'number' ? value.toLocaleString('en-US') : value}{suffix}
             </div>
             <div className="stat-label">
                 {t(label_ar, label_en)}
@@ -311,46 +311,144 @@ const FarmsSection: React.FC = () => {
 };
 
 // ============== STATS SECTION ==============
-const StatsSection: React.FC = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const [start, setStart] = useState(false);
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    setStart(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.3 }
-        );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+const CornIcon = () => (
+    <div style={{ fontSize: '40px' }}>🌽</div>
+);
+
+const WhiteEggIcon = () => (
+    <svg width="40" height="40" viewBox="0 0 64 64">
+        <path
+            d="M32 10C22 10 15 22 15 34C15 46 22 54 32 54C42 54 49 46 49 34C49 22 42 10 32 10Z"
+            fill="#FFFFFF"
+            stroke="#E8E8E8"
+            strokeWidth="2"
+        />
+        <ellipse cx="27" cy="24" rx="4" ry="6" fill="rgba(255,255,255,0.65)" />
+    </svg>
+);
+
+const OmegaIcon = () => (
+    <div style={{
+        fontSize: '34px',
+        fontWeight: 900,
+        color: '#ffffff',
+        fontFamily: 'Poppins',
+        letterSpacing: '1px',
+        textShadow: '0 0 10px rgba(255,255,255,0.25)'
+    }}>
+        Ω3
+    </div>
+);
+
+const SaudiIcon = () => (
+    <svg width="42" height="42" viewBox="0 0 64 64">
+        <path
+            d="M18 14L28 10L42 14L48 24L44 34L48 46L34 54L20 48L14 34L16 22L18 14Z"
+            fill="#22c55e"
+            stroke="#ffffff"
+            strokeWidth="2"
+            strokeLinejoin="round"
+        />
+        <circle cx="35" cy="28" r="1.5" fill="#fff" />
+    </svg>
+);
+
+const StatsSection: React.FC = () => {
+    const [start, setStart] = useState(false);
+
+    const [counts, setCounts] = useState({
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0
+    });
+    const sectionRef = useRef<HTMLDivElement>(null);
+    
+    const { t } = useLanguage();
+
+    useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setStart((prev) => {
+                    if (prev) return prev;
+                    return true;
+                });
+
+                const startTime = performance.now();
+
+                const animate = (now: number) => {
+                    const progress = Math.min((now - startTime) / 2200, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+
+                    setCounts({
+                        a: Math.floor(eased * 100),
+                        b: Math.floor(eased * 310),
+                        c: Math.floor(eased * 3),
+                        d: Math.floor(eased * 100),
+                    });
+
+                    if (progress < 1) requestAnimationFrame(animate);
+                };
+
+                requestAnimationFrame(animate);
+            }
+        }, { threshold: 0.25 });
+
+        observer.observe(el);
 
         return () => observer.disconnect();
     }, []);
-    const { t } = useLanguage();
 
     return (
         <section className="stats-section" ref={sectionRef}>
             <div className="stats-overlay"></div>
             <div className="section-container stats-inner">
                 <div className="stats-header">
-                    <h2 className="stats-title">{t('أرقامنا تتحدث عنا', 'Our Numbers Speak for Themselves')}</h2>
+                    <h2 className="stats-title">{t('لماذا شهيلا', 'Why Shehaila')}</h2>
                     <p className="stats-subtitle">
                         {t(
-                            'عقود من الخبرة والعمل الدؤوب تترجمها أرقام حقيقية تعكس حجم ثقة عملائنا الكرام',
-                            'Decades of experience and hard work translated into real numbers reflecting the trust of our valued customers'
+                            'لأننا نهتم بكل تفصيلة تبدأ من العلف النباتي النقي وحتى وصول بيضة صحية غنية بالعناصر الغذائية إلى مائدتكم، لنقدم منتجاً سعودياً بمعايير جودة تستحق الثقة.',
+                            'Because we care about every detail, from pure plant-based nutrition to delivering healthy nutrient-rich eggs to your table, offering a Saudi product built on trusted quality standards.'
                         )}
                     </p>
                 </div>
                 <div className="stats-grid">
-                    <StatItem value={310} suffix="M+" label_ar="بيضة سنوياً" label_en="Eggs Annually" start={start} />
-                    <StatItem value={15} suffix="+" label_ar="مزرعة حديثة" label_en="Modern Farms" start={start} />
-                    <StatItem value={25} suffix="+" label_ar="عاماً من الخبرة" label_en="Years Experience" start={start} />
-                    <StatItem value={500} suffix="+" label_ar="موظف متخصص" label_en="Specialized Staff" start={start} />
+                    <StatItem
+                        value={100}
+                        suffix="%"
+                        label_ar="تغذية نباتية"
+                        label_en="Plant-Based Feed"
+                        icon={<CornIcon />}
+                        
+                    />
+
+                    <StatItem
+                        value={310}
+                        suffix="M+"
+                        label_ar="بيضة سنوياً"
+                        label_en="Eggs Annually"
+                        icon={<WhiteEggIcon />}
+                    />
+
+                    <StatItem
+                        value="Ω3"
+                        suffix=""
+                        label_ar="غني بالأوميجا 3"
+                        label_en="Rich in Omega 3"
+                        icon={<OmegaIcon />}
+                    />
+
+                    <StatItem
+                        value={100}
+                        suffix="%"
+                        label_ar="منتج سعودي"
+                        label_en="Saudi Product"
+                        icon={<SaudiIcon />}
+                    />
                 </div>
             </div>
         </section>

@@ -11,13 +11,12 @@ import production2 from '../../img/bckfarms/55.jpeg';
 import fleet1 from '../../img/bckfarms/111.jpeg';
 import fleet2 from '../../img/bckfarms/222.jpeg';
 
-import savolaLogo from '../../img/bckfarms/clients/alrayalogo.jpg';
-import nadecLogo from '../../img/bckfarms/clients/bandalogo-1536x1086.jpg';
-import pandaLogo from '../../img/bckfarms/clients/bindawood.jpg';
-import tamimiLogo from '../../img/bckfarms/clients/Danublogo.jpg';
-import carrefourLogo from '../../img/bckfarms/clients/farmlogo.jpg';
-import luluLogo from '../../img/bckfarms/clients/Othaimlogo-1152x1536.png';
-import othaimLogo from '../../img/bckfarms/clients/sanabellogo.png';
+import panda from '../../img/bckfarms/clients/bandalogo-1536x1086.jpg';
+import danop from '../../img/bckfarms/clients/bindawood.jpg';
+import dawood from '../../img/bckfarms/clients/Danublogo.jpg';
+import aswaq from '../../img/bckfarms/clients/farmlogo.jpg';
+import olothim from '../../img/bckfarms/clients/Othaimlogo-1152x1536.png';
+import sanapel from '../../img/bckfarms/clients/sanabellogo.png';
 
 const HERO_IMAGE = heroImg;
 const LOGO_PLACEHOLDER = logoImg;
@@ -31,13 +30,14 @@ const FLEET_IMAGES = [
   fleet2,
 ];
 const PARTNER_LOGOS = [
-  { id: 1, name: 'Savola', logo: savolaLogo },
-  { id: 2, name: 'NADEC', logo: nadecLogo },
-  { id: 3, name: 'Panda', logo: pandaLogo },
-  { id: 4, name: 'Tamimi', logo: tamimiLogo },
-  { id: 5, name: 'Carrefour', logo: carrefourLogo },
-  { id: 6, name: 'Lulu', logo: luluLogo },
-  { id: 7, name: 'Othaim', logo: othaimLogo },
+  { id: 1, name: 'Savola', logo: panda },
+  { id: 2, name: 'NADEC', logo: olothim },
+  { id: 3, name: 'Panda', logo: panda },
+  { id: 4, name: 'Tamimi', logo: olothim },
+  { id: 5, name: 'Carrefour', logo: danop },
+  { id: 6, name: 'Lulu', logo: dawood },
+  { id: 7, name: 'Othaim', logo: aswaq },
+  { id: 8, name: 'Al Raya', logo: sanapel },
 ];
 
 const SectionReveal: React.FC<{
@@ -93,7 +93,7 @@ export const About: React.FC = () => {
     quality control, and logistics, working in seamless coordination and with genuine passion to ensure fresh
     products reach consumers as quickly as possible at the highest standard of purity.`;
 
-  
+
   const productionTextAr = `
     تمتلك شهيلا خط إنتاج متكامل ومتطور يمثل الركيزة الأساسية لتميزنا في السوق. يبدأ الخط من مراحل
     التفريخ الآلي الدقيق، مرورًا بمحطات التربية المُتحكم بيئتها حراريًا وهوائيًا، وصولًا إلى خطوط
@@ -315,7 +315,6 @@ export const About: React.FC = () => {
                 <div className="shehaila-about__partner-card">
                   <div className="shehaila-about__partner-inner">
 
-                    {/* 👇 أهم تعديل هنا */}
                     <div className="shehaila-about__partner-logo-wrapper">
                       <img
                         src={p.logo}

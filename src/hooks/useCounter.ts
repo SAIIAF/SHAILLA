@@ -10,29 +10,31 @@ export const useCounter = (target: number, duration: number = 2000) => {
         if (!el) return;
 
         const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting && !startedRef.current) {
+            ([entry]) => {
+                if (entry.isIntersecting && !startedRef.current) {
                     startedRef.current = true;
 
-                    let startTime: number | null = null;
+                    const start = performance.now();
 
-                    const step = (timestamp: number) => {
-                        if (!startTime) startTime = timestamp;
+                    const animate = (now: number) => {
+                        const progress = Math.min((now - start) / duration, 1);
 
-                        const progress = Math.min((timestamp - startTime) / duration, 1);
                         const eased = 1 - Math.pow(1 - progress, 3);
 
                         setCount(Math.floor(eased * target));
 
                         if (progress < 1) {
-                            requestAnimationFrame(step);
+                            requestAnimationFrame(animate);
                         }
                     };
 
-                    requestAnimationFrame(step);
+                    requestAnimationFrame(animate);
                 }
             },
-            { threshold: 0.3 }
+            {
+                threshold: 0.25,
+                rootMargin: "0px 0px -15% 0px"
+            }
         );
 
         observer.observe(el);

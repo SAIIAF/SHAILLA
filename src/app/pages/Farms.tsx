@@ -459,8 +459,8 @@ export default function Farm() {
         tag={t('الفرز والفحص', 'Sorting & Inspection')}
         title={t('جودة لا تقبل المساومة', 'Uncompromising Quality Standards')}
         paragraph={t(
-          'تخضع كل بيضة تغادر مزارعنا لسلسلة صارمة من الفحوصات والاختبارات. تعتمد أنظمة الفرز لدينا على رؤية حاسوبية متطورة تكشف أدق التفاصيل وتضمن اتساق الحجم والوزن. يُشرف فريق من الخبراء على كل مرحلة للتأكد من أن كل منتج يحمل بصمة شهيلا يرقى إلى أعلى معايير السلامة الغذائية.',
-          'Every egg leaving our farms undergoes a rigorous sequence of inspections and assessments. Our sorting systems employ advanced computer vision to detect the finest details, ensuring consistent size and weight grading. A team of specialists oversees each stage, guaranteeing that every Shaila-branded product meets the highest standards of food safety and quality assurance.'
+          'تخضع كل بيضة تغادر مزارعنا لسلسلة صارمة من الفحوصات والاختبارات. تعتمد أنظمة الفرز لدينا على رؤية حاسوبية متطورة تكشف أدق التفاصيل وتضمن اتساق الحجم والوزن. يُشرف فريق من الخبراء على كل مرحلة للتأكد من أن كل منتج يحمل بصمة شهيلا يرقى إلى أعلى معايير السلامة الغذائية. نستخدم حبر Food Grade Ink الغذائي الآمن لطباعة تاريخ الإنتاج والانتهاء مباشرة على كل بيضة، لضمان وضوح البيانات وثباتها مع الحفاظ على سلامة المنتج وثقة المستهلك.',
+          'Every egg leaving our farms undergoes a rigorous sequence of inspections and assessments. Our sorting systems employ advanced computer vision to detect the finest details, ensuring consistent size and weight grading. A team of specialists oversees each stage, guaranteeing that every Shaila-branded product meets the highest standards of food safety and quality assurance. We use certified Food Grade Ink to print production and expiry dates directly on every egg, ensuring clear, durable marking while maintaining product safety and consumer trust.'
         )}
         images={SORTING_IMAGES}
         reversed

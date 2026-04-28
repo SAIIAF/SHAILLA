@@ -6,6 +6,7 @@ import  Products  from './pages/Products';
 import  Farms  from './pages/Farms';
 import { Locations } from './pages/Locations';
 import  Contact  from './pages/Contact';
+import News from './pages/News';
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
       { path: 'farms', Component: Farms },
       { path: 'locations', Component: Locations },
       { path: 'contact', Component: Contact },
+      {path: 'news', Component: News }
     ],
   },
 ]);

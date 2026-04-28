@@ -19,7 +19,6 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-
       setScrolled(currentScroll > 20);
     };
 
@@ -54,12 +53,47 @@ export const Navbar: React.FC = () => {
         </div>
 
         <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
-          <li><Link to="/" onClick={handleLinkClick} className={isActive('/') ? 'active' : ''}>{t('الرئيسية', 'Home')}</Link></li>
-          <li><Link to="/about" onClick={handleLinkClick} className={isActive('/about') ? 'active' : ''}>{t('من نحن', 'About')}</Link></li>
-          <li><Link to="/products" onClick={handleLinkClick} className={isActive('/products') ? 'active' : ''}>{t('منتجاتنا', 'Products')}</Link></li>
-          <li><Link to="/farms" onClick={handleLinkClick} className={isActive('/farms') ? 'active' : ''}>{t('مزارعنا', 'Farms')}</Link></li>
-          <li><Link to="/locations" onClick={handleLinkClick} className={isActive('/locations') ? 'active' : ''}>{t('مواقعنا', 'Locations')}</Link></li>
-          <li><Link to="/contact" onClick={handleLinkClick} className={isActive('/contact') ? 'active' : ''}>{t('تواصل معنا', 'Contact')}</Link></li>
+          <li>
+            <Link to="/" onClick={handleLinkClick} className={isActive('/') ? 'active' : ''}>
+              {t('الرئيسية', 'Home')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/about" onClick={handleLinkClick} className={isActive('/about') ? 'active' : ''}>
+              {t('من نحن', 'About')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/products" onClick={handleLinkClick} className={isActive('/products') ? 'active' : ''}>
+              {t('منتجاتنا', 'Products')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/farms" onClick={handleLinkClick} className={isActive('/farms') ? 'active' : ''}>
+              {t('مزارعنا', 'Farms')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/locations" onClick={handleLinkClick} className={isActive('/locations') ? 'active' : ''}>
+              {t('مواقعنا', 'Locations')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/news" onClick={handleLinkClick} className={isActive('/news') ? 'active' : ''}>
+              {t('الأخبار', 'News')}
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/contact" onClick={handleLinkClick} className={isActive('/contact') ? 'active' : ''}>
+              {t('تواصل معنا', 'Contact')}
+            </Link>
+          </li>
         </ul>
 
         <div className="lang-dropdown">
