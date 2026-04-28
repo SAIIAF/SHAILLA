@@ -468,7 +468,7 @@ export default function News() {
             </section>
 
             {/* CTA */}
-            <section className="news-cta">
+            {/* <section className="news-cta">
                 <div className="news-container">
                     <div className="news-cta__inner">
                         <h2 className="news-cta__title">{t('ابقَ على اطّلاع دائم', 'Stay Updated')}</h2>
@@ -489,7 +489,7 @@ export default function News() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <NewsModal article={selectedArticle} isOpen={isModalOpen} onClose={handleCloseModal} />
         </main>
