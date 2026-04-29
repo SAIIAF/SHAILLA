@@ -20,6 +20,15 @@ import largeEggImg3 from '../../img/LLLLL.jpg'
 import gampoEggImg from '../../img/XL.jpg';
 // Gallery image data for product categories
 const getGalleryData = (lang: string) => ({
+  small: [
+    {
+      image: MediumEggImg2,
+      descriptionAr: 'بيض شهيلا كبير 12طبق *30  ( L )',
+      description: 'Large Chehila Eggs, 12 trays * 30 (L)',
+      titleAr: 'متوسط',
+      titleEn: 'Medium'
+    },
+  ],
   medium: [
     {
       image: MediumEggImg,
@@ -28,13 +37,7 @@ const getGalleryData = (lang: string) => ({
       titleAr: 'متوسط',
       titleEn: 'Medium'
     },
-    {
-      image: MediumEggImg2,
-      descriptionAr: 'بيض شهيلا فاخر مغلف وسط (30 * 10 طبق) -M كيس',
-      description: 'Luxury Sheela Eggs, Medium Packaged (30 * 10 Trays) -M',
-      titleAr: 'متوسط',
-      titleEn: 'Medium'
-    },
+    
   ],
   large: [
     {
@@ -60,8 +63,8 @@ const getGalleryData = (lang: string) => ({
     },
     {
       image: largeEggImg3,
-      descriptionAr: 'بيض شهيلا مغلف فاخر (30 * 10 طبق) -L كيس',
-      descriptionEn: 'Shehaila Premium Large Eggs (30 * 10 Tray) - L',
+      descriptionAr: 'بيض شهيلا كيس  12 *30  ( S )',
+      descriptionEn: 'Shahila eggs, bag 12 * 30 (S)',
       titleAr: 'جودة كبيرة',
       titleEn: 'Premium Large'
     },
@@ -153,7 +156,7 @@ const Products: React.FC = () => {
   const { t, lang } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(SmallEggImg);
   const [activeSize, setActiveSize] = useState(0);
-  const [activeCategory, setActiveCategory] = useState<'medium' | 'large' | 'extraLarge'>('medium');
+  const [activeCategory, setActiveCategory] = useState<'small' | 'medium' | 'large' | 'extraLarge'>('medium');
   const imageRef = React.useRef(null);
   const galleryRef = React.useRef(null);
   const mainImageRef = React.useRef<HTMLDivElement>(null);
@@ -170,7 +173,7 @@ const Products: React.FC = () => {
       t('معتمد من الجهات الصحية', 'Health certified')
     ],
     sizes: [
-      { size: t('صغير', 'Small'), weight: '45-50g', image: SmallEggImg },
+      { size: t('صغير', 'Small'), weight: '40-45g', image: SmallEggImg },
       { size: t('متوسط', 'Medium'), weight: '53-58g', image: MediumEggImg },
       { size: t('كبير', 'Large'), weight: '63-68g', image: LargeEggImg }
     ],
@@ -319,6 +322,22 @@ const Products: React.FC = () => {
               <h4 className="sizes-title">{t('الأحجام المتوفرة', 'Available Sizes')}</h4>
               <div className="category-buttons-grid">
                 <button
+                  className={`category-button ${activeCategory === 'small' ? 'active' : ''}`}
+                  onClick={() => {
+                    setActiveCategory('small');
+                    if (window.innerWidth <= 1023) {
+                      setTimeout(() => {
+                        mainImageRef.current?.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'center'
+                        });
+                      }, 100);
+                    }
+                  }}
+                >
+                  <div className="button-text">{t('S', 'S')}</div>
+                </button>
+                <button
                   className={`category-button ${activeCategory === 'medium' ? 'active' : ''}`}
                   onClick={() => {
                     setActiveCategory('medium');
@@ -333,7 +352,6 @@ const Products: React.FC = () => {
                   }}
                 >
                   <div className="button-text">{t('M', 'M')}</div>
-                  <div className="button-weight">53-58g</div>
                 </button>
                 <button
                   className={`category-button ${activeCategory === 'large' ? 'active' : ''}`}
@@ -350,7 +368,6 @@ const Products: React.FC = () => {
                   }}
                 >
                   <div className="button-text">{t('L', 'L')}</div>
-                  <div className="button-weight">63-68g</div>
                 </button>
                 <button
                   className={`category-button ${activeCategory === 'extraLarge' ? 'active' : ''}`}
@@ -367,7 +384,6 @@ const Products: React.FC = () => {
                   }}
                 >
                   <div className="button-text">{t('XL', 'XL')}</div>
-                  <div className="button-weight">69-75g</div>
                 </button>
               </div>
             </div>
