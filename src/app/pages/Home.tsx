@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'; import { useLanguage } from '../context/LanguageContext';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import logo from '../../img/لوجو مزارع شهيلا.jpg';
 import { ArrowLeft, ArrowRight, Clock, MapPin, Phone, Mail, ExternalLink, ZoomIn, X } from 'lucide-react';
 import heroBg from '../../img/back1.jpeg';
@@ -10,6 +11,7 @@ import eggWhite from '../../img/whitegg.jpg';
 import eggRed from '../../img/redegg.jpg';
 import feedImg from '../../img/3laf.jpeg';
 import fertilizerImg from '../../img/semad.jpg';
+import { useCounter } from '../../hooks/useCounter';
 
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -37,7 +39,7 @@ const StatItem: React.FC<StatItemProps> = ({
             <div className="stat-number">
                 {typeof value === 'number' ? value.toLocaleString('en-US') : value}{suffix}
             </div>
-            <div className="stat-label">
+            <div className="stat-labell">
                 {t(label_ar, label_en)}
             </div>
         </div>
@@ -310,145 +312,145 @@ const FarmsSection: React.FC = () => {
     );
 };
 
-// ============== STATS SECTION ==============
-
-const CornIcon = () => (
-    <div style={{ fontSize: '40px' }}>🌽</div>
+// ============== SVG ICONS ==============
+const SaudiMapSVG: React.FC = () => (
+    <svg fill="#ffffff00" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="242px" height="242px" viewBox="0 0 260 218" enable-background="new 0 0 260 218" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#fcfcfc" stroke-width="2.08"> <polygon points="250.62,128.396 218.465,126.096 186.381,89.436 183.314,74.268 175.622,69.836 164.337,52.104 140.28,45.323 119.649,43.718 69.834,5.548 55.937,2.385 29.891,9.31 40.937,23.591 16.401,39.788 2,42.808 5.547,54.501 28.885,104.196 43.884,120.202 48.892,132.278 48.221,149.003 66.048,167.788 96,215.615 101.798,202.101 154.872,207.276 164.169,192.852 176.533,186.334 213.193,179.961 251.291,164.41 258,136.711 "></polygon> </g><g id="SVGRepo_iconCarrier"> <polygon points="250.62,128.396 218.465,126.096 186.381,89.436 183.314,74.268 175.622,69.836 164.337,52.104 140.28,45.323 119.649,43.718 69.834,5.548 55.937,2.385 29.891,9.31 40.937,23.591 16.401,39.788 2,42.808 5.547,54.501 28.885,104.196 43.884,120.202 48.892,132.278 48.221,149.003 66.048,167.788 96,215.615 101.798,202.101 154.872,207.276 164.169,192.852 176.533,186.334 213.193,179.961 251.291,164.41 258,136.711 "></polygon> </g></svg>
 );
 
-const WhiteEggIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 64 64">
-        <path
-            d="M32 10C22 10 15 22 15 34C15 46 22 54 32 54C42 54 49 46 49 34C49 22 42 10 32 10Z"
-            fill="#FFFFFF"
-            stroke="#E8E8E8"
-            strokeWidth="2"
-        />
-        <ellipse cx="27" cy="24" rx="4" ry="6" fill="rgba(255,255,255,0.65)" />
-    </svg>
+const EggsSVG: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="-2 -3.5 24 24"><path fill="currentColor" d="M6 17a6 6 0 0 1-6-6c0-3.314 3-9 6-9s6 5.686 6 9a6 6 0 0 1-6 6m6.612-2.161A5.98 5.98 0 0 0 14 11c0-2.518-1.732-6.405-3.88-8.127C11.213 1.227 12.607 0 14 0c3 0 6 5.686 6 9a6 6 0 0 1-7.388 5.839" /></svg>
 );
 
-const OmegaIcon = () => (
-    <div style={{
-        fontSize: '34px',
-        fontWeight: 900,
-        color: '#ffffff',
-        fontFamily: 'Poppins',
-        letterSpacing: '1px',
-        textShadow: '0 0 10px rgba(255,255,255,0.25)'
-    }}>
-        Ω3
+const WheatSVG: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 512 512"><path fill="currentColor" d="M98.344 16.688C79.692 43.785 68.498 69.01 65.5 89.56l23.938 39.157l28.624-33.47c.868-21.213-5.49-48.677-19.718-78.563zM472.5 19.625C444.04 36.055 423.112 54 411.562 71.25l4.75 45.688L456.563 99c9.89-18.777 15.938-46.29 15.938-79.375zm-91.75 27.28c-10.153 21.036-16.8 40.84-20.156 58.314l18.375 57.686l19.78-34.25l-6.5-62.22h.03a277 277 0 0 0-11.53-19.53zM27.25 80.782c-.125 23.364 2.393 44.102 6.875 61.314L75.5 186.25l3.125-39.406L46 93.47l.03-.032a280 280 0 0 0-18.78-12.657zm132.844 10.532c-8.415 3.504-16.29 7.213-23.594 11.094l-39.25 45.97l-3.094 39.374l50.438-39.094c6.712-15.904 12.09-35.263 15.5-57.344m177.22 21.626c-24.024 58.09-16.16 97.86 7.873 108.5l21.157-36.625l-19.594-61.438a274 274 0 0 0-9.438-10.438zm146.03.218c-4.55-.028-8.97.084-13.28.28L414.935 138l-19.78 34.28l62.343-13.655c12.897-11.47 26.09-26.626 38.656-45.094c-4.358-.216-8.64-.348-12.812-.374zm-226.094 8.72c-23.24 23.238-38.832 46.003-45.53 65.655l16.436 42.907l34.22-27.75c4.695-20.704 3.436-48.856-5.126-80.812M16.406 159.06c3.28 62.77 27.482 95.31 53.75 94.594l3.344-42.22l-44.063-47a279 279 0 0 0-13.03-5.374zm143.22 11.375a272 272 0 0 0-18.5 4.563l-48.97 37.938l-3.312 41.75c26.492 7.51 57.16-20.567 70.78-84.25zm16.06 1.563c-4.36 22.935-5.65 43.762-4.374 61.5l32.688 51l10.22-38.188l-22.407-58.437h.03a277 277 0 0 0-16.155-15.875zm267.408 8.938l-60.563 13.218l-20.936 36.25c20.682 18.195 60.438 6.035 100.125-45.625a275 275 0 0 0-18.626-3.843m-138.688 25.53c-8.912 1.92-17.304 4.16-25.187 6.657l-46.97 38.03l-10.22 38.19l56.69-29.283c9.493-14.424 18.323-32.49 25.686-53.593zm155.125 25.063c-25.85 20.324-44.046 41.06-53.03 59.782l11.22 44.532l37.28-23.47c7.126-19.99 9.236-48.088 4.53-80.843zm-123.342 8.595c-34.435 77.573-59.394 159.06-62.97 253.03h18.72c3.558-90.792 27.573-169.428 61.312-245.436l-17.063-7.595zm-185.375 6.906c-8.173 62.347 9.714 98.713 35.687 102.75l10.97-40.874l-34.814-54.25a279 279 0 0 0-11.844-7.625zm221.75 24.532c-7.053 22.243-10.817 42.77-11.657 60.532l26.406 54.594L402 349.967l-15.28-60.687h.06c-4.3-5.848-9.033-11.76-14.217-17.717zm-302.47 1.532c-8.664 74.584-8.13 147.835 12.188 220.062h19.44c-20.877-70.772-21.764-143.02-13.064-217.906l-18.562-2.156zm219.47 11.094c-6.613.16-12.953.54-19.032 1.125L215.5 313.78l-10.844 40.408c24.69 12.23 59.938-9.82 84.906-70zm206.718 36.937c-9.072.844-17.664 2.052-25.78 3.594l-51.156 32.217l-14.688 36.657l59.75-22.313c11.14-13.193 22.055-30.075 31.875-50.155zm-157.31 22c-15.528 60.938-2.096 99.19 23.217 106.28l15.72-39.28l-28.094-58.03c-3.43-3-7.053-5.985-10.844-8.97zM183.25 368.72c-12.674 41.233-22.26 82.547-26.844 124.436h18.813c4.507-39.722 13.69-79.23 25.905-118.97l-17.875-5.467zm270 26.655l-58 21.688l-15.563 38.875c23.056 15.098 60.673-2.606 92.625-59.407a273 273 0 0 0-19.062-1.155zM356.5 469.03c-1.874 7.713-3.185 15.757-3.656 24.126h18.687c.45-6.686 1.55-13.206 3.126-19.687l-18.156-4.44z" /></svg>
+);
+
+const OmegaSVG: React.FC = () => (
+    <div className="stat-omega-symbol">
+        <span className="omega-greek">Ω</span>
+        <span className="omega-three">3</span>
     </div>
 );
 
-const SaudiIcon = () => (
-    <svg width="42" height="42" viewBox="0 0 64 64">
-        <path
-            d="M18 14L28 10L42 14L48 24L44 34L48 46L34 54L20 48L14 34L16 22L18 14Z"
-            fill="#22c55e"
-            stroke="#ffffff"
-            strokeWidth="2"
-            strokeLinejoin="round"
-        />
-        <circle cx="35" cy="28" r="1.5" fill="#fff" />
-    </svg>
-);
+// ============== PERCENTAGE COUNTER COMPONENT ==============
+interface PercentageCounterProps {
+    cardClassName: string;
+    visualElement: React.ReactNode;
+    label_ar: string;
+    label_en: string;
+}
 
-const StatsSection: React.FC = () => {
-    const [start, setStart] = useState(false);
-
-    const [counts, setCounts] = useState({
-        a: 0,
-        b: 0,
-        c: 0,
-        d: 0
-    });
-    const sectionRef = useRef<HTMLDivElement>(null);
-    
+const PercentageCounter: React.FC<PercentageCounterProps> = ({
+    cardClassName,
+    visualElement,
+    label_ar,
+    label_en,
+}) => {
     const { t } = useLanguage();
-
-    useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setStart((prev) => {
-                    if (prev) return prev;
-                    return true;
-                });
-
-                const startTime = performance.now();
-
-                const animate = (now: number) => {
-                    const progress = Math.min((now - startTime) / 2200, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-
-                    setCounts({
-                        a: Math.floor(eased * 100),
-                        b: Math.floor(eased * 310),
-                        c: Math.floor(eased * 3),
-                        d: Math.floor(eased * 100),
-                    });
-
-                    if (progress < 1) requestAnimationFrame(animate);
-                };
-
-                requestAnimationFrame(animate);
-            }
-        }, { threshold: 0.25 });
-
-        observer.observe(el);
-
-        return () => observer.disconnect();
-    }, []);
+    const { count, elementRef } = useCounter(100, 2000);
 
     return (
-        <section className="stats-section" ref={sectionRef}>
+        <div className={cardClassName} ref={elementRef}>
+            <div className="stat-visual">{visualElement}</div>
+            <div className="stat-content">
+                <div className="stat-number">
+                    <span className="stat-count">{count}</span>
+                    <span className="stat-unit">%</span>
+                </div>
+                <div className="stat-labell">{t(label_ar, label_en)}</div>
+            </div>
+        </div>
+    );
+};
+
+// ============== EGGS COUNTER COMPONENT ==============
+const EggsCounter: React.FC = () => {
+    const { t } = useLanguage();
+    const { count, elementRef } = useCounter(310, 2000);
+
+    return (
+        <div className="stat-card stat-card--eggs" ref={elementRef}>
+            <div className="stat-visual">
+                <EggsSVG />
+            </div>
+            <div className="stat-content">
+                <div className="stat-number">
+                    <span className="stat-count">{count}</span>
+                    <span className="stat-unit">M</span>
+                </div>
+                <div className="stat-labell">{t('بيضة سنوياً', 'Eggs Per Year')}</div>
+            </div>
+        </div>
+    );
+};
+
+// ============== STATS SECTION ==============
+const StatsSection: React.FC = () => {
+    const { t } = useLanguage();
+
+    return (
+        <section className="stats-section" id="why-shehaila">
             <div className="stats-overlay"></div>
             <div className="section-container stats-inner">
                 <div className="stats-header">
                     <h2 className="stats-title">{t('لماذا شهيلا', 'Why Shehaila')}</h2>
                     <p className="stats-subtitle">
                         {t(
-                            'لأننا نهتم بكل تفصيلة تبدأ من العلف النباتي النقي وحتى وصول بيضة صحية غنية بالعناصر الغذائية إلى مائدتكم، لنقدم منتجاً سعودياً بمعايير جودة تستحق الثقة.',
-                            'Because we care about every detail, from pure plant-based nutrition to delivering healthy nutrient-rich eggs to your table, offering a Saudi product built on trusted quality standards.'
+                            'لأننا نهتم بكل تفصيلة تبدأ من العلف النباتي النقي وحتى وصول بيضة صحية غنية بالعناصر الغذائية إلى مائدتكم.',
+                            'Because we care about every detail, from pure plant-based nutrition to delivering healthy nutrient-rich eggs to your table.'
                         )}
                     </p>
                 </div>
-                <div className="stats-grid">
-                    <StatItem
-                        value={100}
-                        suffix="%"
-                        label_ar="تغذية نباتية"
-                        label_en="Plant-Based Feed"
-                        icon={<CornIcon />}
-                        
-                    />
 
-                    <StatItem
-                        value={310}
-                        suffix="M+"
-                        label_ar="بيضة سنوياً"
-                        label_en="Eggs Annually"
-                        icon={<WhiteEggIcon />}
-                    />
+                <div className="stats-grid-new">
 
-                    <StatItem
-                        value="Ω3"
-                        suffix=""
-                        label_ar="غني بالأوميجا 3"
-                        label_en="Rich in Omega 3"
-                        icon={<OmegaIcon />}
-                    />
-
-                    <StatItem
-                        value={100}
-                        suffix="%"
+                    {/* Item 1 — Saudi Product (Animated Counter) */}
+                    <PercentageCounter
+                        cardClassName="stat-card stat-card--saudi"
+                        visualElement={<SaudiMapSVG />}
                         label_ar="منتج سعودي"
                         label_en="Saudi Product"
-                        icon={<SaudiIcon />}
                     />
+
+                    <div className="stats-divider"></div>
+
+                    {/* Item 2 — Plant-Based Feed (Animated Counter) */}
+                    <div className="stat-card stat-card--plant">
+                        <div className="stat-content stat-content--top">
+                            <PercentageCounter
+                                cardClassName=""
+                                visualElement={null}
+                                label_ar="تغذية نباتية"
+                                label_en="Plant-Based Feed"
+                            />
+                        </div>
+                        <div className="stat-visual">
+                            <WheatSVG />
+                        </div>
+                    </div>
+
+                    <div className="stats-divider"></div>
+
+                    {/* Item 3 — Eggs Per Year (animated counter) */}
+                    <EggsCounter />
+
+                    <div className="stats-divider"></div>
+
+                    {/* Item 4 — Omega-3 */}
+                    <div className="stat-card stat-card--omega">
+                        <div className="stat-content">
+                            <div className="stat-labell stat-labell--omega">{t('غني بالأوميجا 3', 'Rich in Omega-3')}</div>
+                            <div className="stat-omega-desc">
+                                {t('أحماض دهنية أساسية لصحة القلب والدماغ', 'Essential fatty acids for heart and brain health')}
+                            </div>
+
+
+                            <div className="stat-visual stat-visual--omega">
+                                <OmegaSVG />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
