@@ -22,11 +22,11 @@ import gampoEggImg from '../../img/XL.jpg';
 const getGalleryData = (lang: string) => ({
   small: [
     {
-      image: MediumEggImg2,
-      descriptionAr: 'بيض شهيلا كبير 12طبق *30  ( L )',
-      description: 'Large Chehila Eggs, 12 trays * 30 (L)',
-      titleAr: 'متوسط',
-      titleEn: 'Medium'
+      image: largeEggImg3,
+      descriptionAr: 'بيض شهيلا كيس  12 *30  ( S )',
+      descriptionEn: 'Shahila eggs, bag 12 * 30 (S)',
+      titleAr: 'جودة كبيرة',
+      titleEn: 'Premium Large'
     },
   ],
   medium: [
@@ -62,11 +62,11 @@ const getGalleryData = (lang: string) => ({
       titleEn: 'Premium Large'
     },
     {
-      image: largeEggImg3,
-      descriptionAr: 'بيض شهيلا كيس  12 *30  ( S )',
-      descriptionEn: 'Shahila eggs, bag 12 * 30 (S)',
-      titleAr: 'جودة كبيرة',
-      titleEn: 'Premium Large'
+      image: MediumEggImg2,
+      descriptionAr: 'بيض شهيلا كبير 12طبق *30  ( L )',
+      description: 'Large Chehila Eggs, 12 trays * 30 (L)',
+      titleAr: 'كبير',
+      titleEn: 'Large'
     },
   ],
   extraLarge: [

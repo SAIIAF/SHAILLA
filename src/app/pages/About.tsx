@@ -17,6 +17,8 @@ import dawood from '../../img/bckfarms/clients/Danublogo.jpg';
 import aswaq from '../../img/bckfarms/clients/farmlogo.jpg';
 import olothim from '../../img/bckfarms/clients/Othaimlogo-1152x1536.png';
 import sanapel from '../../img/bckfarms/clients/sanabellogo.png';
+import dukan from'../../img/bckfarms/clients/Dukan.webp'
+import keeta from'../../img/bckfarms/clients/keeta.jpg'
 
 const HERO_IMAGE = heroImg;
 const LOGO_PLACEHOLDER = logoImg;
@@ -32,8 +34,8 @@ const FLEET_IMAGES = [
 const PARTNER_LOGOS = [
   { id: 1, name: 'Savola', logo: panda },
   { id: 2, name: 'NADEC', logo: olothim },
-  { id: 3, name: 'Panda', logo: panda },
-  { id: 4, name: 'Tamimi', logo: olothim },
+  { id: 3, name: 'Panda', logo: dukan },
+  { id: 4, name: 'Tamimi', logo: keeta },
   { id: 5, name: 'Carrefour', logo: danop },
   { id: 6, name: 'Lulu', logo: dawood },
   { id: 7, name: 'Othaim', logo: aswaq },
