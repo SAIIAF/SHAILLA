@@ -156,7 +156,7 @@ const Products: React.FC = () => {
   const { t, lang } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(SmallEggImg);
   const [activeSize, setActiveSize] = useState(0);
-  const [activeCategory, setActiveCategory] = useState<'small' | 'medium' | 'large' | 'extraLarge'>('medium');
+  const [activeCategory, setActiveCategory] = useState<'small' | 'medium' | 'large' | 'extraLarge'>('large');
   const imageRef = React.useRef(null);
   const galleryRef = React.useRef(null);
   const mainImageRef = React.useRef<HTMLDivElement>(null);
