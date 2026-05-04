@@ -25,8 +25,8 @@ const getGalleryData = (lang: string) => ({
       image: largeEggImg3,
       descriptionAr: 'بيض شهيلا كيس  12 *30  ( S )',
       descriptionEn: 'Shahila eggs, bag 12 * 30 (S)',
-      titleAr: 'جودة كبيرة',
-      titleEn: 'Premium Large'
+      titleAr: 'صغير',
+      titleEn: 'Small'
     },
   ],
   medium: [
@@ -37,7 +37,7 @@ const getGalleryData = (lang: string) => ({
       titleAr: 'متوسط',
       titleEn: 'Medium'
     },
-    
+
   ],
   large: [
     {
