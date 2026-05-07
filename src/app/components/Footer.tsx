@@ -21,7 +21,10 @@ export const Footer: React.FC = () => {
           <h2 className="brand-title">Shehaila | شهيلا</h2>
 
           <p className="brand-tagline">
-            {t('الجودة التزامنا... والثقة أساسنا', 'Quality is our commitment, trust is our foundation')}
+            {t(
+              'من مزارعنا إلى موائدكم... جودة تُلهم وثقة تدوم',
+              'From our farms to your tables... inspiring quality and lasting trust'
+            )}
           </p>
         </div>
       </section>

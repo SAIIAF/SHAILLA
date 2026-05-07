@@ -122,15 +122,13 @@ const AboutSection: React.FC = () => {
                     </h2>
                     <p className="about-body">
                         {t(
-                            'مزارع شهيلا شركة سعودية متخصصة في إنتاج البيض الطازج عالي الجودة، تأسست على أسس راسخة من الجودة والالتزام. نعمل وفق أحدث المعايير الزراعية الدولية لضمان أفضل منتج يصل إلى المستهلك .',
-                            'Shehaila Farms is a Saudi company specialized in producing high-quality fresh eggs, built on firm foundations of quality and commitment. We operate according to the latest international agricultural standards to ensure the best product reaches the consumer.'
-                        )}
+                            'مزارع شهيلا احدي فروع شركة آفاق صالح المحدودة في إنتاج بيض المائدة عالي الجودة، تأسست على أسس راسخة من الجودة والالتزام. نعمل وفق أحدث المعايير الزراعية الدولية لضمان أفضل منتج يصل إلى المستهلك .',
+                            'Shahila Farms, one of the branches of Afaq Saleh Limited, specializes in the production of high-quality table eggs. It was founded on solid foundations of quality and commitment. We operate according to the latest international agricultural standards to ensure the best product reaches the consumer.')}
                     </p>
                     <p className="about-body">
                         {t(
-                            'تمتد مزارعنا في منطقتي بيشة وتبالة، مجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر التي تختار منتجاتنا يومياً.',
-                            'Our farms span the regions of Bisha and Tabalah, equipped with the latest technologies and staffed by specialized teams ensuring the health and safety of our flocks and products. We are proud of the trust of thousands of families who choose our products daily.'
-                        )}
+                            '  تقدم مزارع شهيلا إنتاجها من خلال مشروعي (بيشة - تباله) المجهزة بأحدث التقنيات وتضم كوادر بشرية متخصصة تحرص على صحة وسلامة القطعان والمنتجات. نفخر بثقة آلاف الأسر التي تختار منتجاتنا يومياً.',
+                            'Shuhaila Farms offers its produce through the (Bisha - Tabala) projects, which are equipped with the latest technologies and include specialized human resources that ensure the health and safety of the herds and products. We are proud of the trust of thousands of families who choose our products daily.'                        )}
                     </p>
                     <div className="about-features">
                         <div className="about-feature">
@@ -249,10 +247,10 @@ const farms = [
         name_en: 'Bisha Farm',
         location_ar: 'منطقة عسير — بيشة',
         location_en: 'Asir Region — Bisha',
-        capacity_ar: '25 مليون بيضة سنوياً',
-        capacity_en: '25 Million Eggs Annually',
-        desc_ar: 'مزرعة بيشة تتميز بموقعها الاستراتيجي وبيئتها المثالية لتربية الدواجن، وتعتمد على أحدث تقنيات الرعاية والتغذية لضمان إنتاج بيض طازج عالي الجودة على مدار العام.',
-        desc_en: 'Bisha farm stands out for its strategic location and ideal environment for poultry raising, relying on the latest care and nutrition technologies to ensure fresh, high-quality egg production throughout the year.',
+        capacity_ar: '150 مليون بيضة سنوياً',
+        capacity_en: '150 Million Eggs Annually',
+        desc_ar: 'مزرعة بيشة تتميز بموقعها الاستراتيجي وبيئتها المثالية لتربية الدواجن، وتعتمد على أحدث تقنيات الرعاية والتغذية و جمع و فرز و تعبئة البيض لضمان إنتاج بيض طازج عالي الجودة على مدار العام.',
+        desc_en: 'Bisha Farm is distinguished by its strategic location and ideal environment for raising poultry, and it relies on the latest technologies for care, feeding, collecting, sorting and packing eggs to ensure the production of fresh, high-quality eggs throughout the year.',
         image: farm2,
     },
     {
@@ -261,8 +259,8 @@ const farms = [
         name_en: 'Tabalah Farm',
         location_ar: 'منطقة عسير — تبالة',
         location_en: 'Asir Region — Tabalah',
-        capacity_ar: '25 مليون بيضة سنوياً',
-        capacity_en: '25 Million Eggs Annually',
+        capacity_ar: '80 مليون بيضة سنوياً',
+        capacity_en: '80 Million Eggs Annually',
         desc_ar: 'مزرعتنا الرئيسية في تبالة تُعدّ من أحدث مزارع إنتاج البيض في المنطقة، مجهزة بأنظمة تحكم مناخي ورعاية تلقائية تضمن أعلى مستويات الإنتاج والجودة.',
         desc_en: 'Our main farm in Tabalah is one of the most modern egg production farms in the region, equipped with climate control systems and automated care ensuring the highest levels of production and quality.',
         image: farm1,
@@ -366,7 +364,7 @@ const PercentageCounter: React.FC<PercentageCounterProps> = ({
 // ============== EGGS COUNTER COMPONENT ==============
 const EggsCounter: React.FC = () => {
     const { t } = useLanguage();
-    const { count, elementRef } = useCounter(310, 2000);
+    const { count, elementRef } = useCounter(230, 2000);
 
     return (
         <div className="stat-card stat-card--eggs" ref={elementRef}>
@@ -376,7 +374,7 @@ const EggsCounter: React.FC = () => {
             <div className="stat-content">
                 <div className="stat-number">
                     <span className="stat-count">{count}</span>
-                    <span className="stat-unit">M</span>
+                    <span className="stat-unit">{t('مليون', 'milion')}</span>
                 </div>
                 <div className="stat-labell">{t('بيضة سنوياً', 'Eggs Per Year')}</div>
             </div>

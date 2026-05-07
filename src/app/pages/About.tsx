@@ -69,8 +69,8 @@ export const About: React.FC = () => {
     أمانًا وطازجيةً.
 
     على مدار أكثر من ربع قرن من العطاء والإبداع، تمكّنت شهيلا من تحويل مزرعة صغيرة متواضعة إلى منظومة
-    إنتاجية متكاملة تضم خمسة مزارع حديثة موزّعة استراتيجيًا في أرجاء المملكة العربية السعودية، تعمل
-    وفق أعلى معايير الجودة والسلامة الغذائية الدولية المعتمدة.
+إنتاجية متكاملة تضم مزرعتين حديثتين موزّعتين استراتيجيًا في المملكة العربية السعودية، تعملان
+وفق أعلى معايير الجودة والسلامة الغذائية الدولية المعتمدة.
 
     تستثمر شهيلا في أحدث التقنيات الزراعية والبيطرية، حيث تعتمد على أنظمة تربية مُحكمة البيئة تضمن
     رفاهية الطيور وصحتها على أكمل وجه، مما ينعكس مباشرةً على جودة المنتجات وقيمتها الغذائية العالية التي
@@ -83,10 +83,7 @@ export const About: React.FC = () => {
     group of ambitious agricultural engineers and experts who firmly believed that Saudi consumers deserve the
     finest, safest, and freshest food products available on the market.
 
-    Over more than a quarter century of excellence and innovation, Shehaila has transformed a modest small farm
-    into a fully integrated production ecosystem comprising five modern farms strategically distributed
-    across the Kingdom of Saudi Arabia, all operating to the highest international standards of quality and
-    food safety.
+    For more than a quarter century of dedication and innovation, Shehaila has transformed from a modest small farm into an integrated production system featuring two modern farms strategically located across the Kingdom of Saudi Arabia, operating in accordance with the highest internationally approved standards of quality and food safety.
 
     Shehaila continuously invests in the most advanced agricultural and veterinary technologies, relying on
     climate-controlled breeding systems that ensure the highest levels of bird welfare and health, which
@@ -97,37 +94,27 @@ export const About: React.FC = () => {
 
 
   const productionTextAr = `
-    تمتلك شهيلا خط إنتاج متكامل ومتطور يمثل الركيزة الأساسية لتميزنا في السوق. يبدأ الخط من مراحل
-    التفريخ الآلي الدقيق، مرورًا بمحطات التربية المُتحكم بيئتها حراريًا وهوائيًا، وصولًا إلى خطوط
+    تمتلك شهيلا خط إنتاج متكامل ومتطور يمثل الركيزة الأساسية لتميزنا في السوق. يبدأ من 
+     محطات التربية المُتحكم بيئتها حراريًا وهوائيًا ومروها لحظائر الإنتاج، وصولًا إلى خطوط الجمع و 
     الفرز والتعبئة الأوتوماتيكية التي تضمن سلامة المنتج وجودته حتى لحظة تسليمه للمستهلك. تعتمد كل
-    مرحلة على برامج رقابة صارمة تخضع للتدقيق الدوري من جهات معتمدة محليًا ودوليًا، مما يجعل شهيلا
+    مرحلة على برامج رقابة صارمة تخضع للتدقيق الدوري و انتهاء بوحدات التخزين المبردة، مما يجعل شهيلا
     معيارًا للثقة والجودة في القطاع الغذائي السعودي.
   `;
 
   const productionTextEn = `
-    Shehaila operates a fully integrated and sophisticated production line that represents the cornerstone of
-    our market distinction. The process begins with precision automated hatchery stages, moves through
-    thermally and ventilation-controlled rearing stations, and culminates in fully automated sorting and
-    packaging lines that guarantee product safety and quality until the moment of consumer delivery. Every
-    stage is governed by strict monitoring programs subject to periodic audits by locally and internationally
-    accredited bodies, making Shehaila the benchmark for trust and quality in the Saudi food sector.
+    Shahila possesses a fully integrated and advanced production line that represents the cornerstone of our market excellence. It begins with climate-controlled breeding stations, where the environment is carefully managed through temperature and air circulation, and continues to the production pens. This extends to the automated collection, sorting, and packaging lines, ensuring product safety and quality until the moment of delivery to the consumer. Each stage relies on rigorous quality control programs that are subject to regular audits, culminating in refrigerated storage units. This makes Shahila a benchmark of trust and quality in the Saudi food sector.
   `;
 
   const fleetTextAr = `
-    لضمان وصول منتجاتنا الطازجة في أعلى حالة من الجودة، يمتلك شهيلا أسطول توزيع متطور يضم مئات
+    لضمان وصول منتجاتنا الطازجة في أعلى حالة من الجودة، يمتلك شهيلا أسطول توزيع متطور يضم عشرات
     المركبات المبردة المجهزة بأنظمة تتبع لحظية ومراقبة درجات الحرارة عبر الوقت الفعلي. يغطي الأسطول
     جميع مناطق المملكة العربية السعودية الكبرى والمتوسطة والصغيرة، محققًا معدلات تسليم تتجاوز 99%
     في المواعيد المحددة. يخضع الأسطول لبرنامج صيانة استباقي دوري لضمان الكفاءة القصوى، كما تلتزم
-    مركباتنا بأعلى معايير البيئة والسلامة المرورية تجسيدًا لمسؤوليتنا تجاه المجتمع والكوكب.
+    مركباتنا بأعلى معايير البيئة والسلامة المرورية تجسيدًا لمسؤوليتنا تجاه المجتمع والبيئة.
   `;
 
   const fleetTextEn = `
-    To ensure our fresh products arrive in the highest possible quality condition, Shehaila operates an
-    advanced distribution fleet comprising hundreds of refrigerated vehicles equipped with real-time tracking
-    systems and live temperature monitoring. The fleet covers all major, mid-size, and small regions across
-    the Kingdom of Saudi Arabia, achieving on-time delivery rates exceeding 99%. Our fleet undergoes a
-    proactive periodic maintenance program to ensure peak efficiency, and all vehicles comply with the highest
-    environmental and road safety standards — a testament to our responsibility toward society and the planet.
+    To ensure our fresh products arrive in pristine condition, Shahila boasts a state-of-the-art distribution fleet comprising dozens of refrigerated vehicles equipped with real-time tracking and temperature monitoring systems. This fleet covers all major, medium, and small regions of Saudi Arabia, achieving on-time delivery rates exceeding 99%. The fleet undergoes a proactive, periodic maintenance program to guarantee optimal efficiency, and our vehicles adhere to the highest environmental and traffic safety standards, reflecting our commitment to our community and the environment.
   `;
 
   return (
@@ -143,9 +130,8 @@ export const About: React.FC = () => {
           <h1 className="shehaila-about__hero-title">{t('من نحن', 'About Us')}</h1>
           <p className="shehaila-about__hero-sub">
             {t(
-              'نحن شهيلا — علامة سعودية أصيلة تجمع بين عراقة الماضي وطموح المستقبل، لنقدم لكم أجود منتجات البيض والدواجن بمعايير عالمية وبلمسة محلية لا تُضاهى.',
-              'We are Shehaila — an authentic Saudi brand that bridges the heritage of the past with the ambitions of the future, delivering the finest egg and poultry products to world-class standards with an unmatched local touch.'
-            )}
+              'نحن شهيلا — علامة سعودية أصيلة تجمع بين عراقة الماضي وطموح المستقبل، لنقدم لكم أجود منتجات البيض والدواجن بمعايير عالمية وبلمسة محلية فريدة.',
+              'We are Shahila — an authentic Saudi brand that combines the heritage of the past with the ambition of the future, to offer you the finest egg and poultry products with global standards and a unique local touch.')}
           </p>
         </div>
         <div className="shehaila-about__hero-scroll-hint" aria-hidden="true">

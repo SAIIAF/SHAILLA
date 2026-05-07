@@ -42,8 +42,8 @@ export const Locations: React.FC = () => {
       city: t('بيشة', 'Bisha'),
       type: t('المقر الرئيسي في بيشة', 'Bisha Main Branch'),
       address: t(
-        'بيشة، منطقة عسير، المملكة العربية السعودية',
-        'Bisha, Aseer Region, Saudi Arabia'
+        'شارع ابها - حي نمران - بيشة',
+        'Abha Street - Nimran District - Bisha'
       ),
       phone: '966531117922+',
       email: 'social@afaqsaleh.com',
@@ -69,11 +69,11 @@ export const Locations: React.FC = () => {
     {
       id: 3,
       image: JizanImg,
-      city: t('جيزان', 'Jizan'),
-      type: t('فرع جيزان', 'Jizan Branch'),
+      city: t('ابها', 'Abha'),
+      type: t('فرع ابها', 'Abha Branch'),
       address: t(
-        'جيزان، المملكة العربية السعودية',
-        'Jizan, Saudi Arabia'
+        'شارع العام - حي الراقي - خميس مشيط',
+        'Public Street - Al Raqi District - Khamis Mushait'
       ),
       phone: '966538381614+',
       email: 'social@afaqsaleh.com',
@@ -87,8 +87,8 @@ export const Locations: React.FC = () => {
       city: t('الطائف', 'Taif'),
       type: t('فرع الطائف', 'Taif Branch'),
       address: t(
-        'الطائف، منطقة مكة المكرمة، المملكة العربية السعودية',
-        'Taif, Makkah Region, Saudi Arabia'
+        'شارع ابن سعادة - حي ريحه - الطائف',
+        'Ibn Saada Street - Riha District - Taif',
       ),
       phone: '966500107110+',
       email: 'social@afaqsaleh.com',
@@ -102,8 +102,8 @@ export const Locations: React.FC = () => {
       city: t('جدة', 'Jeddah'),
       type: t('فرع جدة', 'Jeddah Branch'),
       address: t(
-        'جدة، المملكة العربية السعودية',
-        'Jeddah, Saudi Arabia'
+        'شارع عبدالرحمن ابو عيسي - حي الأجواد - جدة',
+        'Abdulrahman Abu Issa Street - Al-Ajwad District - Jeddah',
       ),
       phone: '966535111722+',
       email: 'social@afaqsaleh.com',

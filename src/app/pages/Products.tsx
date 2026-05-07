@@ -216,7 +216,7 @@ const Products: React.FC = () => {
   const qualityStandards = [
     {
       icon: <Microscope size={48} />,
-      title: t('فحوصات مختبرية شاملة', 'Comprehensive Lab Testing'),
+      title: t('المختبرات الممعتمدة من قبل هيئة الغذاء و الدواء', 'Laboratories accredited by the Food and Drug Administration'),
       description: t(
         'نجري فحوصات مختبرية دورية على جميع منتجاتنا للتأكد من خلوها من الملوثات والبكتيريا الضارة',
         'We conduct regular lab tests on all our products to ensure they are free from contaminants and harmful bacteria'
@@ -242,7 +242,7 @@ const Products: React.FC = () => {
 
   const productionStats = [
     { value: 600000, label: t('بيضة يوميًا', 'Eggs Daily'), suffix: '' },
-    { value: 5, label: t('مزارع متطورة', 'Modern Farms'), suffix: '' },
+    { value: 2, label: t('مزارع متطورة', 'Modern Farms'), suffix: '' },
     { value: 100, label: t('مراكز توزيع محلية', 'Local Outlets'), suffix: '%' }
   ];
 
